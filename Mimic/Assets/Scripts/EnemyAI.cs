@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform player;           // Reference to the player object
-    public float chaseDistance = 10f; // Distance at which the enemy starts chasing the player
-    public float wanderRadius = 5f;   // Radius within which the enemy wanders
-    public float wanderSpeed = 2f;    // Speed of wandering
-    public float chaseSpeed = 5f;     // Speed of chasing
+    public Transform player;             // Reference to the player object
+    public float chaseDistance = 10f;   // Distance at which the enemy starts chasing the player
+    public float playerDistance = 3f;    // Minimum distance to maintain from the player
+    public float wanderRadius = 5f;      // Radius within which the enemy wanders
+    public float wanderSpeed = 2f;       // Speed of wandering
+    public float chaseSpeed = 5f;        // Speed of chasing
     private NavMeshAgent agent;
     private Vector3 wanderTarget;
     private bool isChasing = false;
@@ -26,10 +25,23 @@ public class EnemyAI : MonoBehaviour
 
         if (distanceToPlayer <= chaseDistance)
         {
-            // Chase the player
-            isChasing = true;
-            agent.speed = chaseSpeed;
-            agent.SetDestination(player.position);
+            // Calculate the direction from enemy to player
+            Vector3 directionToPlayer = player.position - transform.position;
+            directionToPlayer.y = 0f;
+
+            // Maintain a minimum distance from the player
+            if (distanceToPlayer < playerDistance)
+            {
+                Vector3 newPosition = player.position - directionToPlayer.normalized * playerDistance;
+                agent.SetDestination(newPosition);
+            }
+            else
+            {
+                // Chase the player
+                isChasing = true;
+                agent.speed = chaseSpeed;
+                agent.SetDestination(player.position);
+            }
         }
         else if (isChasing)
         {
