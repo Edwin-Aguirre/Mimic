@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ShapeShiftPlayer : MonoBehaviour
 {
-    public float interactionDistance = 2f;  // Distance at which player can interact with enemies
+    public float interactionDistance = 2f;  // Distance at which the player can interact with enemies
     public KeyCode shapeshiftKey = KeyCode.E;  // Key to trigger shapeshifting
     private GameObject currentEnemy;  // Reference to the current enemy
     private bool isPlayerShapeshifted = false;  // Flag to track shapeshift state
     private Mesh originalPlayerMesh;  // Store the original player mesh
     private Material originalPlayerMaterial;  // Store the original player material
     private HealthSystem playerHealth;  // Reference to the player's health system
+    private Collider playerCollider;  // Reference to the player's collider
 
     private void Start()
     {
@@ -28,6 +29,9 @@ public class ShapeShiftPlayer : MonoBehaviour
 
         // Get the player's health system
         playerHealth = GetComponent<HealthSystem>();
+
+        // Get the player's collider (assuming it's a BoxCollider)
+        playerCollider = GetComponent<BoxCollider>();
     }
 
     private void Update()
@@ -81,8 +85,9 @@ public class ShapeShiftPlayer : MonoBehaviour
     {
         if (currentEnemy != null)
         {
-            // Get the enemy's health system
+            // Get the enemy's health system and position
             HealthSystem enemyHealth = currentEnemy.GetComponent<HealthSystem>();
+            Vector3 enemyPosition = currentEnemy.transform.position;
 
             if (enemyHealth != null)
             {
@@ -111,11 +116,26 @@ public class ShapeShiftPlayer : MonoBehaviour
                 // Update the player's health bar UI
                 playerHealth.UpdateHealthUI();
 
+                // Save the player's position
+                Vector3 playerPosition = transform.position;
+
+                // Set the player's position to the enemy's position
+                transform.position = enemyPosition;
+
+                // Set the enemy's position to the player's original position
+                currentEnemy.transform.position = playerPosition;
+
+                // Copy the enemy's scale to the player
+                transform.localScale = currentEnemy.transform.localScale;
+
                 // Destroy the current enemy object
                 Destroy(currentEnemy);
                 currentEnemy = null;
 
                 isPlayerShapeshifted = true;
+
+                // Adjust the collider size to match the new mesh size
+                AdjustColliderSize();
             }
             else
             {
@@ -135,11 +155,30 @@ public class ShapeShiftPlayer : MonoBehaviour
             playerRenderer.material = originalPlayerMaterial;
             playerMeshFilter.mesh = originalPlayerMesh;
 
+            // Reset the player's scale to its original scale
+            transform.localScale = Vector3.one;
+
             isPlayerShapeshifted = false;
+
+            // Adjust the collider size to match the original mesh size
+            AdjustColliderSize();
         }
         else
         {
             Debug.LogWarning("Player is missing one or more required components (MeshRenderer and/or MeshFilter).");
+        }
+    }
+
+    // Adjust the collider size to match the mesh size
+    private void AdjustColliderSize()
+    {
+        if (playerCollider != null)
+        {
+            // Get the bounds of the mesh
+            Bounds meshBounds = GetComponent<MeshFilter>().mesh.bounds;
+
+            // Set the collider size to match the mesh bounds size
+            ((BoxCollider)playerCollider).size = meshBounds.size;
         }
     }
 }
