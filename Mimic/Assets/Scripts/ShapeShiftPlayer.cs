@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class ShapeShiftPlayer : MonoBehaviour
 {
-    public float interactionDistance = 2f; // Distance at which player can interact with enemies
-    public KeyCode shapeshiftKey = KeyCode.E; // Key to trigger shapeshifting
-    private GameObject currentEnemy; // Reference to the current enemy
-    private bool isPlayerShapeshifted = false; // Flag to track shapeshift state
-    private Mesh originalPlayerMesh; // Store the original player mesh
-    private Material originalPlayerMaterial; // Store the original player material
+    public float interactionDistance = 2f;  // Distance at which player can interact with enemies
+    public KeyCode shapeshiftKey = KeyCode.E;  // Key to trigger shapeshifting
+    private GameObject currentEnemy;  // Reference to the current enemy
+    private bool isPlayerShapeshifted = false;  // Flag to track shapeshift state
+    private Mesh originalPlayerMesh;  // Store the original player mesh
+    private Material originalPlayerMaterial;  // Store the original player material
+    private HealthSystem playerHealth;  // Reference to the player's health system
 
     private void Start()
     {
@@ -24,11 +25,14 @@ public class ShapeShiftPlayer : MonoBehaviour
         {
             originalPlayerMaterial = playerRenderer.material;
         }
+
+        // Get the player's health system
+        playerHealth = GetComponent<HealthSystem>();
     }
 
     private void Update()
     {
-        // Check for player input
+        // Check for player input to trigger shapeshifting
         if (Input.GetKeyDown(shapeshiftKey))
         {
             if (isPlayerShapeshifted)
@@ -77,34 +81,45 @@ public class ShapeShiftPlayer : MonoBehaviour
     {
         if (currentEnemy != null)
         {
-            // Get the MeshRenderer and MeshFilter of the player and enemy
-            MeshRenderer playerRenderer = GetComponent<MeshRenderer>();
-            MeshRenderer enemyRenderer = currentEnemy.GetComponent<MeshRenderer>();
-            MeshFilter playerMeshFilter = GetComponent<MeshFilter>();
-            MeshFilter enemyMeshFilter = currentEnemy.GetComponent<MeshFilter>();
+            // Get the enemy's health system
+            HealthSystem enemyHealth = currentEnemy.GetComponent<HealthSystem>();
 
-            if (playerRenderer != null && enemyRenderer != null && playerMeshFilter != null && enemyMeshFilter != null)
+            if (enemyHealth != null)
             {
                 // Swap materials between player and enemy
-                Material playerMaterial = playerRenderer.material;
-                playerRenderer.material = enemyRenderer.material;
-                enemyRenderer.material = playerMaterial;
+                MeshRenderer playerRenderer = GetComponent<MeshRenderer>();
+                MeshRenderer enemyRenderer = currentEnemy.GetComponent<MeshRenderer>();
+                MeshFilter playerMeshFilter = GetComponent<MeshFilter>();
+                MeshFilter enemyMeshFilter = currentEnemy.GetComponent<MeshFilter>();
+
+                if (playerRenderer != null && enemyRenderer != null && playerMeshFilter != null && enemyMeshFilter != null)
+                {
+                    Material playerMaterial = playerRenderer.material;
+                    playerRenderer.material = enemyRenderer.material;
+                    enemyRenderer.material = playerMaterial;
+                }
 
                 // Swap meshes between player and enemy
                 Mesh playerMesh = playerMeshFilter.mesh;
                 playerMeshFilter.mesh = enemyMeshFilter.mesh;
                 enemyMeshFilter.mesh = playerMesh;
 
+                // Transfer enemy's health to the player
+                playerHealth.maxHealth = enemyHealth.maxHealth;
+                playerHealth.currentHealth = enemyHealth.currentHealth;
+
+                // Update the player's health bar UI
+                playerHealth.UpdateHealthUI();
+
                 // Destroy the current enemy object
                 Destroy(currentEnemy);
                 currentEnemy = null;
 
-                // Update the shapeshift state
                 isPlayerShapeshifted = true;
             }
             else
             {
-                Debug.LogWarning("Player or enemy is missing one or more required components (MeshRenderer and/or MeshFilter).");
+                Debug.LogWarning("Enemy is missing the HealthSystem component.");
             }
         }
     }
@@ -112,17 +127,14 @@ public class ShapeShiftPlayer : MonoBehaviour
     // Revert back to the player's original appearance
     private void RevertShapeshift()
     {
-        // Get the MeshRenderer and MeshFilter of the player
         MeshRenderer playerRenderer = GetComponent<MeshRenderer>();
         MeshFilter playerMeshFilter = GetComponent<MeshFilter>();
 
         if (playerRenderer != null && playerMeshFilter != null)
         {
-            // Restore the original player material and mesh
             playerRenderer.material = originalPlayerMaterial;
             playerMeshFilter.mesh = originalPlayerMesh;
 
-            // Update the shapeshift state
             isPlayerShapeshifted = false;
         }
         else
