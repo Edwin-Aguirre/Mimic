@@ -9,14 +9,20 @@ public class EnemyAI : MonoBehaviour
     public float wanderRadius = 5f;      // Radius within which the enemy wanders
     public float wanderSpeed = 2f;       // Speed of wandering
     public float chaseSpeed = 5f;        // Speed of chasing
+    public float idleDuration = 3f;      // Duration to stay idle at a spot
+    public Animator animator;            // Reference to the Animator component
     private NavMeshAgent agent;
     private Vector3 wanderTarget;
     private bool isChasing = false;
+    private bool isWandering = false;
+    private float idleTimer = 0f;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         wanderTarget = GetRandomPointInRadius();
+        isWandering = true;
+        animator.SetBool("isWalking", true);
     }
 
     void Update()
@@ -41,6 +47,7 @@ public class EnemyAI : MonoBehaviour
                 isChasing = true;
                 agent.speed = chaseSpeed;
                 agent.SetDestination(player.position);
+                animator.SetBool("isWalking", true);
             }
         }
         else if (isChasing)
@@ -50,13 +57,39 @@ public class EnemyAI : MonoBehaviour
             agent.speed = wanderSpeed;
             wanderTarget = GetRandomPointInRadius();
             agent.SetDestination(wanderTarget);
+            animator.SetBool("isWalking", true);
+        }
+        else if (agent.remainingDistance < 0.1f)
+        {
+            if (isWandering)
+            {
+                // Start the idle timer
+                idleTimer += Time.deltaTime;
+                animator.SetBool("isWalking", false);
+
+                if (idleTimer >= idleDuration)
+                {
+                    // Reset the timer and continue wandering
+                    idleTimer = 0f;
+                    isWandering = false;
+                    wanderTarget = GetRandomPointInRadius();
+                    agent.SetDestination(wanderTarget);
+                    animator.SetBool("isWalking", true);
+                }
+            }
+            else
+            {
+                // Play the idle animation once the idle duration is reached
+                animator.SetBool("isWalking", false);
+            }
         }
 
         // Check if we've reached the destination while wandering
-        if (!isChasing && agent.remainingDistance < 0.1f)
+        if (!isChasing && agent.remainingDistance < 0.1f && !isWandering)
         {
-            wanderTarget = GetRandomPointInRadius();
-            agent.SetDestination(wanderTarget);
+            // Start the idle timer when reaching a new spot
+            idleTimer = 0f;
+            isWandering = true;
         }
     }
 
