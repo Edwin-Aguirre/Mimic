@@ -45,6 +45,9 @@ public class SwitchControl : MonoBehaviour
                 player.SetActive(playerControl);
                 enemy.SetActive(!playerControl);
 
+                // Change the enemy's tag to "Player"
+                enemy.tag = "Player";
+
                 // Enable or disable selected scripts only after the switch
                 ToggleEnemyScripts();
 
@@ -76,6 +79,9 @@ public class SwitchControl : MonoBehaviour
                 // Swap the visibility of player and enemy
                 player.SetActive(playerControl);
                 enemy.SetActive(!playerControl);
+
+                // Change the enemy's tag to "Player"
+                enemy.tag = "Player";
 
                 // Enable or disable selected scripts only after the switch
                 ToggleEnemyScripts();
