@@ -3,25 +3,29 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform player;             // Reference to the player object
     public float chaseDistance = 10f;   // Distance at which the enemy starts chasing the player
-    public float playerDistance = 3f;    // Minimum distance to maintain from the player
-    public float wanderRadius = 5f;      // Radius within which the enemy wanders
-    public float wanderSpeed = 2f;       // Speed of wandering
-    public float chaseSpeed = 5f;        // Speed of chasing
-    public float idleDuration = 3f;      // Duration to stay idle at a spot
-    public Animator animator;            // Reference to the Animator component
+    public float playerDistance = 3f;  // Minimum distance to maintain from the player
+    public float wanderRadius = 5f;    // Radius within which the enemy wanders
+    public float wanderSpeed = 2f;     // Speed of wandering
+    public float chaseSpeed = 5f;      // Speed of chasing
+    public float idleDuration = 3f;    // Duration to stay idle at a spot
+    public Animator animator;          // Reference to the Animator component
+    public BoxCollider triggerBox;     // Trigger box for detecting the player
+
     private NavMeshAgent agent;
+    private Transform player;
     private Vector3 wanderTarget;
     private bool isChasing = false;
-    private bool isWandering = false;
+    private bool isWandering = true;
     private float idleTimer = 0f;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindWithTag("Player").transform; // Assuming the player has a "Player" tag
         wanderTarget = GetRandomPointInRadius();
-        isWandering = true;
+        agent.speed = wanderSpeed;
+        agent.SetDestination(wanderTarget);
         animator.SetBool("isWalking", true);
     }
 
@@ -90,6 +94,14 @@ public class EnemyAI : MonoBehaviour
             // Start the idle timer when reaching a new spot
             idleTimer = 0f;
             isWandering = true;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            player = other.transform;
         }
     }
 
