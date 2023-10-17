@@ -3072,10 +3072,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8c1c7e15cb50342a89d34d11f1ab91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 8
   attackRange: 2
   targetHealth: {fileID: 0}
   animator: {fileID: 5406050180948782845}
+  attackButton:
+    m_Name: Attack Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a5e9903b-d597-48ab-a8e9-99441725f5d1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: c27e21fb-e944-4e18-8add-88417dff94ed
+      m_Path: <Gamepad>/buttonSouth
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Attack Button
+      m_Flags: 0
+    m_Flags: 0
+  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  fireColor: {r: 1, g: 0, b: 0, a: 0}
+  waterColor: {r: 0, g: 0, b: 1, a: 0}
+  grassColor: {r: 0, g: 1, b: 0, a: 0}
+  fightingColor: {r: 1, g: 0.27450982, b: 0.27450982, a: 0}
+  iceColor: {r: 0, g: 0.78431374, b: 1, a: 0}
+  poisonColor: {r: 0.27450982, g: 1, b: 0, a: 0}
+  darkColor: {r: 1, g: 1, b: 1, a: 1}
+  ghostColor: {r: 0.19607843, g: 0.19607843, b: 1, a: 0}
+  groundColor: {r: 1, g: 0.78431374, b: 0, a: 0}
+  rockColor: {r: 1, g: 0.627451, b: 0.05882353, a: 0}
   typeAdvantages:
   - attackerType: 0
     strongAgainst: 00000000

@@ -56,19 +56,22 @@ public class PokemonAttack : MonoBehaviour
     void Start()
     {
         attackButton.Enable();
-        var gamepad = DualShockGamepad.current;
-        gamepad.SetLightBarColor(Color.black);
+        if(Gamepad.current != null)
+        {
+            var gamepad = DualShockGamepad.current;
+            gamepad.SetLightBarColor(Color.black);
+        }
     }
 
     private void Update()
     {
-        if(gameObject.CompareTag("Player"))
+        if(gameObject.CompareTag("Player") &&  Gamepad.current != null)
         {
             // Perform actions based on the player's type.
             HandlePlayerTypeActions();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) || attackButton.WasPerformedThisFrame() && gameObject.CompareTag("Player"))
+        if (Input.GetKeyDown(KeyCode.Space) && gameObject.CompareTag("Player") || attackButton.WasPerformedThisFrame() && gameObject.CompareTag("Player"))
         {
             // Trigger the attack animation whenever you press Space and have the "Player" tag.
             animator.SetBool("isAttacking", true);
