@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public class SwitchControl : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class SwitchControl : MonoBehaviour
     public string[] enemyScriptsToEnable; // Script names on the enemy to enable
     public string[] enemyScriptsToDisable; // Script names on the enemy to disable
     public float maxRaycastDistance = 3f; // Maximum distance for the raycast
+    public InputAction transformButton;
 
     private bool playerControl = true;
     private NavMeshAgent enemyNavMeshAgent;
@@ -19,6 +22,8 @@ public class SwitchControl : MonoBehaviour
 
     private void Start()
     {
+        transformButton.Enable();
+
         // Ensure the enemy's Nav Mesh Agent is enabled, and Character Controller is disabled at the start
         enemyNavMeshAgent = enemy.GetComponent<NavMeshAgent>();
         enemyCharacterController = enemy.GetComponent<CharacterController>();
@@ -36,7 +41,7 @@ public class SwitchControl : MonoBehaviour
     {
         if (playerControl)
         {
-            if ((Input.GetButtonDown("PS4_Triangle") || Input.GetKeyDown(KeyCode.E)) && CanSwitch())
+            if ((transformButton.WasPerformedThisFrame() || Input.GetKeyDown(KeyCode.E)) && CanSwitch())
             {
                 // Toggle control between player and enemy
                 playerControl = !playerControl;

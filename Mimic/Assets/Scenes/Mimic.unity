@@ -141,6 +141,141 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1480587363}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1984153209}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: iceColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: iceColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: darkColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: darkColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: darkColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: darkColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: fireColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: rockColor.b
+      value: 0.05882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: rockColor.g
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: rockColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: ghostColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: ghostColor.g
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: ghostColor.r
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: grassColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: waterColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: attack.m_Name
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: groundColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: groundColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: poisonColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: poisonColor.r
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: fightingColor.b
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: fightingColor.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: fightingColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: attackButton.m_Id
+      value: a5e9903b-d597-48ab-a8e9-99441725f5d1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: attackButton.m_Name
+      value: Attack Button
+      objectReference: {fileID: 0}
     - target: {fileID: 1499663925029194076, guid: 5f39b997b9729a740b54cb19349e1cfe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -517,6 +652,23 @@ MonoBehaviour:
   enemyScriptsToDisable:
   - EnemyAI
   maxRaycastDistance: 3
+  transformButton:
+    m_Name: Transform Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 43b9ae35-8bb6-4c60-8a73-1ea353902915
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8bfe5d08-060e-4a5c-a6cb-69ddcfd1b39c
+      m_Path: <Gamepad>/buttonNorth
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Transform Button
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &812562701
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,9 +923,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1126958448680435817}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1984153209 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 590566257149381245, guid: 5f39b997b9729a740b54cb19349e1cfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 141266261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2133813644 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 35897340829404917, guid: 5f39b997b9729a740b54cb19349e1cfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 7156763892098535545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2133813652 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 590566257149381245, guid: 5f39b997b9729a740b54cb19349e1cfe,
     type: 3}
   m_PrefabInstance: {fileID: 7156763892098535545}
   m_PrefabAsset: {fileID: 0}
@@ -785,6 +949,156 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: iceColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: iceColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: darkColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: darkColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: darkColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: darkColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: fireColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: rockColor.b
+      value: 0.05882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: rockColor.g
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: rockColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: ghostColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: ghostColor.g
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: ghostColor.r
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: grassColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: waterColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: attack.m_Name
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: groundColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: groundColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: poisonColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: poisonColor.r
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: fightingColor.b
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: fightingColor.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: fightingColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: attackButton.m_Name
+      value: Attack Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: typeAdvantages.Array.data[0].attackerType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: attack.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: attack.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 04227e7c-0372-4e89-ba09-80ca74cd4a5c
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: attack.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/buttonSouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486276127090613863, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: attack.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Attack
+      objectReference: {fileID: 0}
     - target: {fileID: 2532969182626748559, guid: 95341c546d5628244b13ae373ced9988,
         type: 3}
       propertyPath: m_Enabled
@@ -883,6 +1197,141 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1480587363}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2133813652}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: iceColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: iceColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: darkColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: darkColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: darkColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: darkColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: fireColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: rockColor.b
+      value: 0.05882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: rockColor.g
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: rockColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: ghostColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: ghostColor.g
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: ghostColor.r
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: grassColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: waterColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: attack.m_Name
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: groundColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: groundColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: poisonColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: poisonColor.r
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: fightingColor.b
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: fightingColor.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: fightingColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: attackButton.m_Id
+      value: a5e9903b-d597-48ab-a8e9-99441725f5d1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267025103199840127, guid: 5f39b997b9729a740b54cb19349e1cfe,
+        type: 3}
+      propertyPath: attackButton.m_Name
+      value: Attack Button
+      objectReference: {fileID: 0}
     - target: {fileID: 1499663925029194076, guid: 5f39b997b9729a740b54cb19349e1cfe,
         type: 3}
       propertyPath: m_LocalPosition.x
