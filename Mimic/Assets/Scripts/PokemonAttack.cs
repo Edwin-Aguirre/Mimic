@@ -33,7 +33,7 @@ public class PokemonAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && gameObject.CompareTag("Player"))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("PS4_X") && gameObject.CompareTag("Player"))
         {
             // Trigger the attack animation whenever you press Space and have the "Player" tag.
             animator.SetBool("isAttacking", true);
