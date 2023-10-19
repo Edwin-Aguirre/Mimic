@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8c1c7e15cb50342a89d34d11f1ab91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 6
+  type: 4
   attackRange: 2
   targetHealth: {fileID: 0}
   animator: {fileID: 590566257149381245}
@@ -183,9 +183,9 @@ MonoBehaviour:
   groundColor: {r: 1, g: 0.78431374, b: 0, a: 0}
   rockColor: {r: 1, g: 0.627451, b: 0.05882353, a: 0}
   typeAdvantages:
-  - attackerType: 0
-    strongAgainst: 00000000
-    weakAgainst: 00000000
+  - attackerType: 1
+    strongAgainst: 03000000
+    weakAgainst: 02000000
 --- !u!137 &2782558733304430666
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -764,8 +764,10 @@ MonoBehaviour:
   wanderSpeed: 1
   chaseSpeed: 0.5
   idleDuration: 3
+  attackDelay: 2
   animator: {fileID: 590566257149381245}
   triggerBox: {fileID: 0}
+  healthSystem: {fileID: 7863994794255060993}
 --- !u!114 &8341556828901909628
 MonoBehaviour:
   m_ObjectHideFlags: 0

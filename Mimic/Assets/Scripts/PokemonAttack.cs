@@ -94,7 +94,10 @@ public class PokemonAttack : MonoBehaviour
         else
         {
             // Ensure the "isAttacking" parameter is set to false if not attacking.
-            animator.SetBool("isAttacking", false);
+            if(gameObject.CompareTag("Player"))
+            {
+                animator.SetBool("isAttacking", false);
+            }
         }
     }
 

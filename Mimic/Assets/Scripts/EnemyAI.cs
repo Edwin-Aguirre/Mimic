@@ -3,14 +3,15 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float chaseDistance = 10f;   // Distance at which the enemy starts chasing the player
-    public float playerDistance = 3f;  // Minimum distance to maintain from the player
-    public float wanderRadius = 5f;    // Radius within which the enemy wanders
-    public float wanderSpeed = 2f;     // Speed of wandering
-    public float chaseSpeed = 5f;      // Speed of chasing
-    public float idleDuration = 3f;    // Duration to stay idle at a spot
-    public Animator animator;          // Reference to the Animator component
-    public BoxCollider triggerBox;     // Trigger box for detecting the player
+    public float chaseDistance = 10f;
+    public float playerDistance = 3f;
+    public float wanderRadius = 5f;
+    public float wanderSpeed = 2f;
+    public float chaseSpeed = 5f;
+    public float idleDuration = 3f;
+    public float attackDelay = 2f;
+    public Animator animator;
+    public BoxCollider triggerBox;
 
     private NavMeshAgent agent;
     private Transform player;
@@ -18,15 +19,24 @@ public class EnemyAI : MonoBehaviour
     private bool isChasing = false;
     private bool isWandering = true;
     private float idleTimer = 0f;
+    private float attackTimer = 0f;
+    private bool isAttacking = false;
+
+    private PokemonAttack enemyAttack;
+    private bool isAnimationPlaying = false;
+
+    public HealthSystem healthSystem; // Reference to the enemy's health system
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player").transform; // Assuming the player has a "Player" tag
+        player = GameObject.FindWithTag("Player").transform;
         wanderTarget = GetRandomPointInRadius();
         agent.speed = wanderSpeed;
         agent.SetDestination(wanderTarget);
         animator.SetBool("isWalking", true);
+
+        enemyAttack = GetComponent<PokemonAttack>();
     }
 
     void Update()
@@ -35,11 +45,9 @@ public class EnemyAI : MonoBehaviour
 
         if (distanceToPlayer <= chaseDistance)
         {
-            // Calculate the direction from enemy to player
             Vector3 directionToPlayer = player.position - transform.position;
             directionToPlayer.y = 0f;
 
-            // Maintain a minimum distance from the player
             if (distanceToPlayer < playerDistance)
             {
                 Vector3 newPosition = player.position - directionToPlayer.normalized * playerDistance;
@@ -47,16 +55,32 @@ public class EnemyAI : MonoBehaviour
             }
             else
             {
-                // Chase the player
-                isChasing = true;
-                agent.speed = chaseSpeed;
-                agent.SetDestination(player.position);
-                animator.SetBool("isWalking", true);
+                if (!isAttacking)
+                {
+                    isChasing = true;
+                    agent.speed = chaseSpeed;
+                    agent.SetDestination(player.position);
+                    animator.SetBool("isWalking", true);
+                }
+            }
+
+            if (enemyAttack != null && !isAttacking)
+            {
+                int damage = enemyAttack.CalculateDamage(player.GetComponent<PokemonAttack>().type);
+                Debug.Log("Dealt " + damage + " damage to the player.");
+
+                // Apply damage to the player's health system or handle it as needed.
+                player.GetComponent<HealthSystem>().TakeDamage(damage);
+
+                // Start the attack animation and set the isAttacking flag.
+                animator.SetBool("isAttacking", true);
+                isAttacking = true;
+                isAnimationPlaying = true;
+                attackTimer = 0f;
             }
         }
         else if (isChasing)
         {
-            // Stop chasing if the player is out of range
             isChasing = false;
             agent.speed = wanderSpeed;
             wanderTarget = GetRandomPointInRadius();
@@ -67,13 +91,11 @@ public class EnemyAI : MonoBehaviour
         {
             if (isWandering)
             {
-                // Start the idle timer
                 idleTimer += Time.deltaTime;
                 animator.SetBool("isWalking", false);
 
                 if (idleTimer >= idleDuration)
                 {
-                    // Reset the timer and continue wandering
                     idleTimer = 0f;
                     isWandering = false;
                     wanderTarget = GetRandomPointInRadius();
@@ -83,17 +105,26 @@ public class EnemyAI : MonoBehaviour
             }
             else
             {
-                // Play the idle animation once the idle duration is reached
                 animator.SetBool("isWalking", false);
             }
         }
 
-        // Check if we've reached the destination while wandering
         if (!isChasing && agent.remainingDistance < 0.1f && !isWandering)
         {
-            // Start the idle timer when reaching a new spot
             idleTimer = 0f;
             isWandering = true;
+        }
+
+        if (isAnimationPlaying)
+        {
+            attackTimer += Time.deltaTime;
+
+            if (attackTimer >= attackDelay)
+            {
+                animator.SetBool("isAttacking", false);
+                isAttacking = false;
+                isAnimationPlaying = false;
+            }
         }
     }
 

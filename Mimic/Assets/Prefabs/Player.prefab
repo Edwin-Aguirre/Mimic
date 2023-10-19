@@ -3072,7 +3072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8c1c7e15cb50342a89d34d11f1ab91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 8
+  type: 3
   attackRange: 2
   targetHealth: {fileID: 0}
   animator: {fileID: 5406050180948782845}
@@ -3105,9 +3105,9 @@ MonoBehaviour:
   groundColor: {r: 1, g: 0.78431374, b: 0, a: 0}
   rockColor: {r: 1, g: 0.627451, b: 0.05882353, a: 0}
   typeAdvantages:
-  - attackerType: 0
-    strongAgainst: 00000000
-    weakAgainst: 00000000
+  - attackerType: 3
+    strongAgainst: 02000000
+    weakAgainst: 01000000
 --- !u!137 &4130831522150569295
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
