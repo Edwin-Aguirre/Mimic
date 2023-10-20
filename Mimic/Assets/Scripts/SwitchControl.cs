@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public class SwitchControl : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class SwitchControl : MonoBehaviour
     public float maxRaycastDistance = 3f; // Maximum distance for the raycast
     public string[] enemyScriptsToEnable; // Script names on the enemy to enable
     public string[] enemyScriptsToDisable; // Script names on the enemy to disable
+    public InputAction transformButton;
 
 
     private GameObject currentEnemy; // The current enemy GameObject
@@ -22,13 +25,14 @@ public class SwitchControl : MonoBehaviour
         initialPlayerPosition = player.transform.position;
         initialPlayerRotation = player.transform.rotation;
         currentEnemy = null; // Initialize currentEnemy as null
+        transformButton.Enable();
     }
 
     private void Update()
     {
         if (playerControl)
         {
-            if (Input.GetButtonDown("PS4_Triangle") || Input.GetKeyDown(KeyCode.E))
+            if (transformButton.WasPerformedThisFrame() || Input.GetKeyDown(KeyCode.E))
             {
                 // Attempt to switch to a new enemy if the player is looking at one
                 if (CanSwitch(out GameObject newEnemy))
@@ -83,7 +87,7 @@ public class SwitchControl : MonoBehaviour
         //Switch back to player
         else
         {
-            if (Input.GetButtonDown("PS4_Triangle") || Input.GetKeyDown(KeyCode.E))
+            if (transformButton.WasPerformedThisFrame() || Input.GetKeyDown(KeyCode.E))
             {
                 // Toggle control between player and enemy
                 playerControl = !playerControl;

@@ -210,8 +210,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2991537, y: 0.04752667, z: -0.014920476, w: 0.9529038}
-  m_LocalPosition: {x: -1, y: 7, z: -10}
+  m_LocalRotation: {x: 0.26554695, y: 0.048020735, z: -0.013244313, w: 0.9628102}
+  m_LocalPosition: {x: -1, y: 6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -463,6 +463,23 @@ MonoBehaviour:
   - ThirdPersonController
   enemyScriptsToDisable:
   - EnemyAI
+  transformButton:
+    m_Name: Transform Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 55c7af0f-081c-4e7f-994b-c1432ddf02da
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4db34fb2-cd84-4e92-a377-40e77eaea2fc
+      m_Path: <Gamepad>/buttonNorth
+      m_Interactions: Hold
+      m_Processors: 
+      m_Groups: 
+      m_Action: Transform Button
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &812562701
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,8 +787,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472982888}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2991537, y: 0.04752667, z: -0.014920476, w: 0.9529038}
-  m_LocalPosition: {x: -1, y: 7, z: -10}
+  m_LocalRotation: {x: 0.26554695, y: 0.048020735, z: -0.013244313, w: 0.9628102}
+  m_LocalPosition: {x: -1, y: 6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -889,7 +906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: -1, y: 7, z: -10}
+  m_FollowOffset: {x: -1, y: 6, z: -10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1

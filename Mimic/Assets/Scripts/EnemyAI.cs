@@ -11,7 +11,6 @@ public class EnemyAI : MonoBehaviour
     public float idleDuration = 3f;
     public float attackDelay = 2f;
     public Animator animator;
-    public BoxCollider triggerBox;
 
     private NavMeshAgent agent;
     private Transform player;
