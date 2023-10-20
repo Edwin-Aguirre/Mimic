@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8997b20b490f9a345acdc0f8dec1b54e
+guid: a1a52d5fe8dd6d14788e46db24c7220e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -10,7 +10,7 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: eeb34f3ead148d04e8630fc3f79cbc1a, type: 3}
   dataVersion: 7
   fileType: 0
-  gameObjectName: Player
+  gameObjectName: Player_2
   meshMode: 0
   importMode: 1
   importScale: {x: 0.1, y: 0.1, z: 0.1}
@@ -38,11 +38,11 @@ ScriptedImporter:
   createContactChunkFaces: 0
   materialMode: 0
   materials:
-  - {fileID: -156486658544998735, guid: 8997b20b490f9a345acdc0f8dec1b54e, type: 3}
+  - {fileID: -156486658544998735, guid: a1a52d5fe8dd6d14788e46db24c7220e, type: 3}
   materialNames:
-  - Player_0
+  - Player_2_0
   remappedMaterials:
-  - name: Player_0
+  - name: Player_2_0
     material: {instanceID: 0}
   export: 0
   legacyVoxImport: 0

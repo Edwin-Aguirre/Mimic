@@ -644,7 +644,7 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  editMode: 1
+  editMode: 0
   editLastMode: 0
   edit_voxelMode: 0
   edit_voxelWeightMode: 0
@@ -712,7 +712,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 35897340829404917}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.7
+  m_Radius: 0.25
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -745,7 +745,6 @@ MonoBehaviour:
   idleDuration: 3
   attackDelay: 2
   animator: {fileID: 590566257149381245}
-  triggerBox: {fileID: 0}
   healthSystem: {fileID: 7863994794255060993}
 --- !u!114 &8341556828901909628
 MonoBehaviour:
@@ -780,13 +779,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Height: 2
+  m_Height: 1.5
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!65 &3744365471437334472
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -806,8 +805,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0.000000029802322, y: 0.75, z: 0}
+  m_Size: {x: 1.5, y: 2, z: 1.5}
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!65 &2556111251185425612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -827,8 +826,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.25, y: 2.25, z: 0.75}
-  m_Center: {x: 0.000000029802322, y: 0.75, z: 0}
+  m_Size: {x: 0.5, y: 1.5, z: 0.75}
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!114 &7863994794255060993
 MonoBehaviour:
   m_ObjectHideFlags: 0

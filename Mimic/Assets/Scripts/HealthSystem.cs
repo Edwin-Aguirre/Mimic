@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class HealthSystem : MonoBehaviour
     {
         Debug.Log(gameObject.name + " has died!");
         Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private IEnumerator UpdateHealthBarSmoothly()
