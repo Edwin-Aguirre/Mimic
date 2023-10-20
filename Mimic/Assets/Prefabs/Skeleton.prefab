@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 3744365471437334472}
   - component: {fileID: 2556111251185425612}
   - component: {fileID: 7863994794255060993}
+  - component: {fileID: 1337091076433359271}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -866,6 +867,20 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 7051018266473520225}
   healthChangeSpeed: 5
+--- !u!114 &1337091076433359271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35897340829404917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35794effc108a364c8bc79339f9bb3e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newAnimatorController: {fileID: 9100000, guid: 388e8d148102e144b9ea764964738e6f,
+    type: 2}
 --- !u!1 &312876780430311657
 GameObject:
   m_ObjectHideFlags: 0

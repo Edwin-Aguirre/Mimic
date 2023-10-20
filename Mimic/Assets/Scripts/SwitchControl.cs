@@ -8,6 +8,7 @@ public class SwitchControl : MonoBehaviour
     public string[] enemyScriptsToEnable; // Script names on the enemy to enable
     public string[] enemyScriptsToDisable; // Script names on the enemy to disable
 
+
     private GameObject currentEnemy; // The current enemy GameObject
     private bool playerControl = true;
     private NavMeshAgent enemyNavMeshAgent;
@@ -66,11 +67,20 @@ public class SwitchControl : MonoBehaviour
                     // Assign the new enemy as the current enemy
                     currentEnemy = newEnemy;
 
+                    // Use raycast to find the AnimationControllerSwap script on the enemy
+                    AnimationControllerSwap animationControllerSwap = newEnemy.GetComponent<AnimationControllerSwap>();
+                    if (animationControllerSwap != null)
+                    {
+                        // Use the AnimationControllerSwap script to swap the Animator controller
+                        animationControllerSwap.SwapAnimatorController();
+                    }
+
                     // Debug log to confirm the new enemy assignment
                     Debug.Log("New enemy assigned: " + newEnemy.name);
                 }
             }
         }
+        //Switch back to player
         else
         {
             if (Input.GetButtonDown("PS4_Triangle") || Input.GetKeyDown(KeyCode.E))
