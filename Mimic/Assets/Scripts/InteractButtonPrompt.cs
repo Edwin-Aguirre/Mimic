@@ -4,15 +4,19 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem.XInput;
 
-
 public class InteractButtonPrompt : MonoBehaviour
 {
     public GameObject interactPanel;
     public Image buttonImage;
+    public Image attackImage;
 
     public Sprite pcButtonSprite;
     public Sprite psButtonSprite;
     public Sprite xboxButtonSprite;
+
+    public Sprite pcAttackButtonSprite;
+    public Sprite psAttackButtonSprite;
+    public Sprite xboxAttackButtonSprite;
 
     public InputAction pcButton;
     public InputAction psButton;
@@ -22,7 +26,6 @@ public class InteractButtonPrompt : MonoBehaviour
     public InputType currentInput = InputType.PC; // Default to PC
 
     private bool playerNearInteractable = false;
-    private bool panelOpen = false;
 
     private void Start()
     {
@@ -34,22 +37,25 @@ public class InteractButtonPrompt : MonoBehaviour
 
     private void Update()
     {
-        if (playerNearInteractable)
+        SetButtonPrompt();
+        var gamepad = Gamepad.current;
+        if (playerNearInteractable && pcButton.WasPerformedThisFrame())
         {
-            SetButtonPrompt();
+            TogglePanel();
         }
-        else
+        else if (playerNearInteractable && gamepad is DualShockGamepad && psButton.WasPerformedThisFrame())
         {
-            interactPanel.SetActive(false);
+            TogglePanel();
         }
+        else if (playerNearInteractable && gamepad is XInputController && gamepad.name == "DualShock4GamepadHID" && xboxButton.WasPerformedThisFrame())
+        {
+            TogglePanel();
+        }
+    }
 
-        // Check for input to open/close the interact panel
-        if (playerNearInteractable && pcButton.WasPerformedThisFrame() || playerNearInteractable && psButton.WasPerformedThisFrame() ||
-            playerNearInteractable && xboxButton.WasPerformedThisFrame())
-        {
-            panelOpen = !panelOpen;
-            interactPanel.SetActive(panelOpen);
-        }
+    void TogglePanel()
+    {
+        interactPanel.SetActive(!interactPanel.activeSelf);
     }
 
     void SetButtonPrompt()
@@ -58,17 +64,20 @@ public class InteractButtonPrompt : MonoBehaviour
         {
             case InputType.PC:
                 buttonImage.sprite = pcButtonSprite;
+                attackImage.sprite = pcAttackButtonSprite;
                 break;
             case InputType.PlayStation:
                 buttonImage.sprite = psButtonSprite;
+                attackImage.sprite = psAttackButtonSprite;
                 break;
             case InputType.Xbox:
                 buttonImage.sprite = xboxButtonSprite;
+                attackImage.sprite = xboxAttackButtonSprite;
                 break;
         }
 
         var gamepad = Gamepad.current;
-        
+
         if (pcButton.WasPerformedThisFrame())
         {
             currentInput = InputType.PC;
