@@ -32,7 +32,7 @@ public class SwitchControl : MonoBehaviour
     {
         if (playerControl)
         {
-            if (transformButton.WasPerformedThisFrame() || Input.GetKeyDown(KeyCode.E))
+            if (transformButton.WasPerformedThisFrame())
             {
                 // Attempt to switch to a new enemy if the player is looking at one
                 if (CanSwitch(out GameObject newEnemy))
@@ -87,7 +87,7 @@ public class SwitchControl : MonoBehaviour
         //Switch back to player
         else
         {
-            if (transformButton.WasPerformedThisFrame() || Input.GetKeyDown(KeyCode.E))
+            if (transformButton.WasPerformedThisFrame())
             {
                 // Toggle control between player and enemy
                 playerControl = !playerControl;
