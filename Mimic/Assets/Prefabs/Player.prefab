@@ -3189,13 +3189,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   advancedMode: 0
-  voxelFilePath: C:/Users/ghost/Desktop/Mimic/Mimic/Assets/Vox Files/Player_2.vox
+  voxelFilePath: C:/Users/ghost/Desktop/Mimic/Mimic/Assets/Vox Files/Player.vox
   voxelFileGUID: 
-  voxelFileObject: {fileID: 260834862004600007, guid: a1a52d5fe8dd6d14788e46db24c7220e,
+  voxelFileObject: {fileID: -2516239923042409708, guid: a1a52d5fe8dd6d14788e46db24c7220e,
     type: 3}
   voxelFileSubIndex: -1
   fileType: 0
-  fileRefreshLastTimeTicks: 638329864738289665
+  fileRefreshLastTimeTicks: 638334201523879718
   dataVersion: 115
   legacyVoxImport: 0
   legacyAssetNaming: 0
@@ -5361,12 +5361,12 @@ PrefabInstance:
     - target: {fileID: 8400132632604093398, guid: 861e5bca77a63df4b96e619a9a593690,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1475
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 8400132632604093398, guid: 861e5bca77a63df4b96e619a9a593690,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 590
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8400132632604093398, guid: 861e5bca77a63df4b96e619a9a593690,
         type: 3}
@@ -5381,7 +5381,7 @@ PrefabInstance:
     - target: {fileID: 8400132632604093398, guid: 861e5bca77a63df4b96e619a9a593690,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8400132632604093398, guid: 861e5bca77a63df4b96e619a9a593690,
         type: 3}
@@ -5406,12 +5406,12 @@ PrefabInstance:
     - target: {fileID: 8400132632604093398, guid: 861e5bca77a63df4b96e619a9a593690,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8400132632604093398, guid: 861e5bca77a63df4b96e619a9a593690,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8400132632604093398, guid: 861e5bca77a63df4b96e619a9a593690,
         type: 3}
@@ -5457,7 +5457,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_2
+  m_Name: Player
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -5892,7 +5892,7 @@ Texture2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_2
+  m_Name: Player
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -5941,7 +5941,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_2_0
+  m_Name: Player_0
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -6058,7 +6058,7 @@ Avatar:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_2
+  m_Name: Player
   m_AvatarSize: 5152
   m_Avatar:
     serializedVersion: 3
