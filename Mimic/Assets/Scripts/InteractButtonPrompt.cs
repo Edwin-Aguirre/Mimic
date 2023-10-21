@@ -68,8 +68,7 @@ public class InteractButtonPrompt : MonoBehaviour
         }
 
         var gamepad = Gamepad.current;
-        if (gamepad == null)
-            return;
+        
         if (pcButton.WasPerformedThisFrame())
         {
             currentInput = InputType.PC;

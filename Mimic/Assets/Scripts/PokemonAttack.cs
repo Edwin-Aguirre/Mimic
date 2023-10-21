@@ -59,6 +59,8 @@ public class PokemonAttack : MonoBehaviour
         if(Gamepad.current != null)
         {
             var gamepad = DualShockGamepad.current;
+            if (gamepad == null)
+            return;
             gamepad.SetLightBarColor(Color.black);
         }
     }
@@ -149,12 +151,15 @@ public class PokemonAttack : MonoBehaviour
     // Function to perform actions based on the player's type.
     private void HandlePlayerTypeActions()
     {
+        var gamepad = DualShockGamepad.current;
+        if (gamepad == null)
+        return;
         // Check the player's type and perform actions accordingly.
         switch (type)
         {
             case PokemonType.Normal:
                 // Perform actions specific to Normal type.
-                var gamepad = DualShockGamepad.current;
+                gamepad = DualShockGamepad.current;
                 gamepad.SetLightBarColor(normalColor);
                 break; 
             case PokemonType.Fire:
