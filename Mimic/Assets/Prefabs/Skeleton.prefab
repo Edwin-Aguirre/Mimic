@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 2556111251185425612}
   - component: {fileID: 7863994794255060993}
   - component: {fileID: 1337091076433359271}
+  - component: {fileID: 8636020937836451788}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -115,6 +116,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 250140249852947789}
+  - {fileID: 8060845578268866520}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1267025103199840127
@@ -858,6 +860,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newAnimatorController: {fileID: 9100000, guid: 388e8d148102e144b9ea764964738e6f,
     type: 2}
+--- !u!114 &8636020937836451788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35897340829404917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcfa3ed6a2d82874194909e56e03d57b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPromptUI: {fileID: 7450102791881838174}
+  buttonImage: {fileID: 6320364867983837300}
+  pcButtonSprite: {fileID: 21300000, guid: 4994ed5c4fff83b4dac77732784711f9, type: 3}
+  psButtonSprite: {fileID: 21300000, guid: 900c8a36521d5904cbbaf8903104b42b, type: 3}
+  xboxButtonSprite: {fileID: 21300000, guid: 0764f0782ba1cd744956beae888f7cf4, type: 3}
+  pcButton:
+    m_Name: Pc Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a27e1893-43b6-4e91-af34-5761cb5382f9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 7abdd145-943b-4e4c-a1cd-9a9a57231ff5
+      m_Path: <Keyboard>/anyKey
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pc Button
+      m_Flags: 0
+    m_Flags: 0
+  psButton:
+    m_Name: Ps Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 32dbb50f-e343-4ce5-a0c6-b853a3a8c0f3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 30241d6b-858a-46a4-bf2f-d679b9bee55c
+      m_Path: <DualShockGamepad>/leftStick
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Ps Button
+      m_Flags: 0
+    m_Flags: 0
+  xboxButton:
+    m_Name: Xbox Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 59c3522b-2ad8-4b66-af09-0e7879d02905
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: c9da8d08-68ee-4072-90ad-a9ead89f839b
+      m_Path: <XInputController>/leftStick
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Xbox Button
+      m_Flags: 0
+    m_Flags: 0
+  currentInput: 0
 --- !u!1 &312876780430311657
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,6 +3188,81 @@ MonoBehaviour:
   edit_mirrorSetBonePosition: 1
   edit_mirrorSetBoneWeight: 1
   edit_objectFoldout: 1
+--- !u!1 &5262268009030817832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8890191947009312529}
+  - component: {fileID: 5284214617858175592}
+  - component: {fileID: 6320364867983837300}
+  m_Layer: 5
+  m_Name: Button Prompt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8890191947009312529
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5262268009030817832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8060845578268866520}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5284214617858175592
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5262268009030817832}
+  m_CullTransparentMesh: 1
+--- !u!114 &6320364867983837300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5262268009030817832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4994ed5c4fff83b4dac77732784711f9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6586888955491621977
 GameObject:
   m_ObjectHideFlags: 0
@@ -3615,6 +3761,121 @@ MonoBehaviour:
   edit_mirrorSetBonePosition: 0
   edit_mirrorSetBoneWeight: 0
   edit_objectFoldout: 1
+--- !u!1 &7450102791881838174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8060845578268866520}
+  - component: {fileID: 2771265003197303288}
+  - component: {fileID: 7949974025919336932}
+  - component: {fileID: 8532156978110520172}
+  - component: {fileID: 710934163962171444}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8060845578268866520
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450102791881838174}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8890191947009312529}
+  m_Father: {fileID: 1499663925029194076}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 2.5}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &2771265003197303288
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450102791881838174}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &7949974025919336932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450102791881838174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!114 &8532156978110520172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450102791881838174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &710934163962171444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450102791881838174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab0b07609d647b4ab73daecc9b2fdda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8024543820200650592
 GameObject:
   m_ObjectHideFlags: 0
