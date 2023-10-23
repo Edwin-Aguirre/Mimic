@@ -51,6 +51,20 @@ public class EnemyAI : MonoBehaviour
             {
                 Vector3 newPosition = player.position - directionToPlayer.normalized * playerDistance;
                 agent.SetDestination(newPosition);
+                if (enemyAttack != null && !isAttacking)
+                {
+                    int damage = enemyAttack.CalculateDamage(player.GetComponent<PokemonAttack>().type);
+                    Debug.Log("Dealt " + damage + " damage to the player.");
+
+                    // Apply damage to the player's health system or handle it as needed.
+                    player.GetComponent<HealthSystem>().TakeDamage(damage);
+
+                    // Start the attack animation and set the isAttacking flag.
+                    animator.SetBool("isAttacking", true);
+                    isAttacking = true;
+                    isAnimationPlaying = true;
+                    attackTimer = 0f;
+                }
             }
             else
             {
@@ -61,22 +75,7 @@ public class EnemyAI : MonoBehaviour
                     agent.SetDestination(player.position);
                     animator.SetBool("isWalking", true);
                 }
-            }
-
-            if (enemyAttack != null && !isAttacking)
-            {
-                int damage = enemyAttack.CalculateDamage(player.GetComponent<PokemonAttack>().type);
-                Debug.Log("Dealt " + damage + " damage to the player.");
-
-                // Apply damage to the player's health system or handle it as needed.
-                player.GetComponent<HealthSystem>().TakeDamage(damage);
-
-                // Start the attack animation and set the isAttacking flag.
-                animator.SetBool("isAttacking", true);
-                isAttacking = true;
-                isAnimationPlaying = true;
-                attackTimer = 0f;
-            }
+            } 
         }
         else if (isChasing)
         {
