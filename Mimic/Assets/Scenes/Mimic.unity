@@ -474,7 +474,7 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 4db34fb2-cd84-4e92-a377-40e77eaea2fc
       m_Path: <Gamepad>/buttonNorth
-      m_Interactions: Hold
+      m_Interactions: Hold(duration=1)
       m_Processors: 
       m_Groups: 
       m_Action: Transform Button
@@ -482,7 +482,7 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 1961b5cf-9bb7-4819-b01c-5232ae37138d
       m_Path: <Keyboard>/e
-      m_Interactions: Hold
+      m_Interactions: Hold(duration=1)
       m_Processors: 
       m_Groups: 
       m_Action: Transform Button
@@ -1215,6 +1215,16 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 3880654721939316525, guid: a755b198c79343c48b141388cea11a11,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3880654721939316525, guid: a755b198c79343c48b141388cea11a11,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3951535929490844227, guid: a755b198c79343c48b141388cea11a11,
         type: 3}
       propertyPath: m_Name
