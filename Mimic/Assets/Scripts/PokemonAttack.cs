@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.XInput;
 
 // Define the types and their effectiveness against each other.
 public enum PokemonType
@@ -73,7 +74,7 @@ public class PokemonAttack : MonoBehaviour
             HandlePlayerTypeActions();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && gameObject.CompareTag("Player") || attackButton.WasPerformedThisFrame() && gameObject.CompareTag("Player"))
+        if (Input.GetKeyDown(KeyCode.Space) && gameObject.CompareTag("Player") || attackButton.WasPressedThisFrame() && gameObject.CompareTag("Player"))
         {
             // Trigger the attack animation whenever you press Space and have the "Player" tag.
             animator.SetBool("isAttacking", true);

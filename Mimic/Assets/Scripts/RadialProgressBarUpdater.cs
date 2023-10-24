@@ -85,7 +85,7 @@ public class RadialProgressBarUpdater : MonoBehaviour
     {
         var gamepad = Gamepad.current;
 
-        if (holdAction.WasPerformedThisFrame())
+        if (Input.GetKeyDown(KeyCode.E))
         {
             radialProgressBar.sprite = pcSprite;
         } 
