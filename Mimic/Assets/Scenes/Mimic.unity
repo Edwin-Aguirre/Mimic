@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.26554695, y: 0.048020735, z: -0.013244313, w: 0.9628102}
+  m_LocalRotation: {x: 0.26554695, y: 0.048020784, z: -0.013244325, w: 0.9628102}
   m_LocalPosition: {x: -1, y: 6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1011,7 +1011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472982888}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.26554695, y: 0.048020735, z: -0.013244313, w: 0.9628102}
+  m_LocalRotation: {x: 0.26554695, y: 0.048020784, z: -0.013244325, w: 0.9628102}
   m_LocalPosition: {x: -1, y: 6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1152,10 +1152,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5076710198005388237, guid: 95341c546d5628244b13ae373ced9988,
+    - target: {fileID: 4665463801795194615, guid: 95341c546d5628244b13ae373ced9988,
         type: 3}
-      propertyPath: maxHealth
-      value: 500
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665463801795194615, guid: 95341c546d5628244b13ae373ced9988,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5540720354721066099, guid: 95341c546d5628244b13ae373ced9988,
         type: 3}
@@ -1235,16 +1240,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green Monster
       objectReference: {fileID: 0}
-    - target: {fileID: 2988308906829494961, guid: 47b8d47d166649b4e82e8acc024fe190,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2988308906829494961, guid: 47b8d47d166649b4e82e8acc024fe190,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4423173138711566497, guid: 47b8d47d166649b4e82e8acc024fe190,
         type: 3}
       propertyPath: m_Camera
@@ -1299,16 +1294,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7531736418069707896, guid: 47b8d47d166649b4e82e8acc024fe190,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776346437797567765, guid: 47b8d47d166649b4e82e8acc024fe190,
-        type: 3}
-      propertyPath: playerDistance
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
