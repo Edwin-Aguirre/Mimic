@@ -33,7 +33,7 @@ ScriptedImporter:
   meshFaceVertexOffset: 0
   loadFromVoxelFile: 1
   generateMipMaps: 0
-  colliderType: 1
+  colliderType: 0
   chunkPivotT: {x: 0.5, y: 0.5, z: 0.5}
   createContactChunkFaces: 0
   materialMode: 0
