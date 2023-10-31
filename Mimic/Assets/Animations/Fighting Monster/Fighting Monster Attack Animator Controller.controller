@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Strut Walking
+  m_Name: Fighting Walk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -111,7 +111,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MMA Idle
+  m_Name: Fighting Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -308,7 +308,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Uppercut Jab
+  m_Name: Fighting Attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
