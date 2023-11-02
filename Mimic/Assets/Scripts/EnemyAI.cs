@@ -29,7 +29,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player").transform;
+        //player = GameObject.FindWithTag("Player").transform;
         wanderTarget = GetRandomPointInRadius();
         agent.speed = wanderSpeed;
         agent.SetDestination(wanderTarget);
@@ -40,6 +40,9 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        //Quick fix, might need to change this later
+        player = GameObject.FindWithTag("Player").transform;
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (distanceToPlayer <= chaseDistance)
