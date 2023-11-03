@@ -5,8 +5,11 @@ using UnityEngine;
 public class ThirdPersonController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
+    public float gravity = 9.81f;
     public Animator animator;
+
     private CharacterController characterController;
+    private Vector3 velocity;
 
     // New parameter to control the transition from attacking to idle
     private bool isMoving = false;
@@ -23,6 +26,8 @@ public class ThirdPersonController : MonoBehaviour
 
     private void Update()
     {
+        ApplyGravity();
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -52,5 +57,19 @@ public class ThirdPersonController : MonoBehaviour
 
         // Set the animator parameter for IsMoving to control the transition
         animator.SetBool("isMoving", isMoving);
+    }
+
+    void ApplyGravity()
+    {
+        if (characterController.isGrounded)
+        {
+            velocity.y = 0f;
+        }
+        else
+        {
+            velocity.y -= gravity * Time.deltaTime;
+        }
+
+        characterController.Move(velocity * Time.deltaTime);
     }
 }

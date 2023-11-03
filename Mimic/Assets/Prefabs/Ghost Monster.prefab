@@ -1594,6 +1594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  gravity: 9.81
   animator: {fileID: 4571694468928753762}
 --- !u!143 &905795874152739107
 CharacterController:
