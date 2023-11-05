@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -27,7 +26,10 @@ public class HealthSystem : MonoBehaviour
 
         if (currentHealth == 0)
         {
-            Die();
+            if(!gameObject.CompareTag("Player"))
+            {
+                Die();
+            }
         }
     }
 
@@ -35,10 +37,9 @@ public class HealthSystem : MonoBehaviour
     {
         Debug.Log(gameObject.name + " has died!");
         Destroy(gameObject);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private IEnumerator UpdateHealthBarSmoothly()
+    public IEnumerator UpdateHealthBarSmoothly()
     {
         float targetValue = (float)currentHealth / maxHealth;
         float startValue = healthSlider.value;

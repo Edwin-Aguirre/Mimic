@@ -1017,8 +1017,8 @@ MonoBehaviour:
   rockColor: {r: 1, g: 0.627451, b: 0.05882353, a: 0}
   typeAdvantages:
   - attackerType: 3
-    strongAgainst: 02000000
-    weakAgainst: 01000000
+    strongAgainst: 02000000090000000a00000000000000
+    weakAgainst: 010000000500000006000000
 --- !u!137 &8312688845672007377
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -1613,6 +1613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  gravity: 9.81
   animator: {fileID: 8111284700014106104}
 --- !u!143 &9041367166530979439
 CharacterController:

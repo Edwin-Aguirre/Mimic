@@ -3072,7 +3072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8c1c7e15cb50342a89d34d11f1ab91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  type: 0
   attackRange: 2
   targetHealth: {fileID: 0}
   animator: {fileID: 5406050180948782845}
@@ -3105,9 +3105,9 @@ MonoBehaviour:
   groundColor: {r: 1, g: 0.78431374, b: 0, a: 0}
   rockColor: {r: 1, g: 0.627451, b: 0.05882353, a: 0}
   typeAdvantages:
-  - attackerType: 1
-    strongAgainst: 03000000
-    weakAgainst: 02000000
+  - attackerType: 0
+    strongAgainst: 00000000
+    weakAgainst: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
 --- !u!137 &4130831522150569295
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -3741,7 +3741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e14d942309d2ae40af7db8101aa6862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 8423717050624315593}
   healthChangeSpeed: 5

@@ -6,9 +6,11 @@ public class ThirdPersonController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
     public float gravity = 9.81f;
+    private Vector3 spawnPoint;
     public Animator animator;
 
     private CharacterController characterController;
+    private HealthSystem healthSystem;
     private Vector3 velocity;
 
     // New parameter to control the transition from attacking to idle
@@ -17,6 +19,9 @@ public class ThirdPersonController : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        healthSystem = GetComponent<HealthSystem>();
+        // Set an initial spawn point if needed
+        spawnPoint = transform.position;
         // Make sure your Animator is set in the Inspector
         if (animator == null)
         {
@@ -27,6 +32,8 @@ public class ThirdPersonController : MonoBehaviour
     private void Update()
     {
         ApplyGravity();
+
+        PlayerDied();
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -57,6 +64,33 @@ public class ThirdPersonController : MonoBehaviour
 
         // Set the animator parameter for IsMoving to control the transition
         animator.SetBool("isMoving", isMoving);
+    }
+
+    // Function to set the spawn point for the player
+    public void SetSpawnPoint(Vector3 newSpawnPoint)
+    {
+        spawnPoint = newSpawnPoint;
+    }
+
+    // Function to respawn the player at the spawn point
+    public void Respawn()
+    {
+        characterController.enabled = false; // Disable the character controller temporarily
+        transform.position = spawnPoint;
+        characterController.enabled = true; // Re-enable the character controller
+        velocity = Vector3.zero; // Reset velocity
+        // You may want to reset player health, state, or other relevant variables here.
+        healthSystem.currentHealth = healthSystem.maxHealth;
+        StartCoroutine(healthSystem.UpdateHealthBarSmoothly());
+    }
+
+    // Example of how to call the respawn function when the player dies (you can adapt this to your game logic)
+    public void PlayerDied()
+    {
+        if(healthSystem.currentHealth == 0)
+        {
+            Respawn();
+        }
     }
 
     void ApplyGravity()
