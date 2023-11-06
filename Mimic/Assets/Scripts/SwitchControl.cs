@@ -11,7 +11,6 @@ public class SwitchControl : MonoBehaviour
     public string[] enemyScriptsToDisable; // Script names on the enemy to disable
     public InputAction transformButton;
 
-
     private GameObject currentEnemy; // The current enemy GameObject
     private bool playerControl = true;
     private NavMeshAgent enemyNavMeshAgent;
@@ -64,10 +63,6 @@ public class SwitchControl : MonoBehaviour
                         enemyCharacterController.enabled = true;
                     }
 
-                    // Set the player (invisible) to be on top of the new enemy
-                    player.transform.position = newEnemy.transform.position;
-                    player.transform.rotation = newEnemy.transform.rotation;
-
                     // Assign the new enemy as the current enemy
                     currentEnemy = newEnemy;
 
@@ -84,30 +79,31 @@ public class SwitchControl : MonoBehaviour
                 }
             }
         }
-        //Switch back to player
         else
         {
             if (transformButton.WasPerformedThisFrame())
             {
-                // Toggle control between player and enemy
-                playerControl = !playerControl;
-
-                // Swap the visibility of player and enemy
-                player.SetActive(playerControl);
+                // Check if the player is disabled before switching back
                 if (currentEnemy != null)
                 {
+                    // Set the player's position and rotation to match the enemy's position and rotation
+                    player.transform.position = currentEnemy.transform.position;
+                    player.transform.rotation = currentEnemy.transform.rotation;
+
+                    // Toggle control back to the player
+                    playerControl = !playerControl;
+
+                    // Swap the visibility of player and enemy
+                    player.SetActive(playerControl);
                     currentEnemy.SetActive(!playerControl);
-                }
 
-                // Enable or disable selected scripts only after the switch
-                if (currentEnemy != null)
-                {
+                    // Change the enemy's tag back to "Enemy"
+                    currentEnemy.tag = "Enemy";
+
+                    // Enable or disable selected scripts only after the switch
                     ToggleEnemyScripts(currentEnemy);
-                }
 
-                // Enable or disable the Nav Mesh Agent and Character Controller after the switch
-                if (currentEnemy != null)
-                {
+                    // Enable or disable the Nav Mesh Agent and Character Controller after the switch
                     enemyNavMeshAgent = currentEnemy.GetComponent<NavMeshAgent>();
                     enemyCharacterController = currentEnemy.GetComponent<CharacterController>();
                     if (playerControl)
@@ -120,13 +116,9 @@ public class SwitchControl : MonoBehaviour
                         enemyNavMeshAgent.enabled = false;
                         enemyCharacterController.enabled = true;
                     }
-                }
 
-                // Set the player (invisible) to be on top of the enemy
-                if (currentEnemy != null)
-                {
-                    player.transform.position = currentEnemy.transform.position;
-                    player.transform.rotation = currentEnemy.transform.rotation;
+                    // Debug log to confirm the switch back to the player
+                    Debug.Log("Switched back to player");
                 }
             }
         }

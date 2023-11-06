@@ -27,6 +27,10 @@ public class ThirdPersonController : MonoBehaviour
         {
             Debug.LogError("Animator is not assigned!");
         }
+
+        // Hide the cursor and lock it to the center of the screen
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()

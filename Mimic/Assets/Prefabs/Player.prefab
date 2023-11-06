@@ -5421,6 +5421,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dagger
       objectReference: {fileID: 0}
+    - target: {fileID: -6485747850015655541, guid: eb23ef0b4ea12fa4f822e45376d73fb8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: -158719234697182343, guid: eb23ef0b4ea12fa4f822e45376d73fb8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5505,6 +5510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815755154960107563, guid: 861e5bca77a63df4b96e619a9a593690,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8400132632604093398, guid: 861e5bca77a63df4b96e619a9a593690,
         type: 3}
