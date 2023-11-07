@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,27 +13,43 @@ public class SpawnBeacon : MonoBehaviour
     public InputAction setSpawnKey;
 
     private Transform activatingPlayer; // Track the player who activated this beacon
-
     private bool playerNearSpawnpoint = false;
+
+    private Material emissionMaterial;  // Material for beacon's emission effect
+    private Material regularMaterial;   // Material for the regular appearance
+
+    private float emissionLerp = 0f; // Used for lerping emission intensity
+
+    private bool isActive = false; // Track if the beacon is currently active
+
+    private static SpawnBeacon previousActiveBeacon; // Track the previously activated beacon
 
     private void Start()
     {
         setSpawnKey.Enable();
         setSpawnKey.performed += _ => HandleSetSpawnKey();
+
+        // Initialize materials and disable emission at the start
+        emissionMaterial = GetComponent<Renderer>().materials[1]; 
+        regularMaterial = GetComponent<Renderer>().materials[0]; 
+
+        DisableEmission(emissionMaterial);
     }
 
     private void HandleSetSpawnKey()
     {
-        if (playerNearSpawnpoint)
+        if (playerNearSpawnpoint && !isActive)
         {
+            if (previousActiveBeacon != null)
+            {
+                previousActiveBeacon.Deactivate(activatingPlayer);
+            }
             SetPlayerSpawnPoint(activatingPlayer);
         }
     }
 
-    // Function to set the player's spawn point when activated
     public void SetPlayerSpawnPoint(Transform player)
     {
-        // Allow the latest player to override any previous activation
         ThirdPersonController thirdPersonController = player.GetComponent<ThirdPersonController>();
 
         if (thirdPersonController != null)
@@ -47,10 +64,19 @@ public class SpawnBeacon : MonoBehaviour
             }
 
             activatingPlayer = player;
+            isActive = true;
+
+            EnableEmission(emissionMaterial);
+            DisableEmission(regularMaterial);
+
+            // Smoothly interpolate the emission intensity
+            StartCoroutine(LerpEmissionIntensity(emissionMaterial, 0f, 2f, 1.0f)); // Adjust the duration as needed
+
+            // Set this beacon as the previously activated beacon
+            previousActiveBeacon = this;
         }
     }
 
-    // Function to deactivate the beacon for a specific player
     public void Deactivate(Transform player)
     {
         if (activatingPlayer == player)
@@ -58,9 +84,15 @@ public class SpawnBeacon : MonoBehaviour
             activatingPlayer = null;
             Debug.Log("Spawn Beacon Deactivated for Player: " + player.name);
         }
+        
+        isActive = false;
+
+        DisableEmission(emissionMaterial);
+        EnableEmission(regularMaterial);
+
+        ResetEmissionIntensity(emissionMaterial);
     }
 
-    // Add a trigger zone to activate the beacon when the player enters the zone
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -70,12 +102,41 @@ public class SpawnBeacon : MonoBehaviour
         }
     }
 
-    // Reset the playerNearSpawnpoint flag when the player exits the trigger zone
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerNearSpawnpoint = false;
+        }
+    }
+
+    private void EnableEmission(Material material)
+    {
+        material.EnableKeyword("_EMISSION");
+    }
+
+    private void DisableEmission(Material material)
+    {
+        material.DisableKeyword("_EMISSION");
+    }
+
+    private void ResetEmissionIntensity(Material material)
+    {
+        material.SetColor("_EmissionColor", Color.black);
+    }
+
+    // Coroutine to smoothly interpolate emission intensity
+    private IEnumerator LerpEmissionIntensity(Material material, float startIntensity, float targetIntensity, float duration)
+    {
+        float startTime = Time.time;
+        float endTime = startTime + duration;
+
+        while (Time.time < endTime)
+        {
+            float t = (Time.time - startTime) / duration;
+            emissionLerp = Mathf.Lerp(startIntensity, targetIntensity, t);
+            material.SetColor("_EmissionColor", Color.white * emissionLerp);
+            yield return null;
         }
     }
 }
