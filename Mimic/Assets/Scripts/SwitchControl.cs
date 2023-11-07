@@ -20,6 +20,15 @@ public class SwitchControl : MonoBehaviour
 
     private void Start()
     {
+        // Find the player GameObject in the scene using a tag or another method
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player == null)
+        {
+            Debug.LogError("Player GameObject not found. Make sure to set the correct tag or find it using another method.");
+            return;
+        }
+
         // Store the initial player position and rotation
         initialPlayerPosition = player.transform.position;
         initialPlayerRotation = player.transform.rotation;
@@ -27,10 +36,13 @@ public class SwitchControl : MonoBehaviour
         transformButton.Enable();
     }
 
+
     private void Update()
     {
         if (playerControl)
         {
+            PlayerHealthCheck();
+
             if (transformButton.WasPerformedThisFrame())
             {
                 // Attempt to switch to a new enemy if the player is looking at one
@@ -81,6 +93,8 @@ public class SwitchControl : MonoBehaviour
         }
         else
         {
+            PlayerHealthCheck();
+            
             if (transformButton.WasPerformedThisFrame())
             {
                 // Check if the player is disabled before switching back
@@ -96,6 +110,7 @@ public class SwitchControl : MonoBehaviour
                     // Swap the visibility of player and enemy
                     player.SetActive(playerControl);
                     currentEnemy.SetActive(!playerControl);
+                    Destroy(currentEnemy);
 
                     // Change the enemy's tag back to "Enemy"
                     currentEnemy.tag = "Enemy";
@@ -161,5 +176,45 @@ public class SwitchControl : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void PlayerHealthCheck()
+    {
+        GameObject characterToCheck = playerControl ? player : currentEnemy;
+        HealthSystem characterHealthSystem = characterToCheck.GetComponent<HealthSystem>();
+
+        if (characterHealthSystem != null && characterHealthSystem.currentHealth <= 0 && gameObject.name != "Player")
+        {
+            Debug.Log("Character's health reached zero. Switching back to the player.");
+            SwitchToPlayerCharacter();
+        }
+    }
+
+    private void SwitchToPlayerCharacter()
+    {
+        if (!playerControl)
+        {
+            // Store the enemy's position and rotation before switching
+            Vector3 enemyPosition = currentEnemy.transform.position;
+            Quaternion enemyRotation = currentEnemy.transform.rotation;
+
+            // Toggle control back to the player
+            playerControl = true;
+
+            // Set the player's position and rotation to match the enemy's
+            player.transform.position = enemyPosition;
+            player.transform.rotation = enemyRotation;
+
+            // Swap the visibility of player and enemy
+            player.SetActive(true);
+            currentEnemy.SetActive(false);
+            Destroy(currentEnemy);
+
+            // Reset the currentEnemy reference
+            currentEnemy = null;
+
+            // Debug log to confirm the switch back to the player
+            Debug.Log("Switched back to player");
+        }
     }
 }
