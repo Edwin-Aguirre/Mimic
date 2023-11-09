@@ -8,8 +8,8 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         // Start with no target
-        virtualCamera.Follow = null;
-        virtualCamera.LookAt = null;
+        //virtualCamera.Follow = null;
+        //virtualCamera.LookAt = null;
     }
 
     private void Update()
