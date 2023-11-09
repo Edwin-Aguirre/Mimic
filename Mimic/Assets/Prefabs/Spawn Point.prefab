@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4670208638653088431}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Spawn Location
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6250314166256438721}
   - component: {fileID: 4545417990850457703}
   - component: {fileID: 5103982539737809037}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Button Prompt Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 150792494104607850}
   - component: {fileID: 4994840427644845069}
   - component: {fileID: 605816015416947263}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 4134894733222264962}
   - component: {fileID: 374914641521418758}
   - component: {fileID: 7347419979643410279}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Button Prompt Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -857,9 +857,10 @@ Material:
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _EMISSION
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -961,7 +962,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.5803922, g: 0.99215686, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!21 &8069574426902165145
