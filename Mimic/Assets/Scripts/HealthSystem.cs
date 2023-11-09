@@ -9,11 +9,13 @@ public class HealthSystem : MonoBehaviour
     public int currentHealth;
     public Slider healthSlider; // Reference to the UI Slider for health display
     public float healthChangeSpeed = 5f; // The speed at which the health bar updates
+    private EnemySpawnSystem enemySpawnSystem;
 
     private void Start()
     {
         currentHealth = maxHealth;
         UpdateHealthUI();
+        enemySpawnSystem = FindAnyObjectByType<EnemySpawnSystem>();
     }
 
     public void TakeDamage(int damage)
@@ -37,6 +39,7 @@ public class HealthSystem : MonoBehaviour
     {
         Debug.Log(gameObject.name + " has died!");
         Destroy(gameObject);
+        enemySpawnSystem.EnemyDestroyed();
     }
 
     public IEnumerator UpdateHealthBarSmoothly()

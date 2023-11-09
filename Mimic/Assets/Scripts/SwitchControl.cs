@@ -18,10 +18,13 @@ public class SwitchControl : MonoBehaviour
     private Vector3 initialPlayerPosition;
     private Quaternion initialPlayerRotation;
 
+    private EnemySpawnSystem enemySpawnSystem;
+
     private void Start()
     {
         // Find the player GameObject in the scene using a tag or another method
         player = GameObject.FindGameObjectWithTag("Player");
+        enemySpawnSystem = FindAnyObjectByType<EnemySpawnSystem>();
 
         if (player == null)
         {
@@ -134,6 +137,8 @@ public class SwitchControl : MonoBehaviour
 
                     // Debug log to confirm the switch back to the player
                     Debug.Log("Switched back to player");
+
+                    enemySpawnSystem.EnemyDestroyed();
                 }
             }
         }
@@ -187,6 +192,7 @@ public class SwitchControl : MonoBehaviour
         {
             Debug.Log("Character's health reached zero. Switching back to the player.");
             SwitchToPlayerCharacter();
+            enemySpawnSystem.EnemyDestroyed();
         }
     }
 

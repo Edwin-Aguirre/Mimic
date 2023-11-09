@@ -91,7 +91,7 @@ public class ThirdPersonController : MonoBehaviour
     // Example of how to call the respawn function when the player dies (you can adapt this to your game logic)
     public void PlayerDied()
     {
-        if(healthSystem.currentHealth == 0)
+        if(healthSystem.currentHealth == 0 && gameObject.name == "Player")
         {
             Respawn();
         }
