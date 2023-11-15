@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: -25}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4403132882384812830
@@ -65,18 +65,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to MIMIC Prototype 1!
+  m_text: 'Hold the           button to transform into an enemy.
 
 
-    Hold the           button to transform
-    into an enemy.
+    Hold it again
+    to transform back.
 
 
-    Hold it again to transform back.
-
-
-    Press the          
-    button to attack an enemy.'
+    Press the           button to attack an enemy.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -103,15 +99,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -202,7 +198,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -315,7 +311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 9338a0b4bd8a4ee4fa8da7b0857c84ab, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -324,7 +320,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.6
 --- !u!1 &3951535929490844227
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,9 +550,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPromptUI: {fileID: 5773719048604801715}
   buttonImage: {fileID: 6115037632572873746}
-  pcButtonSprite: {fileID: 21300000, guid: 4994ed5c4fff83b4dac77732784711f9, type: 3}
-  psButtonSprite: {fileID: 21300000, guid: 900c8a36521d5904cbbaf8903104b42b, type: 3}
-  xboxButtonSprite: {fileID: 21300000, guid: 0764f0782ba1cd744956beae888f7cf4, type: 3}
+  pcButtonSprite: {fileID: 21300000, guid: afc0e468bea28ed46bed407f1d2dfb53, type: 3}
+  psButtonSprite: {fileID: 21300000, guid: 8058a83e8c2b49548b350359d4818b73, type: 3}
+  xboxButtonSprite: {fileID: 21300000, guid: 118f3b294201c1743878682c50d606fe, type: 3}
   pcButton:
     m_Name: Pc Button
     m_Type: 0
@@ -643,7 +639,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: a6adc2c9-db3d-4948-bda8-f4cdbd5e5586
-      m_Path: <Keyboard>/e
+      m_Path: <Keyboard>/f
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -660,7 +656,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 2ac59b53-ac2a-46fb-a633-bcd20a0b2781
-      m_Path: <DualShockGamepad>/buttonNorth
+      m_Path: <DualShockGamepad>/buttonWest
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -677,7 +673,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: a59aa776-5075-4c49-b568-9f318d95c25d
-      m_Path: <XInputController>/buttonNorth
+      m_Path: <XInputController>/buttonWest
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -719,8 +715,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -270, y: -100}
-  m_SizeDelta: {x: 70, y: 70}
+  m_AnchoredPosition: {x: -150, y: -95}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &645971453532513547
 CanvasRenderer:
@@ -794,8 +790,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -285, y: 70}
-  m_SizeDelta: {x: 70, y: 70}
+  m_AnchoredPosition: {x: -230, y: 90}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6425226181029029067
 CanvasRenderer:
@@ -1002,7 +998,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4994ed5c4fff83b4dac77732784711f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afc0e468bea28ed46bed407f1d2dfb53, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
