@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926c218e7dd97ec4cb84806a20042681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 3
   gravity: 9.81
   animator: {fileID: 590566257149381245}
 --- !u!143 &424557061298388160
@@ -808,7 +808,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 2, z: 1.5}
+  m_Size: {x: 5, y: 5, z: 5}
   m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!65 &2556111251185425612
 BoxCollider:
