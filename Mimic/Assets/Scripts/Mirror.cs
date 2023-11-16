@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.DualShock;
 
 public class Mirror : MonoBehaviour
 {
@@ -11,12 +8,9 @@ public class Mirror : MonoBehaviour
     public string collectibleTag = "Collectible";
 
     private Animator animator;
-    private bool hasMirror;
-    private bool isButtonPressed = false;
-    private bool isCooldown = false;
-
-    // Cooldown duration in seconds
-    private float cooldownDuration = 0.5f;
+    public bool hasMirror;
+    private bool isWalking = false;
+    private float walkingThreshold = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,50 +26,17 @@ public class Mirror : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isCooldown)
+        CheckWalking();
+
+        if (isWalking)
         {
-            // Check for button press
-            if (mirrorButton.IsPressed() && hasMirror == true)
-            {
-                // If the button was not pressed before, start the animation and show the mirror
-                if (!isButtonPressed)
-                {
-                    PlayAnimation();
-                    mirror.SetActive(true);
-                    isButtonPressed = true;
-                }
-            }
-            else
-            {
-                // If the button was pressed before, stop the animation and start the coroutine to hide the mirror
-                if (isButtonPressed)
-                {
-                    animator.SetBool("isUsingMirror", false);
-                    StartCoroutine(HideMirror());
-                    isButtonPressed = false;
-
-                    // Start the cooldown
-                    StartCoroutine(Cooldown());
-                }
-            }
+            StopAnimation();
+            HideMirror();
         }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(collectibleTag))
+        else if (hasMirror && mirrorButton.IsPressed())
         {
-            Debug.Log("Got Mirror");
-            // Handle collectible item logic
-            CollectItem(other.gameObject);
-            hasMirror = true;
+            PlayAnimation();
         }
-    }
-
-    void CollectItem(GameObject collectible)
-    {
-        // Deactivate the collectible item
-        collectible.SetActive(false);
     }
 
     void PlayAnimation()
@@ -85,24 +46,18 @@ public class Mirror : MonoBehaviour
         mirror.SetActive(true);
     }
 
-    IEnumerator HideMirror()
+    void StopAnimation()
     {
-        // Wait for 1 second
-        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("isUsingMirror", false);
+    }
 
-        // Deactivate the mirror after 1 second
+    void HideMirror()
+    {
         mirror.SetActive(false);
     }
 
-    IEnumerator Cooldown()
+    void CheckWalking()
     {
-        // Set cooldown flag to true
-        isCooldown = true;
-
-        // Wait for the cooldown duration
-        yield return new WaitForSeconds(cooldownDuration);
-
-        // Reset the cooldown flag
-        isCooldown = false;
+        isWalking = Mathf.Abs(Input.GetAxis("Vertical")) > walkingThreshold || Mathf.Abs(Input.GetAxis("Horizontal")) > walkingThreshold;
     }
 }
