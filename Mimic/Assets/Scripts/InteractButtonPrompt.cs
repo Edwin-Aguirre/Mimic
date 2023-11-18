@@ -27,12 +27,16 @@ public class InteractButtonPrompt : MonoBehaviour
 
     private bool playerNearInteractable = false;
 
+    private bool hasInteracted = false;
+    private CameraZoom cameraZoom;
+
     private void Start()
     {
         interactPanel.SetActive(false);
         pcButton.Enable();
         psButton.Enable();
         xboxButton.Enable();
+        cameraZoom = FindAnyObjectByType<CameraZoom>();
     }
 
     private void Update()
@@ -56,6 +60,8 @@ public class InteractButtonPrompt : MonoBehaviour
     void TogglePanel()
     {
         interactPanel.SetActive(!interactPanel.activeSelf);
+        hasInteracted = true;
+        cameraZoom.ToggleCameraAndBokehSettings();
     }
 
     void SetButtonPrompt()
@@ -106,6 +112,13 @@ public class InteractButtonPrompt : MonoBehaviour
         {
             playerNearInteractable = false;
             interactPanel.SetActive(false);
+
+            if (hasInteracted)
+            {
+                cameraZoom.isCameraEnabled = false;
+                hasInteracted = false;
+                cameraZoom.ToggleCameraAndBokehSettings();
+            }
         }
     }
 }
