@@ -2,11 +2,15 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using EasyTransition;
 
 public class LevelManager : MonoBehaviour
 {
     public SceneAsset[] scenes; // Array to hold the SceneAsset objects
     private MusicManager musicManager;
+
+    public TransitionSettings transition;
+    public float loadDelay;
 
     void Start()
     {
@@ -22,6 +26,7 @@ public class LevelManager : MonoBehaviour
     {
         if (sceneName != null && sceneName != "")
         {
+            TransitionManager.Instance().Transition(sceneName, transition, loadDelay);
             // Start the transition to a new scene
             StartCoroutine(TransitionToScene(sceneName));
         }
@@ -40,7 +45,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // Load the new scene
-        SceneManager.LoadScene(sceneName);
+        //SceneManager.LoadScene(sceneName);
 
         // The MusicManager script will handle the music transition when the new scene is loaded
     }

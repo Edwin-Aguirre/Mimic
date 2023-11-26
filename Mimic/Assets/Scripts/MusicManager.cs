@@ -5,12 +5,22 @@ using UnityEngine.SceneManagement;
 public class MusicManager : MonoBehaviour
 {
     public AudioClip[] sceneMusic; // Array to hold the music for each scene
-    private AudioSource audioSource;
+    private static AudioSource audioSource;
     private int currentSceneIndex;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.loop = true;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // Destroy duplicate MusicManager objects
+            return;
+        }
 
         // Subscribe to the scene loaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
