@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
     public AudioClip[] sceneMusic; // Array to hold the music for each scene
     private static AudioSource audioSource;
+    public AudioMixerGroup musicMixer;
     private int currentSceneIndex;
 
     void Start()
@@ -13,7 +15,12 @@ public class MusicManager : MonoBehaviour
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
+
+            // Assign the Audio Mixer to the Audio Source output
+            audioSource.outputAudioMixerGroup = musicMixer;
+
             audioSource.loop = true;
+            audioSource.volume = 0.3f;
             DontDestroyOnLoad(gameObject);
         }
         else

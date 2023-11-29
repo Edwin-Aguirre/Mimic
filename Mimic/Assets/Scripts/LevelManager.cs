@@ -1,12 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEditor;
 using EasyTransition;
 
 public class LevelManager : MonoBehaviour
 {
-    public SceneAsset[] scenes; // Array to hold the SceneAsset objects
+    //public SceneAsset scenes; // Array to hold the SceneAsset objects
     private MusicManager musicManager;
 
     public TransitionSettings transition;

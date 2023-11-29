@@ -30,6 +30,8 @@ public class InteractButtonPrompt : MonoBehaviour
     private bool hasInteracted = false;
     private CameraZoom cameraZoom;
 
+    private string disableController;
+
     private void Start()
     {
         interactPanel.SetActive(false);
@@ -37,23 +39,19 @@ public class InteractButtonPrompt : MonoBehaviour
         psButton.Enable();
         xboxButton.Enable();
         cameraZoom = FindAnyObjectByType<CameraZoom>();
+        disableController = "DualShock4GamepadHID";
     }
 
     private void Update()
     {
         SetButtonPrompt();
         var gamepad = Gamepad.current;
-        if (playerNearInteractable && pcButton.WasPerformedThisFrame())
+        if (playerNearInteractable)
         {
-            TogglePanel();
-        }
-        else if (playerNearInteractable && gamepad is DualShockGamepad && psButton.WasPerformedThisFrame())
-        {
-            TogglePanel();
-        }
-        else if (playerNearInteractable && gamepad is XInputController && gamepad.name == "DualShock4GamepadHID" && xboxButton.WasPerformedThisFrame())
-        {
-            TogglePanel();
+            if (pcButton.WasPerformedThisFrame() || (gamepad is DualShockGamepad && psButton.WasPerformedThisFrame()) || (gamepad is XInputController && gamepad.name == disableController && xboxButton.WasPerformedThisFrame()))
+            {
+                TogglePanel();
+            }
         }
     }
 
@@ -82,7 +80,7 @@ public class InteractButtonPrompt : MonoBehaviour
                 break;
         }
 
-        var gamepad = Gamepad.current;
+       var gamepad = Gamepad.current;
 
         if (pcButton.WasPerformedThisFrame())
         {
@@ -91,10 +89,15 @@ public class InteractButtonPrompt : MonoBehaviour
         if (gamepad is DualShockGamepad && psButton.WasPerformedThisFrame())
         {
             currentInput = InputType.PlayStation;
+            disableController = "DualShock4GamepadHID";
         }
-        else if (gamepad is XInputController && gamepad.name == "DualShock4GamepadHID" && xboxButton.WasPerformedThisFrame())
+        if (gamepad is XInputController && gamepad.name == disableController && xboxButton.WasPerformedThisFrame())
         {
             currentInput = InputType.Xbox;
+        }
+        else if (gamepad is XInputController)
+        {
+            disableController = "XInputControllerWindows";
         }
     }
 

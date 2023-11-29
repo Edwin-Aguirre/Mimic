@@ -22,6 +22,8 @@ public class ButtonPrompt : MonoBehaviour
 
     private bool playerNearObject = false;
 
+    private string disableController;
+
     private void Start()
     {
         buttonPromptUI.SetActive(false);
@@ -44,6 +46,28 @@ public class ButtonPrompt : MonoBehaviour
 
     void SetButtonPrompt()
     {
+        var gamepad = Gamepad.current;
+
+        if (pcButton.WasPerformedThisFrame())
+        {
+            currentInput = InputType.PC;
+        } 
+        if (gamepad is DualShockGamepad && psButton.WasPerformedThisFrame())
+        {
+            currentInput = InputType.PlayStation;
+            disableController = "DualShock4GamepadHID";
+        }
+        if (gamepad is XInputController && gamepad.name == disableController && xboxButton.WasPerformedThisFrame())
+        {
+            currentInput = InputType.Xbox;
+        }
+        else if (gamepad is XInputController)
+        {
+            disableController = "XInputControllerWindows";
+        }
+        
+        buttonPromptUI.SetActive(true);
+
         switch (currentInput)
         {
             case InputType.PC:
@@ -56,22 +80,6 @@ public class ButtonPrompt : MonoBehaviour
                 buttonImage.sprite = xboxButtonSprite;
                 break;
         }
-
-        var gamepad = Gamepad.current;
-
-        if (pcButton.WasPerformedThisFrame())
-        {
-            currentInput = InputType.PC;
-        } 
-        if (gamepad is DualShockGamepad && psButton.WasPerformedThisFrame())
-        {
-            currentInput = InputType.PlayStation;
-        }
-        else if (gamepad is XInputController && gamepad.name == "DualShock4GamepadHID" && xboxButton.WasPerformedThisFrame())
-        {
-            currentInput = InputType.Xbox;
-        }
-        buttonPromptUI.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)

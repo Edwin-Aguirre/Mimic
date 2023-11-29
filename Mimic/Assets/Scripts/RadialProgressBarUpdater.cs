@@ -93,7 +93,7 @@ public class RadialProgressBarUpdater : MonoBehaviour
         {
             radialProgressBar.sprite = consoleSprite;
         }
-        else if (gamepad is XInputController && gamepad.name == "DualShock4GamepadHID" && holdAction.WasPerformedThisFrame())
+        else if (gamepad is XInputController && holdAction.WasPerformedThisFrame())
         {
             radialProgressBar.sprite = consoleSprite;
         }

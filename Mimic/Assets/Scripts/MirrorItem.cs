@@ -28,6 +28,8 @@ public class MirrorItem : MonoBehaviour
     private bool playerNearInteractable = false;
     private Mirror mirror;
 
+    private string disableController;
+
     private void Start()
     {
         interactPanel.SetActive(false);
@@ -35,6 +37,7 @@ public class MirrorItem : MonoBehaviour
         psButton.Enable();
         xboxButton.Enable();
         mirror = FindAnyObjectByType<Mirror>();
+        disableController = "DualShock4GamepadHID";
     }
 
     private void Update()
@@ -44,7 +47,7 @@ public class MirrorItem : MonoBehaviour
 
         if (playerNearInteractable)
         {
-            if (pcButton.WasPerformedThisFrame() || (gamepad is DualShockGamepad && psButton.WasPerformedThisFrame()) || (gamepad is XInputController && gamepad.name == "DualShock4GamepadHID" && xboxButton.WasPerformedThisFrame()))
+            if (pcButton.WasPressedThisFrame() || (gamepad is DualShockGamepad && psButton.WasPressedThisFrame()) || (gamepad is XInputController && gamepad.name == disableController && xboxButton.WasPressedThisFrame()))
             {
                 TogglePanel();
             }
@@ -81,19 +84,24 @@ public class MirrorItem : MonoBehaviour
                 break;
         }
 
-        var gamepad = Gamepad.current;
+       var gamepad = Gamepad.current;
 
         if (pcButton.WasPerformedThisFrame())
         {
             currentInput = InputType.PC;
-        }
+        } 
         if (gamepad is DualShockGamepad && psButton.WasPerformedThisFrame())
         {
             currentInput = InputType.PlayStation;
+            disableController = "DualShock4GamepadHID";
         }
-        else if (gamepad is XInputController && gamepad.name == "DualShock4GamepadHID" && xboxButton.WasPerformedThisFrame())
+        if (gamepad is XInputController && gamepad.name == disableController && xboxButton.WasPerformedThisFrame())
         {
             currentInput = InputType.Xbox;
+        }
+        else if (gamepad is XInputController)
+        {
+            disableController = "XInputControllerWindows";
         }
     }
 
