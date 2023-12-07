@@ -5854,6 +5854,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2815755154960107563, guid: 861e5bca77a63df4b96e619a9a593690,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3437871852400589091, guid: 861e5bca77a63df4b96e619a9a593690,
         type: 3}
       propertyPath: m_Layer
@@ -5968,6 +5973,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575492178509399966, guid: 861e5bca77a63df4b96e619a9a593690,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
