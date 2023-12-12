@@ -19,6 +19,9 @@ public class TitleMenu : MonoBehaviour
     [SerializeField]
     private GameObject resolutionDropdown;
 
+    [SerializeField]
+    private GameObject logo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,7 @@ public class TitleMenu : MonoBehaviour
     public void onOptionsButton()
     {
         buttonsCanvas.SetActive(false);
+        logo.SetActive(false);
         optionsCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(resolutionDropdown);
@@ -54,6 +58,7 @@ public class TitleMenu : MonoBehaviour
     public void onExitOptionsButton()
     {
         buttonsCanvas.SetActive(true);
+        logo.SetActive(true);
         optionsCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(playButton);
