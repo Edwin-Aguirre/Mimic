@@ -2638,6 +2638,7 @@ MonoBehaviour:
   sceneMusic:
   - {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
   - {fileID: 8300000, guid: 0ad591428b0c18c4da51fe3bf98dbc63, type: 3}
+  - {fileID: 8300000, guid: 267a0562368421345b5308f4c853e2ab, type: 3}
   musicMixer: {fileID: 24300002, guid: 6e3ccbb311918014d99247c43caff414, type: 2}
 --- !u!1 &651689408
 GameObject:
