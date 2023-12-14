@@ -21,6 +21,11 @@ public class Mirror : MonoBehaviour
         mirror.SetActive(false);
         hasMirror = false;
         mirrorButton.Enable();
+
+        if (PlayerPrefs.HasKey("AnimationPlayed"))
+        {
+            hasMirror = PlayerPrefs.GetInt("AnimationPlayed") == 1;
+        }
     }
 
     // Update is called once per frame
@@ -44,6 +49,8 @@ public class Mirror : MonoBehaviour
         // Trigger the animation
         animator.SetBool("isUsingMirror", true);
         mirror.SetActive(true);
+        PlayerPrefs.SetInt("AnimationPlayed", 1);
+        PlayerPrefs.Save();
     }
 
     void StopAnimation()

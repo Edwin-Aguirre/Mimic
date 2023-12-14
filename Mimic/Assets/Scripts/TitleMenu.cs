@@ -44,6 +44,7 @@ public class TitleMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(0.352f);
         Application.Quit();
+        PlayerPrefs.DeleteAll();
     }
 
     public void onOptionsButton()

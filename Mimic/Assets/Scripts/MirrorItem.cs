@@ -38,6 +38,15 @@ public class MirrorItem : MonoBehaviour
         xboxButton.Enable();
         mirror = FindAnyObjectByType<Mirror>();
         disableController = "DualShock4GamepadHID";
+        if (PlayerPrefs.HasKey("ItemPickedUp"))
+        {
+            mirror.hasMirror = PlayerPrefs.GetInt("ItemPickedUp") == 1;
+            if (mirror.hasMirror)
+            {
+                // Disable the object if it has been picked up before
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     private void Update()
@@ -61,8 +70,11 @@ public class MirrorItem : MonoBehaviour
         // If the panel is closed, disable the interactable object
         if (!interactPanel.activeSelf)
         {
-            gameObject.SetActive(false); // Disable the object
             mirror.hasMirror = true;
+            gameObject.SetActive(false); // Disable the object
+            // Save the state
+            PlayerPrefs.SetInt("ItemPickedUp", 1);
+            PlayerPrefs.Save();
         }
     }
 
