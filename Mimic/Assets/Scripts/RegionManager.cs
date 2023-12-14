@@ -25,6 +25,11 @@ public class RegionManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            // Store the player's position before loading the new scene
+            SceneController.playerPosition = other.transform.position;
+        }
         if (sceneName != null && sceneName != "")
         {
             TransitionManager.Instance().Transition(sceneName, transition, loadDelay);
