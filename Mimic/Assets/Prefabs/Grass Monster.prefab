@@ -1017,7 +1017,7 @@ MonoBehaviour:
   rockColor: {r: 1, g: 0.627451, b: 0.05882353, a: 0}
   typeAdvantages:
   - attackerType: 3
-    strongAgainst: 02000000090000000a00000000000000
+    strongAgainst: 02000000090000000a000000
     weakAgainst: 010000000500000006000000
 --- !u!137 &8312688845672007377
 SkinnedMeshRenderer:
