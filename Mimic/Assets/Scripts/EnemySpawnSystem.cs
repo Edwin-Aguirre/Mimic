@@ -14,10 +14,10 @@ public class EnemySpawnSystem : MonoBehaviour
     private void Start()
     {
         currentEnemyCount = 0;
-        StartCoroutine(SpawnEnemies());
+        StartCoroutine(SpawnInitialEnemies());
     }
 
-    private IEnumerator SpawnEnemies()
+    private IEnumerator SpawnInitialEnemies()
     {
         while (currentEnemyCount < maxEnemies)
         {
@@ -31,9 +31,31 @@ public class EnemySpawnSystem : MonoBehaviour
                 for (int j = 0; j < enemiesToSpawn; j++)
                 {
                     int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
+                    GameObject newEnemy = Instantiate(enemyPrefabs[randomEnemyIndex], spawnPoints[i].position, Quaternion.identity);
+                    currentEnemyCount++;
+
+                    yield return new WaitForSeconds(spawnInterval);
+                }
+            }
+        }
+
+        StartCoroutine(SpawnRemainingEnemies());
+    }
+
+    private IEnumerator SpawnRemainingEnemies()
+    {
+        while (currentEnemyCount < maxEnemies)
+        {
+            for (int j = 0; j < enemiesPerSpawnPoint.Length; j++)
+            {
+                int enemiesToSpawn = Mathf.Min(enemiesPerSpawnPoint[j], maxEnemies - currentEnemyCount);
+
+                for (int k = 0; k < enemiesToSpawn; k++)
+                {
+                    int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
                     int randomSpawnPointIndex = Random.Range(0, spawnPoints.Length);
 
-                    GameObject newEnemy = Instantiate(enemyPrefabs[randomEnemyIndex], spawnPoints[i].position, Quaternion.identity);
+                    GameObject newEnemy = Instantiate(enemyPrefabs[randomEnemyIndex], spawnPoints[randomSpawnPointIndex].position, Quaternion.identity);
                     currentEnemyCount++;
 
                     yield return new WaitForSeconds(spawnInterval);
@@ -57,14 +79,16 @@ public class EnemySpawnSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnInterval);
 
-        for (int i = 0; i < spawnPoints.Length; i++)
+        for (int j = 0; j < enemiesPerSpawnPoint.Length; j++)
         {
-            int enemiesToSpawn = Mathf.Min(enemiesPerSpawnPoint[i], maxEnemies - currentEnemyCount);
+            int enemiesToSpawn = Mathf.Min(enemiesPerSpawnPoint[j], maxEnemies - currentEnemyCount);
 
-            for (int j = 0; j < enemiesToSpawn; j++)
+            for (int k = 0; k < enemiesToSpawn; k++)
             {
                 int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
-                GameObject newEnemy = Instantiate(enemyPrefabs[randomEnemyIndex], spawnPoints[i].position, Quaternion.identity);
+                int randomSpawnPointIndex = Random.Range(0, spawnPoints.Length);
+
+                GameObject newEnemy = Instantiate(enemyPrefabs[randomEnemyIndex], spawnPoints[randomSpawnPointIndex].position, Quaternion.identity);
                 currentEnemyCount++;
             }
         }
