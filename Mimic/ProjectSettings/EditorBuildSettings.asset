@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Island.unity
     guid: dc027f25cbd45fc4780ad19fbe30656c
+  - enabled: 1
+    path: Assets/Scenes/Burnt Forest.unity
+    guid: ac18f899389ea774883d896ee7239add
   m_configObjects: {}
