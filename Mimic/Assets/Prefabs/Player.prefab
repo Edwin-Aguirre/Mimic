@@ -3663,6 +3663,7 @@ MonoBehaviour:
   moveSpeed: 5
   gravity: 9.81
   animator: {fileID: 5406050180948782845}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!143 &4605934264354407753
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3684,7 +3685,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.8
   m_Radius: 0.3
-  m_SlopeLimit: 45
+  m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
