@@ -11,7 +11,7 @@ public class ThirdPersonController : MonoBehaviour
 
     private CharacterController characterController;
     private HealthSystem healthSystem;
-    private Vector3 velocity;
+    public Vector3 velocity;
 
     // New parameter to control the transition from attacking to idle
     private bool isMoving = false;

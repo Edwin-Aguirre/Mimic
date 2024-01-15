@@ -11790,6 +11790,7 @@ GameObject:
   - component: {fileID: 172632701319136416}
   - component: {fileID: 7746243182621073400}
   - component: {fileID: 3684539757116638435}
+  - component: {fileID: 5490035840419386614}
   m_Layer: 0
   m_Name: Fire Monster
   m_TagString: Enemy
@@ -11899,7 +11900,7 @@ SkinnedMeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -12855,6 +12856,7 @@ MonoBehaviour:
   moveSpeed: 3
   gravity: 9.81
   animator: {fileID: 7024406531221560706}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!143 &4185496565947762445
 CharacterController:
   m_ObjectHideFlags: 0
@@ -13022,6 +13024,19 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   currentInput: 0
+--- !u!114 &5490035840419386614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5044576045661626830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d185db77063fd149bd44d51ee307485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbingSpeed: 3
 --- !u!1 &5234360275708556968
 GameObject:
   m_ObjectHideFlags: 0
