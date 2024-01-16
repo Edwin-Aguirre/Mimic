@@ -10513,6 +10513,7 @@ GameObject:
   - component: {fileID: 4813516784399360880}
   - component: {fileID: 1205292090621538928}
   - component: {fileID: 7679204048106895332}
+  - component: {fileID: -7821826422021695931}
   m_Layer: 0
   m_Name: Ice Monster
   m_TagString: Enemy
@@ -11181,6 +11182,7 @@ MonoBehaviour:
   moveSpeed: 3
   gravity: 9.81
   animator: {fileID: 2654587177178456769}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!143 &5155682642828801777
 CharacterController:
   m_ObjectHideFlags: 0
@@ -11202,7 +11204,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.5
   m_Radius: 0.3
-  m_SlopeLimit: 45
+  m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -11348,6 +11350,19 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   currentInput: 0
+--- !u!114 &-7821826422021695931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7527799057608953802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d185db77063fd149bd44d51ee307485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbingSpeed: 3
 --- !u!1 &7742053183811062611
 GameObject:
   m_ObjectHideFlags: 0

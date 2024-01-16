@@ -3039,6 +3039,7 @@ GameObject:
   - component: {fileID: 1400647780253698133}
   - component: {fileID: 5076710198005388237}
   - component: {fileID: 4327218194268772430}
+  - component: {fileID: 2575517016141260143}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -3661,7 +3662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  gravity: 9.81
+  gravity: 20
   animator: {fileID: 5406050180948782845}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!143 &4605934264354407753
@@ -3788,6 +3789,19 @@ MonoBehaviour:
     m_Flags: 0
   collectibleTag: Collectible
   hasMirror: 0
+--- !u!114 &2575517016141260143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2596841925004957928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d185db77063fd149bd44d51ee307485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbingSpeed: 3
 --- !u!1 &2735461933077860548
 GameObject:
   m_ObjectHideFlags: 0

@@ -8288,6 +8288,7 @@ GameObject:
   - component: {fileID: 6480905911959460723}
   - component: {fileID: 679383282109346384}
   - component: {fileID: 230959243838636579}
+  - component: {fileID: 1729519775560073779}
   m_Layer: 0
   m_Name: Ground Monster
   m_TagString: Enemy
@@ -8394,7 +8395,7 @@ SkinnedMeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -8981,6 +8982,7 @@ MonoBehaviour:
   moveSpeed: 3
   gravity: 9.81
   animator: {fileID: 8463292795735184605}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!143 &141213340228985533
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9002,7 +9004,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.3
   m_Radius: 0.3
-  m_SlopeLimit: 45
+  m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -9148,6 +9150,19 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   currentInput: 0
+--- !u!114 &1729519775560073779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7953204757163734922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d185db77063fd149bd44d51ee307485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbingSpeed: 3
 --- !u!1 &8715994830426516314
 GameObject:
   m_ObjectHideFlags: 0

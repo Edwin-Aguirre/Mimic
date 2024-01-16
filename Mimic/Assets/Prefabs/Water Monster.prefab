@@ -11401,6 +11401,7 @@ GameObject:
   - component: {fileID: 6688641602929019692}
   - component: {fileID: 4605657761562862494}
   - component: {fileID: 6359592591996575051}
+  - component: {fileID: 4034348279520051130}
   m_Layer: 0
   m_Name: Water Monster
   m_TagString: Enemy
@@ -12069,6 +12070,7 @@ MonoBehaviour:
   moveSpeed: 3
   gravity: 9.81
   animator: {fileID: 2627242647080492214}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!143 &7521215452207441984
 CharacterController:
   m_ObjectHideFlags: 0
@@ -12090,7 +12092,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.5
   m_Radius: 0.3
-  m_SlopeLimit: 45
+  m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -12236,6 +12238,19 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   currentInput: 0
+--- !u!114 &4034348279520051130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390863768342460006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d185db77063fd149bd44d51ee307485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbingSpeed: 3
 --- !u!1 &7582881333332414278
 GameObject:
   m_ObjectHideFlags: 0

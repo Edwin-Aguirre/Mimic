@@ -9693,6 +9693,7 @@ GameObject:
   - component: {fileID: 3596209948488657691}
   - component: {fileID: 5546113306435510982}
   - component: {fileID: 1824834169504108928}
+  - component: {fileID: 7454165666505214824}
   m_Layer: 0
   m_Name: Fighting Monster
   m_TagString: Enemy
@@ -9709,7 +9710,7 @@ Transform:
   m_GameObject: {fileID: 5702587601142465239}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 2.75, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10361,6 +10362,7 @@ MonoBehaviour:
   moveSpeed: 3
   gravity: 9.81
   animator: {fileID: 2914411473088323992}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!143 &4252252854149386481
 CharacterController:
   m_ObjectHideFlags: 0
@@ -10382,7 +10384,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.5
   m_Radius: 0.3
-  m_SlopeLimit: 45
+  m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -10528,6 +10530,19 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   currentInput: 0
+--- !u!114 &7454165666505214824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702587601142465239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d185db77063fd149bd44d51ee307485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbingSpeed: 3
 --- !u!1 &6576420422251786304
 GameObject:
   m_ObjectHideFlags: 0

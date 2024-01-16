@@ -14292,6 +14292,7 @@ GameObject:
   - component: {fileID: 3328401566718122596}
   - component: {fileID: 679556467027634057}
   - component: {fileID: 3946555963098354299}
+  - component: {fileID: 591597250040152914}
   m_Layer: 0
   m_Name: Poison Monster
   m_TagString: Enemy
@@ -16574,6 +16575,7 @@ MonoBehaviour:
   moveSpeed: 3
   gravity: 9.81
   animator: {fileID: 551692286319850246}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!143 &1087604681119973043
 CharacterController:
   m_ObjectHideFlags: 0
@@ -16595,7 +16597,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.5
   m_Radius: 0.3
-  m_SlopeLimit: 45
+  m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -16741,6 +16743,19 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   currentInput: 0
+--- !u!114 &591597250040152914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729421231231463427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d185db77063fd149bd44d51ee307485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbingSpeed: 3
 --- !u!1 &6787540539190283113
 GameObject:
   m_ObjectHideFlags: 0
