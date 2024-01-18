@@ -22,11 +22,15 @@ public class SettingsMenu : MonoBehaviour
 
     [SerializeField]
     private RenderPipelineAsset[] qualityLevels;
+
     [SerializeField]
     private TMP_Dropdown settingsDropdown;
 
     [SerializeField]
     private GameObject settingsMenu;
+
+    [SerializeField]
+    private GameObject depthOfFieldObject; // Assuming this is your depth of field game object
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +39,7 @@ public class SettingsMenu : MonoBehaviour
         soundSlider.value = PlayerPrefs.GetFloat("SoundVol", soundSlider.value);
         settingsDropdown.value = PlayerPrefs.GetInt("Settings", settingsDropdown.value);
         settingsDropdown.value = QualitySettings.GetQualityLevel();
+        UpdateDepthOfField(); // Call the method to update depth of field on start
     }
 
     // Update is called once per frame
@@ -54,6 +59,17 @@ public class SettingsMenu : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(qualityIndex);
         QualitySettings.renderPipeline = qualityLevels[qualityIndex];
+
+        UpdateDepthOfField(); // Call the method to update depth of field when quality changes
+    }
+
+    private void UpdateDepthOfField()
+    {
+        // Assuming depthOfFieldObject is the reference to your depth of field game object
+        bool isLowQuality = QualitySettings.GetQualityLevel() == 0; // Check if low quality is chosen
+
+        // Disable the depth of field object if low quality is chosen, otherwise enable it
+        depthOfFieldObject.SetActive(!isLowQuality);
     }
 
     public void SetLevel(float sliderValue)
