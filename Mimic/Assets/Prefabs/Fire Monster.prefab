@@ -11862,7 +11862,7 @@ MonoBehaviour:
   typeAdvantages:
   - attackerType: 1
     strongAgainst: 0300000005000000
-    weakAgainst: 02000000090000000a000000
+    weakAgainst: 02000000090000000a00000001000000
 --- !u!137 &3193396337496563969
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -12400,8 +12400,7 @@ MonoBehaviour:
   edit_configureDisableSubMode: 0
   edit_ConfigurePreviewMode: 0
   edit_snapToHalfVoxel: 1
-  edit_enableMesh:
-  - {fileID: 0}
+  edit_enableMesh: []
   mesh: {fileID: 1554842670501819456}
   material: {fileID: 0}
   materials:

@@ -128,26 +128,32 @@ public class PokemonAttack : MonoBehaviour
         int baseDamage = 10; // You can set your own base damage value.
         int damage = baseDamage;
 
-        if (type != target)
+        foreach (TypeAdvantage advantage in typeAdvantages)
         {
-            foreach (TypeAdvantage advantage in typeAdvantages)
+            if (advantage.attackerType == type)
             {
-                if (advantage.attackerType == type)
+                if (advantage.strongAgainst.Contains(target))
                 {
-                    if (advantage.strongAgainst.Contains(target))
-                    {
-                        damage *= 2; // Double damage for strong type advantage.
-                    }
-                    else if (advantage.weakAgainst.Contains(target))
-                    {
-                        damage /= 2; // Half damage for weak type advantage.
-                    }
+                    damage *= 2; // Double damage for strong type advantage.
+                }
+                else if (advantage.weakAgainst.Contains(target))
+                {
+                    damage /= 2; // Half damage for weak type advantage.
+                }
+            }
+            else if (advantage.attackerType == target)
+            {
+                if (advantage.weakAgainst.Contains(type))
+                {
+                    damage /= 2; // Half damage for weak type advantage for the target.
                 }
             }
         }
 
         return damage;
     }
+
+
 
     // Function to perform actions based on the player's type.
     private void HandlePlayerTypeActions()

@@ -12140,7 +12140,7 @@ MonoBehaviour:
   typeAdvantages:
   - attackerType: 10
     strongAgainst: 0100000005000000
-    weakAgainst: 020000000300000009000000
+    weakAgainst: 02000000030000000400000009000000
 --- !u!137 &1202533341869311721
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

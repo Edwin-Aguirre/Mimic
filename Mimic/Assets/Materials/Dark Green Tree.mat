@@ -128,7 +128,7 @@ Material:
     - _MBDefaultBending: 0
     - _MBFrequency: 1.11
     - _MBFrequencyOffset: 0.4
-    - _MBMaxHeight: 1
+    - _MBMaxHeight: 5
     - _MBPhase: 1
     - _MBWindDir: 90
     - _MBWindDirOffset: 63
