@@ -31,6 +31,8 @@ public class TypeAdvantage
 
 public class PokemonAttack : MonoBehaviour
 {
+    public GameObject floatingText;
+    private int damage;
     public PokemonType type;
     public float attackRange = 2.0f; // Adjust this value to set your attack range.
     public HealthSystem targetHealth; // Reference to the HealthSystem of the target enemy.
@@ -91,6 +93,11 @@ public class PokemonAttack : MonoBehaviour
 
                     // Apply damage to the target's health.
                     targetHealth.TakeDamage(damage);
+
+                    if(floatingText)
+                    {   
+                        ShowFloatingText();
+                    }
                 }
             }
         }
@@ -101,6 +108,25 @@ public class PokemonAttack : MonoBehaviour
             {
                 animator.SetBool("isAttacking", false);
             }
+        }
+    }
+
+    private void ShowFloatingText()
+    {
+        var go = Instantiate(floatingText, target.transform.position, Quaternion.identity, target.transform);
+        go.GetComponent<TextMesh>().text = damage.ToString();
+
+        if(damage == 10)
+        {
+            go.GetComponent<TextMesh>().color = Color.white;
+        }
+        if(damage == 20)
+        {
+            go.GetComponent<TextMesh>().color = Color.green;
+        }
+        if(damage == 5)
+        {
+            go.GetComponent<TextMesh>().color = Color.red;
         }
     }
 
@@ -126,7 +152,7 @@ public class PokemonAttack : MonoBehaviour
     public int CalculateDamage(PokemonType target)
     {
         int baseDamage = 10; // You can set your own base damage value.
-        int damage = baseDamage;
+        damage = baseDamage;
 
         foreach (TypeAdvantage advantage in typeAdvantages)
         {
@@ -135,6 +161,7 @@ public class PokemonAttack : MonoBehaviour
                 if (advantage.strongAgainst.Contains(target))
                 {
                     damage *= 2; // Double damage for strong type advantage.
+                    
                 }
                 else if (advantage.weakAgainst.Contains(target))
                 {

@@ -10550,6 +10550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8c1c7e15cb50342a89d34d11f1ab91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingText: {fileID: 2018019638100210921, guid: abbe80e1c2ece8b42906e4755051311e,
+    type: 3}
   type: 5
   attackRange: 2
   targetHealth: {fileID: 0}
@@ -11158,6 +11160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f28a83c26039848891bd5c17ad67f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingText: {fileID: 2018019638100210921, guid: abbe80e1c2ece8b42906e4755051311e,
+    type: 3}
   chaseDistance: 3
   playerDistance: 1
   wanderRadius: 5

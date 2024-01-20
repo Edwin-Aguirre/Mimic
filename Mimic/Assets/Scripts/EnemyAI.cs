@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    public GameObject floatingText;
+    private int damage;
     public float chaseDistance = 10f;
     public float playerDistance = 3f;
     public float wanderRadius = 5f;
@@ -56,11 +58,12 @@ public class EnemyAI : MonoBehaviour
                 agent.SetDestination(newPosition);
                 if (enemyAttack != null && !isAttacking)
                 {
-                    int damage = enemyAttack.CalculateDamage(player.GetComponent<PokemonAttack>().type);
+                    damage = enemyAttack.CalculateDamage(player.GetComponent<PokemonAttack>().type);
                     Debug.Log("Dealt " + damage + " damage to the player.");
 
                     // Apply damage to the player's health system or handle it as needed.
                     player.GetComponent<HealthSystem>().TakeDamage(damage);
+                    ShowFloatingText();
 
                     // Start the attack animation and set the isAttacking flag.
                     animator.SetBool("isAttacking", true);
@@ -126,6 +129,25 @@ public class EnemyAI : MonoBehaviour
                 isAttacking = false;
                 isAnimationPlaying = false;
             }
+        }
+    }
+
+    private void ShowFloatingText()
+    {
+        var go = Instantiate(floatingText, player.transform.position, Quaternion.identity, player.transform);
+        go.GetComponent<TextMesh>().text = damage.ToString();
+
+        if(damage == 10)
+        {
+            go.GetComponent<TextMesh>().color = Color.white;
+        }
+        if(damage == 20)
+        {
+            go.GetComponent<TextMesh>().color = Color.green;
+        }
+        if(damage == 5)
+        {
+            go.GetComponent<TextMesh>().color = Color.red;
         }
     }
 
