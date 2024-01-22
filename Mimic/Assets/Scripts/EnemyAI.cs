@@ -64,6 +64,7 @@ public class EnemyAI : MonoBehaviour
                     // Apply damage to the player's health system or handle it as needed.
                     player.GetComponent<HealthSystem>().TakeDamage(damage);
                     ShowFloatingText();
+                    SoundManager.PlaySound("hurt 1");
 
                     // Start the attack animation and set the isAttacking flag.
                     animator.SetBool("isAttacking", true);
@@ -137,17 +138,20 @@ public class EnemyAI : MonoBehaviour
         var go = Instantiate(floatingText, player.transform.position, Quaternion.identity, player.transform);
         go.GetComponent<TextMesh>().text = damage.ToString();
 
-        if(damage == 10)
-        {
-            go.GetComponent<TextMesh>().color = Color.white;
-        }
         if(damage == 20)
         {
             go.GetComponent<TextMesh>().color = Color.green;
+            SoundManager.audioSource.pitch = 2f;
+        }
+        if(damage == 10)
+        {
+            go.GetComponent<TextMesh>().color = Color.white;
+            SoundManager.audioSource.pitch = 1.5f;
         }
         if(damage == 5)
         {
             go.GetComponent<TextMesh>().color = Color.red;
+            SoundManager.audioSource.pitch = 1f;
         }
     }
 

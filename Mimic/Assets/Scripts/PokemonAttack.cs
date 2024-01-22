@@ -94,6 +94,8 @@ public class PokemonAttack : MonoBehaviour
                     // Apply damage to the target's health.
                     targetHealth.TakeDamage(damage);
 
+                    SoundManager.PlaySound("hurt 2");
+
                     if(floatingText)
                     {   
                         ShowFloatingText();
@@ -116,17 +118,20 @@ public class PokemonAttack : MonoBehaviour
         var go = Instantiate(floatingText, target.transform.position, Quaternion.identity, target.transform);
         go.GetComponent<TextMesh>().text = damage.ToString();
 
-        if(damage == 10)
-        {
-            go.GetComponent<TextMesh>().color = Color.white;
-        }
         if(damage == 20)
         {
             go.GetComponent<TextMesh>().color = Color.green;
+            SoundManager.audioSource.pitch = 2f;
+        }
+        if(damage == 10)
+        {
+            go.GetComponent<TextMesh>().color = Color.white;
+            SoundManager.audioSource.pitch = 1.5f;
         }
         if(damage == 5)
         {
             go.GetComponent<TextMesh>().color = Color.red;
+            SoundManager.audioSource.pitch = 1f;
         }
     }
 

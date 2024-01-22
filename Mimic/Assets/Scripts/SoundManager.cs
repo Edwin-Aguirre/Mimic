@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class SoundManager: MonoBehaviour
 {
-    public static AudioClip menuMoveSound;
-    public static AudioClip menuClickSound;
+    public static AudioClip enemyHitSound;
+    public static AudioClip playerHitSound;
 
 
-    static AudioSource audioSource;
+    public static AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        menuMoveSound = Resources.Load<AudioClip>("select 2");
-        menuClickSound = Resources.Load<AudioClip>("select 1");
+        enemyHitSound = Resources.Load<AudioClip>("hurt 1");
+        playerHitSound = Resources.Load<AudioClip>("hurt 2");
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -28,11 +28,11 @@ public class SoundManager: MonoBehaviour
     {
         switch (clip)
         {
-            case "sfx_menu_move4":
-                audioSource.PlayOneShot(menuMoveSound);
+            case "hurt 1":
+                audioSource.PlayOneShot(enemyHitSound);
                 break;
-            case "sfx_menu_select1":
-                audioSource.PlayOneShot(menuClickSound);
+            case "hurt 2":
+                audioSource.PlayOneShot(playerHitSound);
                 break;
         }
     }
