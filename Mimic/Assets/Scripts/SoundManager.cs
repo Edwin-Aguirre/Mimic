@@ -6,6 +6,9 @@ public class SoundManager: MonoBehaviour
 {
     public static AudioClip enemyHitSound;
     public static AudioClip playerHitSound;
+    public static AudioClip questStartedSound;
+    public static AudioClip questCompletedSound;
+    public static AudioClip objectPickupSound;
 
 
     public static AudioSource audioSource;
@@ -15,6 +18,9 @@ public class SoundManager: MonoBehaviour
     {
         enemyHitSound = Resources.Load<AudioClip>("hurt 1");
         playerHitSound = Resources.Load<AudioClip>("hurt 2");
+        questStartedSound = Resources.Load<AudioClip>("loading 3");
+        questCompletedSound = Resources.Load<AudioClip>("power 6");
+        objectPickupSound = Resources.Load<AudioClip>("select 3");
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -33,6 +39,15 @@ public class SoundManager: MonoBehaviour
                 break;
             case "hurt 2":
                 audioSource.PlayOneShot(playerHitSound);
+                break;
+            case "loading 3":
+                audioSource.PlayOneShot(questStartedSound);
+                break;
+            case "power 6":
+                audioSource.PlayOneShot(questCompletedSound);
+                break;
+            case "select 3":
+                audioSource.PlayOneShot(objectPickupSound);
                 break;
         }
     }

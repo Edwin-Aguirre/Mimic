@@ -32,6 +32,13 @@ public class InteractButtonPrompt : MonoBehaviour
 
     private string disableController;
 
+    private QuestInitializer questInitializer; // Reference to the QuestInitializer script
+
+    private bool isPanelOpen = false;
+
+    [SerializeField]
+    private bool hasQuest;
+
     private void Start()
     {
         interactPanel.SetActive(false);
@@ -40,6 +47,7 @@ public class InteractButtonPrompt : MonoBehaviour
         xboxButton.Enable();
         cameraZoom = FindAnyObjectByType<CameraZoom>();
         disableController = "DualShock4GamepadHID";
+        questInitializer = GetComponent<QuestInitializer>();
     }
 
     private void Update()
@@ -53,6 +61,14 @@ public class InteractButtonPrompt : MonoBehaviour
                 TogglePanel();
             }
         }
+
+        // Check if the panel is closed and hasInteracted is true
+        if (!isPanelOpen && hasInteracted && hasQuest == true)
+        {
+            // Call the method to start the quest after the panel is closed
+            questInitializer.StartQuestAfterPanelClosed();
+            hasInteracted = false; // Reset hasInteracted after starting the quest
+        }
     }
 
     void TogglePanel()
@@ -60,6 +76,9 @@ public class InteractButtonPrompt : MonoBehaviour
         interactPanel.SetActive(!interactPanel.activeSelf);
         hasInteracted = true;
         cameraZoom.ToggleCameraAndBokehSettings();
+
+        // Set the flag indicating the panel status
+        isPanelOpen = interactPanel.activeSelf;
     }
 
     void SetButtonPrompt()
