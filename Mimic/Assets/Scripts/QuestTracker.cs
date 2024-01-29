@@ -39,6 +39,7 @@ public class QuestTracker : MonoBehaviour
         {
             quest.IncrementObjectCount();
             SoundManager.PlaySound("select 3");
+            SoundManager.audioSource.pitch = 1;
             gameObject.GetComponent<MeshRenderer>().enabled = false; // Hide the object when picked up, adjust as needed
             gameObject.GetComponent<BoxCollider>().enabled = false;
             questObjectAmountText.text = "Tree Stumps Found " + quest.currentObjectCount + " / " + quest.targetObjectCount;

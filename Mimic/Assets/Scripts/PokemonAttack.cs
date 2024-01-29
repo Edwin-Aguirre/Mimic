@@ -166,6 +166,7 @@ public class PokemonAttack : MonoBehaviour
                 if (advantage.strongAgainst.Contains(target))
                 {
                     damage *= 2; // Double damage for strong type advantage.
+                    PlayStrongTypeAdvantageEffect();
                     
                 }
                 else if (advantage.weakAgainst.Contains(target))
@@ -183,6 +184,13 @@ public class PokemonAttack : MonoBehaviour
         }
 
         return damage;
+    }
+
+    // Inside your combat script where you want to trigger screen shake
+    private void PlayStrongTypeAdvantageEffect()
+    {
+        // Add visual effects for strong type advantage
+        ScreenShake.Instance.ShakeScreen(1.0f, 1.0f); // Adjust amplitude and frequency as needed
     }
 
 

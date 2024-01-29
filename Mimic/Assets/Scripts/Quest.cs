@@ -32,6 +32,7 @@ public class Quest : ScriptableObject
         isCompleted = true;
         Debug.Log("Quest Completed: " + questName);
         SoundManager.PlaySound("power 6");
+        SoundManager.audioSource.pitch = 1;
         // Add any additional logic for quest completion, such as giving rewards
     }
 }

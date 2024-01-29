@@ -6,7 +6,6 @@ public class QuestInitializer : MonoBehaviour
 {
     public Quest questToStart;
 
-    private bool hasInteracted;
     private bool questStarted;
 
     public TextMeshProUGUI questStartedText;
@@ -100,7 +99,7 @@ public class QuestInitializer : MonoBehaviour
         QuestManager.instance.quests.Add(questToStart);
         Debug.Log("Quest Started: " + questToStart.questName);
         SoundManager.PlaySound("loading 3");
-        hasInteracted = true;
+        SoundManager.audioSource.pitch = 1;
 
         // Add any additional logic for quest initialization, such as displaying UI messages
 
