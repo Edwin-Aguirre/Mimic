@@ -133,6 +133,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    public bool IsPlayerNear(Vector3 playerPosition, float detectionRadius)
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, playerPosition);
+        return distanceToPlayer <= detectionRadius;
+    }
+
     private void ShowFloatingText()
     {
         var go = Instantiate(floatingText, player.transform.position, Quaternion.identity, player.transform);
