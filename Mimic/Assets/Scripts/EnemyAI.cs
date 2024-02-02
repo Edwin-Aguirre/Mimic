@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,6 +28,7 @@ public class EnemyAI : MonoBehaviour
     private bool isAnimationPlaying = false;
 
     public HealthSystem healthSystem; // Reference to the enemy's health system
+    public Material flashMaterial;  // The material to switch to for the flash effect
 
     void Start()
     {
@@ -71,6 +73,9 @@ public class EnemyAI : MonoBehaviour
                     isAttacking = true;
                     isAnimationPlaying = true;
                     attackTimer = 0f;
+
+                    // Trigger the flash effect on the player
+                    StartCoroutine(FlashCoroutine(player.GetComponent<Renderer>()));
                 }
             }
             else
@@ -138,6 +143,53 @@ public class EnemyAI : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, playerPosition);
         return distanceToPlayer <= detectionRadius;
     }
+
+    IEnumerator FlashCoroutine(Renderer targetRenderer)
+{
+    if (targetRenderer == null)
+    {
+        yield break; // Exit the coroutine if the targetRenderer is null.
+    }
+
+    // Store the original material of the target
+    Material targetOriginalMaterial = targetRenderer.material;
+
+    // Change target's material emission color to indicate flash
+    Color originalEmissionColor = targetOriginalMaterial.GetColor("_EmissionColor");
+    targetOriginalMaterial.EnableKeyword("_EMISSION");
+    targetOriginalMaterial.SetColor("_EmissionColor", flashMaterial.GetColor("_EmissionColor"));
+
+    // Record the start time
+    float startTime = Time.time;
+
+    // Wait for 0.1 seconds
+    while (Time.time - startTime < 0.1f)
+    {
+        // Check if the target is still valid before reverting the material
+        if (targetRenderer == null)
+        {
+            // If the target is destroyed during the wait, exit the coroutine
+            targetOriginalMaterial.SetColor("_EmissionColor", originalEmissionColor);
+            yield break;
+        }
+
+        // Check if the player left the trigger box during the wait
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance > playerDistance) // Change to your desired distance variable
+        {
+            // Revert target's material emission color back to original
+            targetOriginalMaterial.SetColor("_EmissionColor", originalEmissionColor);
+
+            // Exit the coroutine if the player left the trigger box
+            yield break;
+        }
+
+        yield return null;
+    }
+
+    // Revert target's material emission color back to original
+    targetOriginalMaterial.SetColor("_EmissionColor", originalEmissionColor);
+}
 
     private void ShowFloatingText()
     {

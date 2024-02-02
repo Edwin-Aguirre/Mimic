@@ -127,8 +127,8 @@ public class SwitchControl : MonoBehaviour
         player.transform.rotation = enemyRotation;
         player.SetActive(true);
         currentEnemy.SetActive(false);
-        Destroy(currentEnemy);
         currentEnemy.tag = "Enemy";
+        Destroy(currentEnemy);
         ToggleEnemyScripts(player);
         currentEnemy = null;
 

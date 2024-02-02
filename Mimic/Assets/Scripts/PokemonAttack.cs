@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem.XInput;
+using System.Collections;
 
 // Define the types and their effectiveness against each other.
 public enum PokemonType
@@ -39,6 +40,10 @@ public class PokemonAttack : MonoBehaviour
     public Animator animator; // Reference to the Animator component.
     public InputAction attackButton;
 
+    public Material flashMaterial;  // The material to switch to for the flash effect
+    private Material originalMaterial; // The original material of the object
+    private Renderer objectRenderer;
+
     public Color normalColor;
     public Color fireColor;
     public Color waterColor;
@@ -55,10 +60,14 @@ public class PokemonAttack : MonoBehaviour
     public List<TypeAdvantage> typeAdvantages = new List<TypeAdvantage>();
 
     private Transform target; // The target enemy to attack.
+    private IEnumerator flashCoroutine;
 
     void Start()
     {
         attackButton.Enable();
+
+        objectRenderer = GetComponent<Renderer>();
+        originalMaterial = objectRenderer.material;
         if(Gamepad.current != null)
         {
             var gamepad = DualShockGamepad.current;
@@ -94,6 +103,16 @@ public class PokemonAttack : MonoBehaviour
                     // Apply damage to the target's health.
                     targetHealth.TakeDamage(damage);
 
+                    // Stop the existing coroutine if it is running
+                    if (flashCoroutine != null)
+                    {
+                        StopCoroutine(flashCoroutine);
+                    }
+
+                    // Start a new flash coroutine
+                    flashCoroutine = FlashCoroutine();
+                    StartCoroutine(flashCoroutine);
+                
                     SoundManager.PlaySound("hurt 2");
 
                     if(floatingText)
@@ -158,7 +177,7 @@ public class PokemonAttack : MonoBehaviour
     {
         int baseDamage = 10; // You can set your own base damage value.
         damage = baseDamage;
-
+    
         foreach (TypeAdvantage advantage in typeAdvantages)
         {
             if (advantage.attackerType == type)
@@ -193,6 +212,57 @@ public class PokemonAttack : MonoBehaviour
         ScreenShake.Instance.ShakeScreen(1.0f, 1.0f); // Adjust amplitude and frequency as needed
     }
 
+    IEnumerator FlashCoroutine()
+    {
+        if (target == null)
+        {
+            yield break; // Exit the coroutine if the target is null or destroyed.
+        }
+
+        // Store the original material of the target
+        Material targetOriginalMaterial = target.GetComponent<Renderer>().material;
+
+        // Change target's material emission color to indicate flash
+        Color originalEmissionColor = targetOriginalMaterial.GetColor("_EmissionColor");
+        targetOriginalMaterial.EnableKeyword("_EMISSION");
+        targetOriginalMaterial.SetColor("_EmissionColor", flashMaterial.GetColor("_EmissionColor"));
+
+        // Record the start time
+        float startTime = Time.time;
+
+        // Wait for 0.1 seconds
+        while (Time.time - startTime < 0.1f)
+        {
+            // Check if the target is still valid before reverting the material
+            if (target == null)
+            {
+                // If the target is destroyed during the wait, exit the coroutine
+                targetOriginalMaterial.SetColor("_EmissionColor", originalEmissionColor);
+                yield break;
+            }
+
+            // Check if the player left the trigger box during the wait
+            float distance = Vector3.Distance(transform.position, target.position);
+            if (distance > attackRange)
+            {
+                // Revert target's material emission color back to original
+                targetOriginalMaterial.SetColor("_EmissionColor", originalEmissionColor);
+
+                // Revert player's material back to originalMaterial
+                objectRenderer.material = originalMaterial;
+
+                yield break; // Exit the coroutine if the player left the trigger box
+            }
+
+            yield return null;
+        }
+
+        // Revert target's material emission color back to original
+        targetOriginalMaterial.SetColor("_EmissionColor", originalEmissionColor);
+
+        // Revert player's material back to originalMaterial
+        objectRenderer.material = originalMaterial;
+    }
 
 
     // Function to perform actions based on the player's type.

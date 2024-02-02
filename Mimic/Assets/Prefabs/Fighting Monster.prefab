@@ -9753,6 +9753,7 @@ MonoBehaviour:
       m_Action: Attack Button
       m_Flags: 0
     m_Flags: 0
+  flashMaterial: {fileID: 2100000, guid: d273624cada4abc4ebdd3e956f597d16, type: 2}
   normalColor: {r: 0, g: 0, b: 0, a: 0}
   fireColor: {r: 1, g: 0, b: 0, a: 0}
   waterColor: {r: 0, g: 0, b: 1, a: 0}
@@ -10351,6 +10352,7 @@ MonoBehaviour:
   attackDelay: 2
   animator: {fileID: 2914411473088323992}
   healthSystem: {fileID: 3596209948488657691}
+  flashMaterial: {fileID: 2100000, guid: d273624cada4abc4ebdd3e956f597d16, type: 2}
 --- !u!114 &2802562399528517375
 MonoBehaviour:
   m_ObjectHideFlags: 0
