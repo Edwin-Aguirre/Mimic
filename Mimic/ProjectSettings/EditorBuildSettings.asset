@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Grass Plains.unity
     guid: 3fc726084a928c643898d6a09399341d
+  - enabled: 1
+    path: Assets/Scenes/Desert Oasis.unity
+    guid: 2385b0c6bd5b7f340a865b049a74bc75
   m_configObjects: {}
