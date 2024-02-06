@@ -550,9 +550,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPromptUI: {fileID: 5773719048604801715}
   buttonImage: {fileID: 6115037632572873746}
-  pcButtonSprite: {fileID: 21300000, guid: afc0e468bea28ed46bed407f1d2dfb53, type: 3}
-  psButtonSprite: {fileID: 21300000, guid: 8058a83e8c2b49548b350359d4818b73, type: 3}
-  xboxButtonSprite: {fileID: 21300000, guid: 118f3b294201c1743878682c50d606fe, type: 3}
+  pcButtonSprite: {fileID: 21300000, guid: ea88c8ac31b60de45b415329d6e286bb, type: 3}
+  psButtonSprite: {fileID: 21300000, guid: b948eec321200564babd763f26183081, type: 3}
+  xboxButtonSprite: {fileID: 21300000, guid: 9b701116f1ac32e429824874bd6c0066, type: 3}
   pcButton:
     m_Name: Pc Button
     m_Type: 0
@@ -620,14 +620,14 @@ MonoBehaviour:
   interactPanel: {fileID: 3571883937096532774}
   buttonImage: {fileID: 3151403177624708358}
   attackImage: {fileID: 7184347749336501979}
-  pcButtonSprite: {fileID: 21300000, guid: 4994ed5c4fff83b4dac77732784711f9, type: 3}
-  psButtonSprite: {fileID: 21300000, guid: 900c8a36521d5904cbbaf8903104b42b, type: 3}
-  xboxButtonSprite: {fileID: 21300000, guid: 0764f0782ba1cd744956beae888f7cf4, type: 3}
-  pcAttackButtonSprite: {fileID: 21300000, guid: 52d2cf31f642fda4a992b39ffe0244d6,
+  pcButtonSprite: {fileID: 21300000, guid: 96a12e70f70eab84faee697b108b2f35, type: 3}
+  psButtonSprite: {fileID: 21300000, guid: 8b70f144450521d438c2e649f55a7b15, type: 3}
+  xboxButtonSprite: {fileID: 21300000, guid: a4b035f274390eb4b812b5ae9a034003, type: 3}
+  pcAttackButtonSprite: {fileID: 21300000, guid: 4290d824d899c5249be89f9ae5db44a4,
     type: 3}
-  psAttackButtonSprite: {fileID: 21300000, guid: f512299ab71d93442be18caeb54c4486,
+  psAttackButtonSprite: {fileID: 21300000, guid: 3e2239e435be01741a90d3cd36d7d63a,
     type: 3}
-  xboxAttackButtonSprite: {fileID: 21300000, guid: 3ae674566b5c2f341b4406c05698c881,
+  xboxAttackButtonSprite: {fileID: 21300000, guid: 35bb8fd63a4a08a44a538703d20c4042,
     type: 3}
   pcButton:
     m_Name: Pc Button
@@ -681,6 +681,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   currentInput: 0
+  hasQuest: 0
 --- !u!1 &5518822432407559846
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,14 +740,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.105882354, g: 0.105882354, b: 0.105882354, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 52d2cf31f642fda4a992b39ffe0244d6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4290d824d899c5249be89f9ae5db44a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -814,14 +815,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.105882354, g: 0.105882354, b: 0.105882354, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4994ed5c4fff83b4dac77732784711f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96a12e70f70eab84faee697b108b2f35, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -991,14 +992,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.105882354, g: 0.105882354, b: 0.105882354, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: afc0e468bea28ed46bed407f1d2dfb53, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea88c8ac31b60de45b415329d6e286bb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

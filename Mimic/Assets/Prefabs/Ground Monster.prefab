@@ -2647,14 +2647,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 0.105882354, g: 0.105882354, b: 0.105882354, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4994ed5c4fff83b4dac77732784711f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96a12e70f70eab84faee697b108b2f35, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2702,8 +2702,8 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   radialProgressBar: {fileID: 8179673284634589566}
-  pcSprite: {fileID: 21300000, guid: 4994ed5c4fff83b4dac77732784711f9, type: 3}
-  consoleSprite: {fileID: 21300000, guid: 900c8a36521d5904cbbaf8903104b42b, type: 3}
+  pcSprite: {fileID: 21300000, guid: 96a12e70f70eab84faee697b108b2f35, type: 3}
+  consoleSprite: {fileID: 21300000, guid: 2b4d178adbd44224a9b30f7625624f61, type: 3}
   fillSpeed: 1
   myEvent:
     m_PersistentCalls:
@@ -4704,14 +4704,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.105882354, g: 0.105882354, b: 0.105882354, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4994ed5c4fff83b4dac77732784711f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96a12e70f70eab84faee697b108b2f35, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8532,8 +8532,7 @@ MonoBehaviour:
   edit_configureDisableSubMode: 0
   edit_ConfigurePreviewMode: 0
   edit_snapToHalfVoxel: 0
-  edit_enableMesh:
-  - {fileID: 0}
+  edit_enableMesh: []
   mesh: {fileID: -1727048013244890542}
   material: {fileID: 0}
   materials:
@@ -9101,9 +9100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPromptUI: {fileID: 1998338896245723141}
   buttonImage: {fileID: 5094448092493319142}
-  pcButtonSprite: {fileID: 21300000, guid: 4994ed5c4fff83b4dac77732784711f9, type: 3}
-  psButtonSprite: {fileID: 21300000, guid: 900c8a36521d5904cbbaf8903104b42b, type: 3}
-  xboxButtonSprite: {fileID: 21300000, guid: 0764f0782ba1cd744956beae888f7cf4, type: 3}
+  pcButtonSprite: {fileID: 21300000, guid: 96a12e70f70eab84faee697b108b2f35, type: 3}
+  psButtonSprite: {fileID: 21300000, guid: 8b70f144450521d438c2e649f55a7b15, type: 3}
+  xboxButtonSprite: {fileID: 21300000, guid: a4b035f274390eb4b812b5ae9a034003, type: 3}
   pcButton:
     m_Name: Pc Button
     m_Type: 0

@@ -214,8 +214,11 @@ public class SwitchControl : MonoBehaviour
         {
             Debug.Log("Character's health reached zero. Switching back to the player.");
             SwitchBackToPlayerCharacter();
-            StartCoroutine(FadeInMusic(1));
             enemySpawnSystem.EnemyDestroyed();
+            if (characterToCheck.name == "Dark Monster(Clone)")
+            {
+                StartCoroutine(FadeInMusic(1));
+            }
         }
     }
 }
