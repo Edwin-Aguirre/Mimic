@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MusicManager : MonoBehaviour
 {
     public AudioClip[] sceneMusic; // Array to hold the music for each scene
-    private static AudioSource audioSource;
+    public static AudioSource audioSource;
     public AudioMixerGroup musicMixer;
     private int currentSceneIndex;
 
@@ -21,6 +21,7 @@ public class MusicManager : MonoBehaviour
 
             audioSource.loop = true;
             audioSource.volume = 0.3f;
+            audioSource.pitch = 1;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -46,6 +47,7 @@ public class MusicManager : MonoBehaviour
 
             // Stop the audio source to ensure a clean start
             audioSource.Stop();
+            audioSource.pitch = 1;
 
             // Play the scene music
             PlaySceneMusic(currentSceneIndex);

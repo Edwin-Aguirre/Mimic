@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -53,6 +54,10 @@ public class SwitchControl : MonoBehaviour
                     {
                         SwitchToEnemyCharacter(newEnemy);
                     }
+                    if (newEnemy.name == "Dark Monster(Clone)")
+                    {
+                        StartCoroutine(FadeOutMusic(1));
+                    }
                 }
             }
         }
@@ -69,6 +74,38 @@ public class SwitchControl : MonoBehaviour
             }
         }
     }
+
+    IEnumerator FadeOutMusic(float fadeTime)
+    {
+        float startPitch = MusicManager.audioSource.pitch;
+
+        while (MusicManager.audioSource.pitch > -0.5f)
+        {
+            MusicManager.audioSource.pitch -= (startPitch + 0.5f) * Time.deltaTime / fadeTime;
+            yield return null;
+        }
+
+        MusicManager.audioSource.pitch = -0.5f; // Set pitch to -0.5 to keep it there
+    }
+
+
+        IEnumerator FadeInMusic(float fadeTime)
+    {
+        float targetPitch = 1.0f;
+
+        MusicManager.audioSource.pitch = 0.5f;
+        MusicManager.audioSource.Play();
+
+        while (MusicManager.audioSource.pitch < targetPitch)
+        {
+            MusicManager.audioSource.pitch += Time.deltaTime / fadeTime;
+            yield return null;
+        }
+
+        MusicManager.audioSource.pitch = targetPitch; // Set pitch to 1 to keep it there
+    }
+
+
 
     private GameObject FindEnemyInProximity()
     {
@@ -126,6 +163,12 @@ public class SwitchControl : MonoBehaviour
         player.transform.position = enemyPosition;
         player.transform.rotation = enemyRotation;
         player.SetActive(true);
+
+        if (currentEnemy.name == "Dark Monster(Clone)")
+        {
+            StartCoroutine(FadeInMusic(1));
+        }
+        
         currentEnemy.SetActive(false);
         currentEnemy.tag = "Enemy";
         Destroy(currentEnemy);
@@ -171,6 +214,7 @@ public class SwitchControl : MonoBehaviour
         {
             Debug.Log("Character's health reached zero. Switching back to the player.");
             SwitchBackToPlayerCharacter();
+            StartCoroutine(FadeInMusic(1));
             enemySpawnSystem.EnemyDestroyed();
         }
     }
