@@ -10485,7 +10485,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   radialProgressBar: {fileID: 8559602875243354244}
-  pcSprite: {fileID: 21300000, guid: 96a12e70f70eab84faee697b108b2f35, type: 3}
+  pcSprite: {fileID: 21300000, guid: 1c851118e611c9444acf24e6a2a98046, type: 3}
   consoleSprite: {fileID: 21300000, guid: 2b4d178adbd44224a9b30f7625624f61, type: 3}
   fillSpeed: 1
   myEvent:
