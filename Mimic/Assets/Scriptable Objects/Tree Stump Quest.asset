@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Find the Fake Tree Stumps
   description: Explore the Grass Region and find 3 tree stumps that are not real.
+  progress: Tree Stumps
   isCompleted: 0
   targetObjectCount: 3
+  currentObjectCount: 0

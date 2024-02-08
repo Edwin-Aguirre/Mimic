@@ -6,6 +6,7 @@ public class Quest : ScriptableObject
     public string questName;
     [TextArea(3, 10)]
     public string description;
+    public string progress;
     public bool isCompleted;
     public int targetObjectCount; // New field for the number of objects to find
 

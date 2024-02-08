@@ -19,7 +19,7 @@ public class QuestTracker : MonoBehaviour
     {
         collider = GetComponent<Collider>();
         InitializeQuest();
-        questObjectAmountText.text = "Tree Stumps Found " + quest.currentObjectCount + " / " + quest.targetObjectCount;
+        questObjectAmountText.text = quest.progress + " Found " + quest.currentObjectCount + " / " + quest.targetObjectCount;
     }
 
     private void InitializeQuest()
@@ -42,7 +42,7 @@ public class QuestTracker : MonoBehaviour
             SoundManager.audioSource.pitch = 1;
             gameObject.GetComponent<MeshRenderer>().enabled = false; // Hide the object when picked up, adjust as needed
             gameObject.GetComponent<BoxCollider>().enabled = false;
-            questObjectAmountText.text = "Tree Stumps Found " + quest.currentObjectCount + " / " + quest.targetObjectCount;
+            questObjectAmountText.text = quest.progress + " Found " + quest.currentObjectCount + " / " + quest.targetObjectCount;
             // If the quest is completed after incrementing the count, set the collider as non-trigger
             if (quest.isCompleted)
             {

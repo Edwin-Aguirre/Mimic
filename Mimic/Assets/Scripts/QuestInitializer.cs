@@ -41,6 +41,20 @@ public class QuestInitializer : MonoBehaviour
         }
     }
 
+    public void StartNPCQuest()
+    {
+        if(!questStarted)
+        {
+            StartQuest();
+
+            // Show the quest-related UI elements
+            ShowQuestStartedText();
+            ShowQuestPanel();
+
+            questStarted = true;
+        }
+    }
+
     private void ShowQuestPanel()
     {
         questPanel.SetActive(true);
