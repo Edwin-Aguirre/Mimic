@@ -3418,7 +3418,7 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  editMode: 2
+  editMode: 0
   editLastMode: 0
   edit_voxelMode: 1
   edit_voxelWeightMode: 0
@@ -3490,9 +3490,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  runSpeedMultiplier: 1.5
   gravity: 20
   animator: {fileID: 5406050180948782845}
   velocity: {x: 0, y: 0, z: 0}
+  isRunning: 0
 --- !u!143 &4605934264354407753
 CharacterController:
   m_ObjectHideFlags: 0
