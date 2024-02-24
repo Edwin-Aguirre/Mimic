@@ -8,7 +8,8 @@ public class RegionManager : MonoBehaviour
 {
     public TransitionSettings transition;
     public float loadDelay;
-    public String sceneName;
+    public string sceneName;
+    public string exitName;
 
     //public SceneAsset scenes; // Array to hold the SceneAsset objects
     private MusicManager musicManager;
@@ -27,12 +28,11 @@ public class RegionManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Store the player's position before loading the new scene
-            SceneController.playerPosition = other.transform.position;
+            StartCoroutine(SaveSpawnLocation());
         }
         if (sceneName != null && sceneName != "")
         {
-            TransitionManager.Instance().Transition(sceneName, transition, loadDelay);
+            //TransitionManager.Instance().Transition(sceneName, transition, loadDelay);
             // Start the transition to a new scene
             StartCoroutine(TransitionToScene(sceneName));
         }
@@ -49,5 +49,12 @@ public class RegionManager : MonoBehaviour
         {
             yield return StartCoroutine(musicManager.FadeOutMusic(1.0f));
         }
+    }
+
+    IEnumerator SaveSpawnLocation()
+    {
+        yield return new WaitForSeconds(0.1f);
+        PlayerPrefs.SetString("LastExitName", exitName);
+        TransitionManager.Instance().Transition(sceneName, transition, loadDelay);
     }
 }

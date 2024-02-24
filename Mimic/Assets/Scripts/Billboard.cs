@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    private Transform mainCameraTransfrom;
+    private Transform mainCameraTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        mainCameraTransfrom = Camera.main.transform;
+        mainCameraTransform = Camera.main.transform;
     }
 
     void LateUpdate()
     {
-        transform.LookAt(transform.position + mainCameraTransfrom.rotation * Vector3.forward, mainCameraTransfrom.rotation * Vector3.up);
+        if (mainCameraTransform == null)
+        {
+            mainCameraTransform = Camera.main.transform;
+            return; // Exit the method to wait for the camera to be assigned
+        }
+
+        // Now you can safely use mainCameraTransform
+        transform.LookAt(transform.position + mainCameraTransform.rotation * Vector3.forward, mainCameraTransform.rotation * Vector3.up);
     }
 }
