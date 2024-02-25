@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
+using UnityEngine.SceneManagement;
 
 public class SwitchControl : MonoBehaviour
 {
@@ -21,8 +22,34 @@ public class SwitchControl : MonoBehaviour
 
     private EnemySpawnSystem enemySpawnSystem;
 
+    public static SwitchControl instance;
+
+    private void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        enemySpawnSystem = FindAnyObjectByType<EnemySpawnSystem>();
+        if (enemySpawnSystem == null)
+        {
+            Debug.LogError("EnemySpawnSystem not found in the scene.");
+        }
+    }
+
     private void Start()
     {
+        if(instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        
         player = GameObject.FindGameObjectWithTag("Player");
         enemySpawnSystem = FindAnyObjectByType<EnemySpawnSystem>();
 
@@ -152,6 +179,9 @@ public class SwitchControl : MonoBehaviour
         }
 
         Debug.Log("New enemy assigned: " + newEnemy.name);
+
+        // Transfer PlayerScript to the new player
+        PlayerScript.instance.TransferToNewPlayer(newEnemy);
     }
 
     private void SwitchBackToPlayerCharacter()
@@ -176,7 +206,10 @@ public class SwitchControl : MonoBehaviour
         currentEnemy = null;
 
         Debug.Log("Switched back to player");
-        enemySpawnSystem.EnemyDestroyed();
+        if (enemySpawnSystem != null)
+        {
+            enemySpawnSystem.EnemyDestroyed();
+        }
     }
 
     private void ToggleEnemyScripts(GameObject enemy)

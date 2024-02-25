@@ -39,26 +39,31 @@ public class EnemySpawnSystem : MonoBehaviour
             }
         }
 
+        // Now that initial enemies are spawned, keep spawning remaining enemies
         StartCoroutine(SpawnRemainingEnemies());
     }
 
     private IEnumerator SpawnRemainingEnemies()
     {
-        while (currentEnemyCount < maxEnemies)
+        while (true) // Continue spawning enemies indefinitely
         {
-            for (int j = 0; j < enemiesPerSpawnPoint.Length; j++)
+            yield return new WaitForSeconds(spawnInterval);
+
+            // Check if we need to spawn more enemies
+            if (currentEnemyCount < maxEnemies)
             {
-                int enemiesToSpawn = Mathf.Min(enemiesPerSpawnPoint[j], maxEnemies - currentEnemyCount);
-
-                for (int k = 0; k < enemiesToSpawn; k++)
+                for (int j = 0; j < enemiesPerSpawnPoint.Length; j++)
                 {
-                    int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
-                    int randomSpawnPointIndex = Random.Range(0, spawnPoints.Length);
+                    int enemiesToSpawn = Mathf.Min(enemiesPerSpawnPoint[j], maxEnemies - currentEnemyCount);
 
-                    GameObject newEnemy = Instantiate(enemyPrefabs[randomEnemyIndex], spawnPoints[randomSpawnPointIndex].position, Quaternion.identity);
-                    currentEnemyCount++;
+                    for (int k = 0; k < enemiesToSpawn; k++)
+                    {
+                        int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
+                        int randomSpawnPointIndex = Random.Range(0, spawnPoints.Length);
 
-                    yield return new WaitForSeconds(spawnInterval);
+                        GameObject newEnemy = Instantiate(enemyPrefabs[randomEnemyIndex], spawnPoints[randomSpawnPointIndex].position, Quaternion.identity);
+                        currentEnemyCount++;
+                    }
                 }
             }
         }
@@ -70,27 +75,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
         if (currentEnemyCount < maxEnemies)
         {
-            // Respawn an enemy after a delay
-            StartCoroutine(RespawnEnemy());
-        }
-    }
-
-    private IEnumerator RespawnEnemy()
-    {
-        yield return new WaitForSeconds(spawnInterval);
-
-        for (int j = 0; j < enemiesPerSpawnPoint.Length; j++)
-        {
-            int enemiesToSpawn = Mathf.Min(enemiesPerSpawnPoint[j], maxEnemies - currentEnemyCount);
-
-            for (int k = 0; k < enemiesToSpawn; k++)
-            {
-                int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
-                int randomSpawnPointIndex = Random.Range(0, spawnPoints.Length);
-
-                GameObject newEnemy = Instantiate(enemyPrefabs[randomEnemyIndex], spawnPoints[randomSpawnPointIndex].position, Quaternion.identity);
-                currentEnemyCount++;
-            }
+            // No need to respawn immediately, as it's handled by SpawnRemainingEnemies coroutine
         }
     }
 }
