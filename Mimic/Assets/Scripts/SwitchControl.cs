@@ -210,6 +210,9 @@ public class SwitchControl : MonoBehaviour
         {
             enemySpawnSystem.EnemyDestroyed();
         }
+
+        // Transfer PlayerScript to the old player
+        PlayerScript.instance.TransferToNewPlayer(player);
     }
 
     private void ToggleEnemyScripts(GameObject enemy)
