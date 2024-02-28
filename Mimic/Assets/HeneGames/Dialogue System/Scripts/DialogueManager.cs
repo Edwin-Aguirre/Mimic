@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.XInput;
+
 
 namespace HeneGames.DialogueSystem
 {
@@ -12,6 +16,11 @@ namespace HeneGames.DialogueSystem
         private bool dialogueIsOn;
         private DialogueTrigger dialogueTrigger;
         private bool isInTriggerZone = false;
+        public string spriteAssetName;
+        public string secondSpriteAssetName;
+        private string pcAssetName = "keyboard_";
+        private string psAssetName = "playstation_";
+        private string xbAssetName = "xbox_";
 
         public enum TriggerState
         {
@@ -33,6 +42,8 @@ namespace HeneGames.DialogueSystem
 
         private void Update()
         {
+            SetSpriteAssetName();
+            
             //Timer
             if(coolDownTimer > 0f)
             {
@@ -59,6 +70,44 @@ namespace HeneGames.DialogueSystem
                 dialogueIsOn = true;
             }
         }
+
+        private void SetSpriteAssetName()
+        {
+            // Initialize the new prefix based on the current input type
+            string newPrefix = "";
+            switch (DialogueUI.instance.currentInput)
+            {
+                case DialogueUI.InputType.PC:
+                    newPrefix = pcAssetName;
+                    break;
+                case DialogueUI.InputType.PlayStation:
+                    newPrefix = psAssetName;
+                    break;
+                case DialogueUI.InputType.Xbox:
+                    newPrefix = xbAssetName;
+                    break;
+            }
+
+            // Check if the current spriteAssetName already starts with the new prefix
+            if (!spriteAssetName.StartsWith(newPrefix) || !secondSpriteAssetName.StartsWith(newPrefix))
+            {
+                // Remove the previous prefix if it exists
+                foreach (var prefix in new List<string> { pcAssetName, psAssetName, xbAssetName })
+                {
+                    if (spriteAssetName.StartsWith(prefix) || secondSpriteAssetName.StartsWith(prefix))
+                    {
+                        spriteAssetName = spriteAssetName.Substring(prefix.Length);
+                        secondSpriteAssetName = secondSpriteAssetName.Substring(prefix.Length);
+                        break;
+                    }
+                }
+
+                // Combine the new prefix with the stripped spriteAssetName
+                spriteAssetName = newPrefix + spriteAssetName;
+                secondSpriteAssetName = newPrefix + secondSpriteAssetName;
+            }
+        }
+
 
         //Start dialogue by trigger
         private void OnTriggerEnter(Collider other)

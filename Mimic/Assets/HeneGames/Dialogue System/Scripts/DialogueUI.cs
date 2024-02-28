@@ -99,6 +99,8 @@ namespace HeneGames.DialogueSystem
                         StopAllCoroutines();
                         typing = false;
                         messageText.text = currentMessage;
+                        // Parse sprite tags after setting the message text
+                        messageText.text = ParseSpriteTags(messageText.text);
                     }
                 }
             }
@@ -173,7 +175,7 @@ namespace HeneGames.DialogueSystem
 
         public void ShowSentence(DialogueCharacter _dialogueCharacter, string _message)
         {
-            StopAllCoroutines();
+            StopAllCoroutines(); // Stop any ongoing text animation coroutine
 
             dialogueWindow.SetActive(true);
 
@@ -187,6 +189,7 @@ namespace HeneGames.DialogueSystem
             }
             else
             {
+                // If text animation is disabled, set the message text instantly
                 messageText.text = _message;
             }
         }
@@ -220,17 +223,36 @@ namespace HeneGames.DialogueSystem
 
             float _speed = 1f - textAnimationSpeed;
 
-            foreach(char _letter in _letters)
+            foreach (char _letter in _letters)
             {
                 _textMeshObject.text += _letter;
 
-                if(_textMeshObject.text.Length == _letters.Length)
+                if (_textMeshObject.text.Length == _letters.Length)
                 {
                     typing = false;
                 }
 
+                // Parse sprite tags here
+                _textMeshObject.text = ParseSpriteTags(_textMeshObject.text);
+
                 yield return new WaitForSeconds(0.1f * _speed);
             }
         }
+
+        private string ParseSpriteTags(string message)
+        {
+            string parsedMessage = message;
+
+            // First sprite tag (e.g., "*")
+            string spriteTag1 = "*";
+            parsedMessage = parsedMessage.Replace(spriteTag1, "<sprite=\"" + currentDialogueManager.spriteAssetName + "\" index=0>");
+
+            // Second sprite tag (e.g., "$")
+            string spriteTag2 = "$";
+            parsedMessage = parsedMessage.Replace(spriteTag2, "<sprite=\"" + currentDialogueManager.secondSpriteAssetName + "\" index=0>");
+
+            return parsedMessage;
+        }
+
     }
 }

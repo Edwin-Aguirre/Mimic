@@ -677,6 +677,7 @@ GameObject:
   - component: {fileID: 6892747784746418818}
   - component: {fileID: 8993562799754649281}
   - component: {fileID: 5413904569957442280}
+  - component: {fileID: 7760700621157746970}
   m_Layer: 0
   m_Name: Ghost Monster
   m_TagString: Enemy
@@ -1791,6 +1792,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbingSpeed: 3
+--- !u!114 &7760700621157746970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265293679524156926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da6c51194ab84042bc718fd8ead8aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSentenceDialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  endDialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2925766520664199415
 GameObject:
   m_ObjectHideFlags: 0
