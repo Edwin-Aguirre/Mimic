@@ -110,7 +110,10 @@ public class QuestInitializer : MonoBehaviour
 
     private void StartQuest()
     {
-        QuestManager.instance.quests.Add(questToStart);
+        if (QuestManager.instance.quests.Count == 0)
+        {
+            QuestManager.instance.quests.Add(questToStart);
+        }
         Debug.Log("Quest Started: " + questToStart.questName);
         SoundManager.PlaySound("loading 3");
         SoundManager.audioSource.pitch = 1;

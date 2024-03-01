@@ -9,8 +9,8 @@ public class Quest : ScriptableObject
     public string progress;
     public bool isCompleted;
     public int targetObjectCount; // New field for the number of objects to find
-
     public int currentObjectCount;
+    public PokemonType targetMonsterType;
 
     public void Initialize()
     {
@@ -25,6 +25,15 @@ public class Quest : ScriptableObject
         if (currentObjectCount >= targetObjectCount)
         {
             Complete();
+        }
+    }
+
+    // Additional method for monster kill quests
+    public void MonsterKilled(PokemonType monsterType)
+    {
+        if (monsterType == targetMonsterType)
+        {
+            IncrementObjectCount();
         }
     }
 
