@@ -118,6 +118,8 @@ public class QuestInitializer : MonoBehaviour
         SoundManager.PlaySound("loading 3");
         SoundManager.audioSource.pitch = 1;
 
+        questToStart.hasStartedQuest = true;
+
         // Add any additional logic for quest initialization, such as displaying UI messages
 
         // Switch the colliders of associated QuestTracker objects to triggers

@@ -18,4 +18,8 @@ MonoBehaviour:
   isCompleted: 0
   targetObjectCount: 10
   currentObjectCount: 0
-  targetMonsterType: 2
+  targetMonsterType: 6
+  killMonsterQuest: 1
+  transformMonsterQuest: 0
+  canTransformIntoAnyType: 0
+  hasStartedQuest: 0

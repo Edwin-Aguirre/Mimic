@@ -33,9 +33,8 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         InitializeQuests();
-        questObjectAmountText.text = quests[0].progress + " Killed " + 
-        quests[0].currentObjectCount + " / " + quests[0].targetObjectCount + " " +
-        quests[0].targetMonsterType + " Monsters";
+        questObjectAmountText.text = quests[0].progress + " " + 
+        quests[0].currentObjectCount + " / " + quests[0].targetObjectCount + " " + " Monsters";
     }
 
     private void InitializeQuests()
@@ -60,35 +59,54 @@ public class QuestManager : MonoBehaviour
 
     private void CompleteQuest(Quest quest)
     {
+        // Mark the quest as completed
+        quest.Complete();
 
-        if(quest.isCompleted)
-        {
-            questCompletedText.text = "Quest Completed: " + "\n" + quest.questName;
-            questCompletedText.gameObject.SetActive(true);
-            // Set initial alpha to fully transparent
-            questCompletedText.color = new Color(questCompletedText.color.r, questCompletedText.color.g, questCompletedText.color.b, 0f);
+        // Display completion message and handle UI
+        questCompletedText.text = "Quest Completed: " + "\n" + quest.questName;
+        questCompletedText.gameObject.SetActive(true);
+        // Set initial alpha to fully transparent
+        questCompletedText.color = new Color(questCompletedText.color.r, questCompletedText.color.g, questCompletedText.color.b, 0f);
 
-            // Start the coroutine to handle fading
-            StartCoroutine(FadeIn());
+        // Start the coroutine to handle fading
+        StartCoroutine(FadeIn());
 
-            questNameText.text = "<s>" + quest.name + "<s>";
-            questDescriptionText.text = "";
-            questObjectAmountText.text = "";
-        }
-
+        questNameText.text = "<s>" + quest.name + "<s>";
+        questDescriptionText.text = "";
+        questObjectAmountText.text = "";
     }
+
 
     // Method to handle monster kills
     public void MonsterKilled(PokemonType monsterType)
     {
         foreach (var quest in quests)
         {
-            if (!quest.isCompleted && quest.targetMonsterType == monsterType)
+            if (!quest.isCompleted && quest.targetMonsterType == monsterType && quest.killMonsterQuest == true)
             {
                 quest.MonsterKilled(monsterType);
                 questObjectAmountText.text = quest.progress + " Killed " + 
                 quest.currentObjectCount + " / " + quest.targetObjectCount + " " +
                 quest.targetMonsterType + " Monsters";
+
+                if(quest.isCompleted)
+                {
+                    CompleteQuest(quest);
+                }
+            }
+        }
+    }
+
+    // Method to handle monster transformations
+    public void MonsterTransformed(PokemonType monsterType)
+    {
+        foreach (var quest in quests)
+        {
+            if (!quest.isCompleted && quest.targetMonsterType == monsterType && quest.transformMonsterQuest == true)
+            {
+                quest.MonsterTransformed(monsterType);
+                questObjectAmountText.text = quest.progress + 
+                quest.currentObjectCount + " / " + quest.targetObjectCount + " " + " Monsters";
 
                 if(quest.isCompleted)
                 {

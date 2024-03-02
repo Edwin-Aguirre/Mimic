@@ -77,6 +77,10 @@ public class SwitchControl : MonoBehaviour
                 if (CanSwitch())
                 {
                     GameObject newEnemy = FindEnemyInProximity();
+                    if(QuestManager.instance.quests[0].canTransformIntoAnyType)
+                    {
+                        QuestManager.instance.quests[0].targetMonsterType = newEnemy.GetComponent<PokemonAttack>().type;
+                    }
                     if (newEnemy != null)
                     {
                         SwitchToEnemyCharacter(newEnemy);
@@ -180,8 +184,11 @@ public class SwitchControl : MonoBehaviour
 
         Debug.Log("New enemy assigned: " + newEnemy.name);
 
+        PokemonAttack pokemonAttack = newEnemy.GetComponent<PokemonAttack>();
+
         // Transfer PlayerScript to the new player
         PlayerScript.instance.TransferToNewPlayer(newEnemy);
+        QuestManager.instance.MonsterTransformed(pokemonAttack.type);
     }
 
     private void SwitchBackToPlayerCharacter()

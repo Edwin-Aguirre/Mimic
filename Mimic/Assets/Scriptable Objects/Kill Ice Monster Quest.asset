@@ -19,3 +19,5 @@ MonoBehaviour:
   targetObjectCount: 3
   currentObjectCount: 0
   targetMonsterType: 5
+  killMonsterQuest: 1
+  transformMonsterQuest: 0
