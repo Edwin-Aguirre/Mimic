@@ -77,12 +77,6 @@ public class PokemonAttack : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        // Notify the quest manager when a monster of the tracked type is killed
-        QuestManager.instance.MonsterKilled(type);
-    }
-
     private void Update()
     {
         if(gameObject.CompareTag("Player") &&  Gamepad.current != null)
@@ -108,6 +102,11 @@ public class PokemonAttack : MonoBehaviour
 
                     // Apply damage to the target's health.
                     targetHealth.TakeDamage(damage);
+
+                    if(targetHealth.currentHealth == 0)
+                    {
+                        QuestManager.instance.MonsterKilled(type);
+                    }
 
                     // Stop the existing coroutine if it is running
                     if (flashCoroutine != null)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kill Poison Monster Quest
   m_EditorClassIdentifier: 
   questName: Kill Poison Monsters
-  description: Find and kill 3 Poison type monsters
+  description: Find and kill 10 Poison type monsters
   progress: 
   isCompleted: 0
   targetObjectCount: 10

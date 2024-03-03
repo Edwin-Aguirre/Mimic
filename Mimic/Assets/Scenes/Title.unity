@@ -790,6 +790,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!1 &189089743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 189089744}
+  m_Layer: 0
+  m_Name: Spawn Point 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &189089744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189089743}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2090630845}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &196228698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383078229}
   m_Layer: 0
-  m_Name: '^This is just to fill in Options Canvas '
+  m_Name: ^This is just to remove an error
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8248,6 +8279,67 @@ MonoBehaviour:
   text: {fileID: 401416758}
   textColorEnter: {r: 0, g: 0, b: 0, a: 1}
   textColorExit: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &2090630843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2090630845}
+  - component: {fileID: 2090630844}
+  m_Layer: 0
+  m_Name: Enemy Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2090630844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090630843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd3b9d44dedb8347955139a2174234c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 4222518491698141740, guid: abaf3ca87c0111d44872890462a56228, type: 3}
+  - {fileID: 5702587601142465239, guid: abdb4d0b7fa11554eaf562571ff8c022, type: 3}
+  - {fileID: 5044576045661626830, guid: 55c0112b47a7bcd449ad957aceb2c9d8, type: 3}
+  - {fileID: 2265293679524156926, guid: d32215fbb2876eb43b8fcae3d1575c59, type: 3}
+  - {fileID: 2736540739416098577, guid: 7d92b68ee3681c745bf38ae7de04ec92, type: 3}
+  - {fileID: 7953204757163734922, guid: 0687c725aa0365540990a980ce8963dd, type: 3}
+  - {fileID: 7527799057608953802, guid: 13b2eb141abac4e4d93dec3cc803bfc6, type: 3}
+  - {fileID: 6729421231231463427, guid: f1f609e85dee1024dad4ca95f25dba82, type: 3}
+  - {fileID: 8222216350594199298, guid: 685be43805a3030449901ec01d8fbf57, type: 3}
+  - {fileID: 7390863768342460006, guid: 1e681cefc00283d408f4832faee426b2, type: 3}
+  spawnPoints:
+  - {fileID: 189089744}
+  enemiesPerSpawnPoint: 00000000
+  spawnInterval: 0
+  maxEnemies: 0
+--- !u!4 &2090630845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090630843}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 189089744}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2091420141
 GameObject:
   m_ObjectHideFlags: 0
@@ -8845,4 +8937,5 @@ SceneRoots:
   - {fileID: 1927416715}
   - {fileID: 2018824123}
   - {fileID: 969272087}
+  - {fileID: 2090630845}
   - {fileID: 383078229}

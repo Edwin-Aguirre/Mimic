@@ -31,6 +31,7 @@ public class SwitchControl : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         enemySpawnSystem = FindAnyObjectByType<EnemySpawnSystem>();
         if (enemySpawnSystem == null)
         {
@@ -67,6 +68,14 @@ public class SwitchControl : MonoBehaviour
 
     private void Update()
     {
+        // Check if the current scene is the Title scene
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            // Destroy the player object if it's in the Title scene
+            Destroy(gameObject);
+            return;
+        }
+
         if (playerControl)
         {
             PlayerHealthCheck();

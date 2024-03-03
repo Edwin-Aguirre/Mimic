@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -37,6 +38,12 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Check if the current scene is the Title scene
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            // Destroy the player object if it's in the Title scene
+            Destroy(gameObject);
+            return;
+        }
     }
 }
