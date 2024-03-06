@@ -11404,6 +11404,7 @@ GameObject:
   - component: {fileID: 6359592591996575051}
   - component: {fileID: 4034348279520051130}
   - component: {fileID: -7663999983333922462}
+  - component: {fileID: 5222329167129338288}
   m_Layer: 0
   m_Name: Water Monster
   m_TagString: Enemy
@@ -11463,6 +11464,11 @@ MonoBehaviour:
       m_Action: Attack Button
       m_Flags: 0
     m_Flags: 0
+  canCycleAttacks: 0
+  attackAnimationStates:
+  - Attack1
+  - Attack2
+  - Attack3
   flashMaterial: {fileID: 2100000, guid: d273624cada4abc4ebdd3e956f597d16, type: 2}
   normalColor: {r: 0, g: 0, b: 0, a: 0}
   fireColor: {r: 1, g: 0, b: 0, a: 0}
@@ -12287,6 +12293,24 @@ MonoBehaviour:
   endDialogueEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5222329167129338288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390863768342460006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00979951bdca606499ad144653245716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
+  - itemPrefab: {fileID: 5089728132298961190, guid: 4f85a800198d23348a3e23bdf9ba9dff,
+      type: 3}
+    minAmount: 1
+    maxAmount: 3
+    dropChance: 100
 --- !u!1 &7582881333332414278
 GameObject:
   m_ObjectHideFlags: 0

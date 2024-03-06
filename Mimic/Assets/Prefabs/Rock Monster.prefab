@@ -12071,6 +12071,7 @@ GameObject:
   - component: {fileID: 5430337023880231776}
   - component: {fileID: 3298350732362078528}
   - component: {fileID: 6150673843285476353}
+  - component: {fileID: -1866080092365288235}
   m_Layer: 0
   m_Name: Rock Monster
   m_TagString: Enemy
@@ -12130,6 +12131,11 @@ MonoBehaviour:
       m_Action: Attack Button
       m_Flags: 0
     m_Flags: 0
+  canCycleAttacks: 0
+  attackAnimationStates:
+  - Attack1
+  - Attack2
+  - Attack3
   flashMaterial: {fileID: 2100000, guid: d273624cada4abc4ebdd3e956f597d16, type: 2}
   normalColor: {r: 0, g: 0, b: 0, a: 0}
   fireColor: {r: 1, g: 0, b: 0, a: 0}
@@ -12984,6 +12990,24 @@ MonoBehaviour:
   endDialogueEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-1866080092365288235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222216350594199298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00979951bdca606499ad144653245716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
+  - itemPrefab: {fileID: 5089728132298961190, guid: 4f85a800198d23348a3e23bdf9ba9dff,
+      type: 3}
+    minAmount: 1
+    maxAmount: 3
+    dropChance: 100
 --- !u!1001 &4017976821593731209
 PrefabInstance:
   m_ObjectHideFlags: 0

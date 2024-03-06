@@ -37,6 +37,7 @@ public class HealthSystem : MonoBehaviour
 
     private void Die()
     {
+        GetComponent<LootDropSystem>().DropLoot(transform.position);
         PokemonAttack pokemonAttack = GetComponent<PokemonAttack>();
         QuestManager.instance.MonsterKilled(pokemonAttack.type);
         Debug.Log(gameObject.name + " has died!");
