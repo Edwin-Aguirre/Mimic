@@ -31,7 +31,7 @@ public class SwitchControl : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         enemySpawnSystem = FindAnyObjectByType<EnemySpawnSystem>();
         if (enemySpawnSystem == null)
         {

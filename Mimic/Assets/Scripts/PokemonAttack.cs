@@ -40,6 +40,13 @@ public class PokemonAttack : MonoBehaviour
     public Animator animator; // Reference to the Animator component.
     public InputAction attackButton;
 
+    private int currentAttackIndex = 0; // Index of the current attack animation
+    public bool canCycleAttacks = false;
+
+    // List of attack animations
+    public List<string> attackAnimationStates = new List<string> { "Attack1", "Attack2", "Attack3" };
+
+
     public Material flashMaterial;  // The material to switch to for the flash effect
     private Material originalMaterial; // The original material of the object
     private Renderer objectRenderer;
@@ -90,41 +97,13 @@ public class PokemonAttack : MonoBehaviour
             // Trigger the attack animation whenever you press Space and have the "Player" tag.
             animator.SetBool("isAttacking", true);
 
-            if (target != null)
+            // If cycling attacks is enabled, move to the next attack animation
+            if (canCycleAttacks)
             {
-                // Calculate the distance to the target.
-                float distance = Vector3.Distance(transform.position, target.position);
-
-                if (distance <= attackRange)
-                {
-                    int damage = CalculateDamage(target.GetComponent<PokemonAttack>().type);
-                    Debug.Log("Dealt " + damage + " damage to the enemy.");
-
-                    // Apply damage to the target's health.
-                    targetHealth.TakeDamage(damage);
-
-                    if(targetHealth.currentHealth == 0)
-                    {
-                        QuestManager.instance.MonsterKilled(type);
-                    }
-
-                    // Stop the existing coroutine if it is running
-                    if (flashCoroutine != null)
-                    {
-                        StopCoroutine(flashCoroutine);
-                    }
-
-                    // Start a new flash coroutine
-                    flashCoroutine = FlashCoroutine();
-                    StartCoroutine(flashCoroutine);
+                // Play the current attack animation
+                PlayAttackAnimation();
                 
-                    SoundManager.PlaySound("hurt 2");
-
-                    if(floatingText)
-                    {   
-                        ShowFloatingText();
-                    }
-                }
+                currentAttackIndex = (currentAttackIndex + 1) % attackAnimationStates.Count;
             }
         }
         else
@@ -135,6 +114,53 @@ public class PokemonAttack : MonoBehaviour
                 animator.SetBool("isAttacking", false);
             }
         }
+    }
+
+    public void AttackEvent()
+    {
+        if (target != null)
+        {
+            // Calculate the distance to the target.
+            float distance = Vector3.Distance(transform.position, target.position);
+
+            if (distance <= attackRange)
+            {
+                int damage = CalculateDamage(target.GetComponent<PokemonAttack>().type);
+                Debug.Log("Dealt " + damage + " damage to the enemy.");
+
+                // Apply damage to the target's health.
+                targetHealth.TakeDamage(damage);
+
+                if(targetHealth.currentHealth == 0)
+                {
+                    QuestManager.instance.MonsterKilled(type);
+                }
+
+                // Stop the existing coroutine if it is running
+                if (flashCoroutine != null)
+                {
+                    StopCoroutine(flashCoroutine);
+                }
+
+                // Start a new flash coroutine
+                flashCoroutine = FlashCoroutine();
+                StartCoroutine(flashCoroutine);
+                
+                SoundManager.PlaySound("hurt 2");
+
+                if(floatingText)
+                {   
+                    ShowFloatingText();
+                }
+                }
+        }
+    }
+
+    // Function to play the current attack animation
+    private void PlayAttackAnimation()
+    {
+        string attackAnimation = attackAnimationStates[currentAttackIndex];
+        animator.SetTrigger(attackAnimation);
     }
 
     private void ShowFloatingText()
