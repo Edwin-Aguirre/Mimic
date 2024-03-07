@@ -2699,12 +2699,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneMusic:
-  - {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
-  - {fileID: 8300000, guid: 0ad591428b0c18c4da51fe3bf98dbc63, type: 3}
-  - {fileID: 8300000, guid: 267a0562368421345b5308f4c853e2ab, type: 3}
-  - {fileID: 8300000, guid: 0e3b57fe9497c4a4cb25a0414d430a2c, type: 3}
-  - {fileID: 8300000, guid: 67b2c9de31a741c409c8e3fa5d05221a, type: 3}
-  - {fileID: 8300000, guid: 559c232a43caebe41870ce54786f604e, type: 3}
+  - {fileID: 8300000, guid: 6c7402b6b3095464d9db850885c4d565, type: 3}
+  - {fileID: 8300000, guid: 513197e4ea0798a4aa5c273b234bf22b, type: 3}
+  - {fileID: 8300000, guid: aa4e226f4ddbf5d47900ac09bef565c4, type: 3}
+  - {fileID: 8300000, guid: 73e800617cbae8843909627cf37f3b01, type: 3}
+  - {fileID: 8300000, guid: 38f0d46dcf6d14a4ba06281a895c7718, type: 3}
+  - {fileID: 8300000, guid: cb55320d937abde49bafcff1af94bb72, type: 3}
+  - {fileID: 8300000, guid: 5995433f9955b154d8e01395644cea7b, type: 3}
   musicMixer: {fileID: 24300002, guid: 6e3ccbb311918014d99247c43caff414, type: 2}
 --- !u!1 &651689408
 GameObject:
