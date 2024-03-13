@@ -27,8 +27,6 @@ public class EscapeScreen : MonoBehaviour
     public enum InputType { PC, PlayStation, Xbox }
     public InputType currentInput = InputType.PC; // Default to PC
 
-    private bool playerNearObject = false;
-
     private string disableController;
 
     // Start is called before the first frame update

@@ -51,6 +51,8 @@ public class QuestTracker : MonoBehaviour
                 questInitializer.questNameText.text = "<s>" + questInitializer.questToStart.name + "<s>";
                 questInitializer.questDescriptionText.text = "";
                 questObjectAmountText.text = "";
+                Animation animationComponent = questInitializer.questPanel.GetComponent<Animation>();
+                animationComponent.Play("Quest Roll In");
             }
         }
     }

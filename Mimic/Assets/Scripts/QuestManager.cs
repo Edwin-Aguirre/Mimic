@@ -13,6 +13,7 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI questCompletedText;
     public TextMeshProUGUI questNameText;
     public TextMeshProUGUI questDescriptionText;
+    public GameObject questPanel;
 
     private float fadeInDuration = 1f;
     private float displayTime = 3f;
@@ -74,6 +75,9 @@ public class QuestManager : MonoBehaviour
         questNameText.text = "<s>" + quest.name + "<s>";
         questDescriptionText.text = "";
         questObjectAmountText.text = "";
+
+        Animation animationComponent = questPanel.GetComponent<Animation>();
+        animationComponent.Play("Quest Roll In");
     }
 
 

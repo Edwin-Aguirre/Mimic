@@ -57,7 +57,9 @@ public class QuestInitializer : MonoBehaviour
 
     private void ShowQuestPanel()
     {
+        Animation animationComponent = questPanel.GetComponent<Animation>();
         questPanel.SetActive(true);
+        animationComponent.Play("Quest Slide In");
         questNameText.text = questToStart.name;
         questDescriptionText.text = questToStart.description;
     }

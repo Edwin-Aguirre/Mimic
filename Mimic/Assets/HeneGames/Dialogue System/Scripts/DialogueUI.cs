@@ -43,7 +43,7 @@ namespace HeneGames.DialogueSystem
         [SerializeField] private Image portrait;
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private TextMeshProUGUI messageText;
-        [SerializeField] private GameObject dialogueWindow;
+        [SerializeField] public GameObject dialogueWindow;
         [SerializeField] private GameObject interactionUI;
 
         [Header("Settings")]
@@ -196,7 +196,7 @@ namespace HeneGames.DialogueSystem
 
         public void ClearText()
         {
-            dialogueWindow.SetActive(false);
+            //dialogueWindow.SetActive(false);
         }
 
         public void ShowInteractionUI(bool _value)
