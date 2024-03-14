@@ -29,6 +29,9 @@ public class EscapeScreen : MonoBehaviour
 
     private string disableController;
 
+    private bool isOptionsEnabled = false;
+    private bool isControlsEnabled = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,8 +60,16 @@ public class EscapeScreen : MonoBehaviour
     void Resume()
     {
         escapeScreen.SetActive(false);
-        optionsScreen.SetActive(false);
-        controlsScreen.SetActive(false);
+
+        if(isOptionsEnabled)
+        {
+            PlayZoomInAnimation(optionsScreen);
+        }
+        if(isControlsEnabled)
+        {
+            PlayZoomInAnimation(controlsScreen);
+        }
+
         isGamePaused = false;
         Cursor.visible = false;
         EnableScripts(scriptsToDisable);
@@ -75,6 +86,7 @@ public class EscapeScreen : MonoBehaviour
 
     public void onClickSettingsButton()
     {
+        isOptionsEnabled = true;
         optionsScreen.SetActive(true);
         escapeScreen.SetActive(false);
         Cursor.visible = true;
@@ -84,10 +96,24 @@ public class EscapeScreen : MonoBehaviour
 
     public void onClickControlsButton()
     {
+        isControlsEnabled = true;
         controlsScreen.SetActive(true);
         escapeScreen.SetActive(false);
         Cursor.visible = true;
         DisableScripts(scriptsToDisable);
+    }
+
+    void PlayZoomInAnimation(GameObject panel)
+    {
+        Animation[] animationComponents = panel.GetComponentsInChildren<Animation>();
+
+        foreach (Animation anim in animationComponents)
+        {
+            anim.Play("Zoom In");
+        }
+
+        isControlsEnabled = false;
+        isOptionsEnabled = false;
     }
 
     void SetPlatformPanel()

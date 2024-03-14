@@ -39,7 +39,7 @@ public class TypeChart : MonoBehaviour
 
     void Resume()
     {
-        typeChartScreen.SetActive(false);
+        PlayZoomInAnimation(typeChartScreen);
         isGamePaused = false;
         Cursor.visible = false;
         EnableScripts(scriptsToDisable);
@@ -47,6 +47,7 @@ public class TypeChart : MonoBehaviour
 
     void Pause()
     {
+        PlayZoomOutAnimation(typeChartScreen);
         typeChartScreen.SetActive(true);
         isGamePaused = true;
         Cursor.visible = true;
@@ -58,6 +59,26 @@ public class TypeChart : MonoBehaviour
         typeChartScreen.SetActive(true);
         Cursor.visible = true;
         DisableScripts(scriptsToDisable);
+    }
+
+    void PlayZoomInAnimation(GameObject panel)
+    {
+        Animation[] animationComponents = panel.GetComponentsInChildren<Animation>();
+
+        foreach (Animation anim in animationComponents)
+        {
+            anim.Play("Zoom In");
+        }
+    }
+
+    void PlayZoomOutAnimation(GameObject panel)
+    {
+        Animation[] animationComponents = panel.GetComponentsInChildren<Animation>();
+
+        foreach (Animation anim in animationComponents)
+        {
+            anim.Play("Zoom Out");
+        }
     }
 
     // Disable scripts on game objects with the specified name

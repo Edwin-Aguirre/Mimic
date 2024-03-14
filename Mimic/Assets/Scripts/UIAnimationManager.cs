@@ -18,4 +18,15 @@ public class UIAnimationManager : MonoBehaviour
 
         animationComponent.Play("Slide Out");
     }
+
+    public void ZoomOut(GameObject panel)
+    {
+        Animation[] animationComponents = panel.GetComponentsInChildren<Animation>();
+
+        foreach (Animation anim in animationComponents)
+        {
+            anim.Play("Zoom Out");
+        }
+    }
+
 }
