@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: NPC
   m_EditorClassIdentifier: 
   characterPhoto: {fileID: 0}
-  characterName: NPC
+  characterName: 
