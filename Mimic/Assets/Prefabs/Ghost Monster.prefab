@@ -1702,6 +1702,8 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 5381812333741416449}
   healthChangeSpeed: 5
+  stunDuration: 10
+  isStunned: 0
 --- !u!114 &6892747784746418818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13777,6 +13779,8 @@ GameObject:
   - component: {fileID: 1251379313086187837}
   - component: {fileID: 294018082121715324}
   - component: {fileID: 3538728085690662606}
+  - component: {fileID: 2645750595789548335}
+  - component: {fileID: 2493923244592039219}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -13878,6 +13882,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aab0b07609d647b4ab73daecc9b2fdda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!111 &2645750595789548335
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512936133722266233}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: e8cd46d83bd50994380340018c6c108d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &2493923244592039219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512936133722266233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8f109218fa997449c45e04e498c2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6757081065482725161

@@ -49,91 +49,94 @@ public class EnemyAI : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (distanceToPlayer <= chaseDistance)
-        {
-            Vector3 directionToPlayer = player.position - transform.position;
-            directionToPlayer.y = 0f;
-
-            if (distanceToPlayer < playerDistance)
+        if(agent.enabled)
+        {   
+            if (distanceToPlayer <= chaseDistance)
             {
-                Vector3 newPosition = player.position - directionToPlayer.normalized * playerDistance;
-                agent.SetDestination(newPosition);
-                if (enemyAttack != null && !isAttacking)
+                Vector3 directionToPlayer = player.position - transform.position;
+                directionToPlayer.y = 0f;
+
+                if (distanceToPlayer < playerDistance)
                 {
-                    damage = enemyAttack.CalculateDamage(player.GetComponent<PokemonAttack>().type);
-                    Debug.Log("Dealt " + damage + " damage to the player.");
+                    Vector3 newPosition = player.position - directionToPlayer.normalized * playerDistance;
+                    agent.SetDestination(newPosition);
+                    if (enemyAttack != null && !isAttacking)
+                    {
+                        damage = enemyAttack.CalculateDamage(player.GetComponent<PokemonAttack>().type);
+                        Debug.Log("Dealt " + damage + " damage to the player.");
 
-                    // Apply damage to the player's health system or handle it as needed.
-                    player.GetComponent<HealthSystem>().TakeDamage(damage);
-                    ShowFloatingText();
-                    SoundManager.PlaySound("hurt 1");
+                        // Apply damage to the player's health system or handle it as needed.
+                        player.GetComponent<HealthSystem>().TakeDamage(damage);
+                        ShowFloatingText();
+                        SoundManager.PlaySound("hurt 1");
 
-                    // Start the attack animation and set the isAttacking flag.
-                    animator.SetBool("isAttacking", true);
-                    isAttacking = true;
-                    isAnimationPlaying = true;
-                    attackTimer = 0f;
+                        // Start the attack animation and set the isAttacking flag.
+                        animator.SetBool("isAttacking", true);
+                        isAttacking = true;
+                        isAnimationPlaying = true;
+                        attackTimer = 0f;
 
-                    // Trigger the flash effect on the player
-                    StartCoroutine(FlashCoroutine(player.GetComponent<Renderer>()));
+                        // Trigger the flash effect on the player
+                        StartCoroutine(FlashCoroutine(player.GetComponent<Renderer>()));
+                    }
+                }
+                else
+                {
+                    if (!isAttacking)
+                    {
+                        isChasing = true;
+                        agent.speed = chaseSpeed;
+                        agent.SetDestination(player.position);
+                        animator.SetBool("isWalking", true);
+                    }
+                } 
+            }
+            else if (isChasing)
+            {
+                isChasing = false;
+                agent.speed = wanderSpeed;
+                wanderTarget = GetRandomPointInRadius();
+                agent.SetDestination(wanderTarget);
+                animator.SetBool("isWalking", true);
+            }
+            else if (agent.remainingDistance < 0.1f)
+            {
+                if (isWandering)
+                {
+                    idleTimer += Time.deltaTime;
+                    animator.SetBool("isWalking", false);
+
+                    if (idleTimer >= idleDuration)
+                    {
+                        idleTimer = 0f;
+                        isWandering = false;
+                        wanderTarget = GetRandomPointInRadius();
+                        agent.SetDestination(wanderTarget);
+                        animator.SetBool("isWalking", true);
+                    }
+                }
+                else
+                {
+                    animator.SetBool("isWalking", false);
                 }
             }
-            else
-            {
-                if (!isAttacking)
-                {
-                    isChasing = true;
-                    agent.speed = chaseSpeed;
-                    agent.SetDestination(player.position);
-                    animator.SetBool("isWalking", true);
-                }
-            } 
-        }
-        else if (isChasing)
-        {
-            isChasing = false;
-            agent.speed = wanderSpeed;
-            wanderTarget = GetRandomPointInRadius();
-            agent.SetDestination(wanderTarget);
-            animator.SetBool("isWalking", true);
-        }
-        else if (agent.remainingDistance < 0.1f)
-        {
-            if (isWandering)
-            {
-                idleTimer += Time.deltaTime;
-                animator.SetBool("isWalking", false);
 
-                if (idleTimer >= idleDuration)
-                {
-                    idleTimer = 0f;
-                    isWandering = false;
-                    wanderTarget = GetRandomPointInRadius();
-                    agent.SetDestination(wanderTarget);
-                    animator.SetBool("isWalking", true);
-                }
+            if (!isChasing && agent.remainingDistance < 0.1f && !isWandering)
+            {
+                idleTimer = 0f;
+                isWandering = true;
             }
-            else
+
+            if (isAnimationPlaying)
             {
-                animator.SetBool("isWalking", false);
-            }
-        }
+                attackTimer += Time.deltaTime;
 
-        if (!isChasing && agent.remainingDistance < 0.1f && !isWandering)
-        {
-            idleTimer = 0f;
-            isWandering = true;
-        }
-
-        if (isAnimationPlaying)
-        {
-            attackTimer += Time.deltaTime;
-
-            if (attackTimer >= attackDelay)
-            {
-                animator.SetBool("isAttacking", false);
-                isAttacking = false;
-                isAnimationPlaying = false;
+                if (attackTimer >= attackDelay)
+                {
+                    animator.SetBool("isAttacking", false);
+                    isAttacking = false;
+                    isAnimationPlaying = false;
+                }
             }
         }
     }

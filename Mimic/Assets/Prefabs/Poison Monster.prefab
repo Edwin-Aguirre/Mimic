@@ -14040,6 +14040,8 @@ GameObject:
   - component: {fileID: 3854289079034768113}
   - component: {fileID: 6412815800437546314}
   - component: {fileID: 3444482411579894506}
+  - component: {fileID: 5434535258826417779}
+  - component: {fileID: 2613678944828715579}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -14141,6 +14143,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aab0b07609d647b4ab73daecc9b2fdda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!111 &5434535258826417779
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6318709222086248827}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: e8cd46d83bd50994380340018c6c108d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &2613678944828715579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6318709222086248827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8f109218fa997449c45e04e498c2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6643889039057722237
@@ -16681,6 +16711,8 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 4874894039746634754}
   healthChangeSpeed: 5
+  stunDuration: 10
+  isStunned: 0
 --- !u!114 &679556467027634057
 MonoBehaviour:
   m_ObjectHideFlags: 0

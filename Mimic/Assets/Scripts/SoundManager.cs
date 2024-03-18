@@ -9,6 +9,7 @@ public class SoundManager: MonoBehaviour
     public static AudioClip questStartedSound;
     public static AudioClip questCompletedSound;
     public static AudioClip objectPickupSound;
+    public static AudioClip cannotTransformSound;
 
 
     public static AudioSource audioSource;
@@ -21,6 +22,7 @@ public class SoundManager: MonoBehaviour
         questStartedSound = Resources.Load<AudioClip>("loading 3");
         questCompletedSound = Resources.Load<AudioClip>("power 6");
         objectPickupSound = Resources.Load<AudioClip>("select 3");
+        cannotTransformSound = Resources.Load<AudioClip>("select 12");
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -49,6 +51,9 @@ public class SoundManager: MonoBehaviour
             case "select 3":
                 audioSource.PlayOneShot(objectPickupSound);
                 break;
+            case "select 12":
+                audioSource.PlayOneShot(cannotTransformSound);
+                break;                
         }
     }
 }

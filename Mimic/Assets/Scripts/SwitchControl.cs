@@ -14,7 +14,7 @@ public class SwitchControl : MonoBehaviour
     public InputAction transformButton;
 
     private GameObject currentEnemy;
-    private bool playerControl = true;
+    public bool playerControl = true;
     private NavMeshAgent enemyNavMeshAgent;
     private CharacterController enemyCharacterController;
     private Vector3 initialPlayerPosition;
@@ -86,13 +86,23 @@ public class SwitchControl : MonoBehaviour
                 if (CanSwitch())
                 {
                     GameObject newEnemy = FindEnemyInProximity();
+                    HealthSystem enemyHealth = newEnemy.GetComponent<HealthSystem>();
                     if(QuestManager.instance.quests[0].canTransformIntoAnyType)
                     {
                         QuestManager.instance.quests[0].targetMonsterType = newEnemy.GetComponent<PokemonAttack>().type;
                     }
-                    if (newEnemy != null)
+                    if (newEnemy != null && enemyHealth.isStunned)
                     {
                         SwitchToEnemyCharacter(newEnemy);
+                        enemyHealth.currentHealth += 30;
+                        enemyHealth.currentHealth = Mathf.Clamp(enemyHealth.currentHealth, 0, enemyHealth.maxHealth);
+                        StartCoroutine(enemyHealth.UpdateHealthBarSmoothly());
+                        enemyHealth.UpdateHealthUI();
+                    }
+                    if (!enemyHealth.isStunned)
+                    {
+                        CanvasShaker enemyCanvas = newEnemy.GetComponentInChildren<CanvasShaker>();
+                        enemyCanvas.PlayCanvasShakerAnimation();
                     }
                     if (newEnemy.name == "Dark Monster(Clone)")
                     {
