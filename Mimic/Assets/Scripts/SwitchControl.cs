@@ -24,6 +24,8 @@ public class SwitchControl : MonoBehaviour
 
     public static SwitchControl instance;
 
+    private bool isDying = false;
+
     private void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -91,7 +93,7 @@ public class SwitchControl : MonoBehaviour
                     {
                         QuestManager.instance.quests[0].targetMonsterType = newEnemy.GetComponent<PokemonAttack>().type;
                     }
-                    if (newEnemy != null && enemyHealth.isStunned)
+                    if (newEnemy != null && enemyHealth.isStunned && enemyHealth.isAlive)
                     {
                         SwitchToEnemyCharacter(newEnemy);
                         enemyHealth.currentHealth += 30;
@@ -99,7 +101,7 @@ public class SwitchControl : MonoBehaviour
                         StartCoroutine(enemyHealth.UpdateHealthBarSmoothly());
                         enemyHealth.UpdateHealthUI();
                     }
-                    if (!enemyHealth.isStunned)
+                    if (!enemyHealth.isStunned || !enemyHealth.isAlive)
                     {
                         CanvasShaker enemyCanvas = newEnemy.GetComponentInChildren<CanvasShaker>();
                         enemyCanvas.PlayCanvasShakerAnimation();
@@ -212,6 +214,11 @@ public class SwitchControl : MonoBehaviour
 
     private void SwitchBackToPlayerCharacter()
     {
+        if (currentEnemy == null)
+        {
+            return;
+        }
+
         Vector3 enemyPosition = currentEnemy.transform.position;
         Quaternion enemyRotation = currentEnemy.transform.rotation;
 
@@ -269,18 +276,44 @@ public class SwitchControl : MonoBehaviour
 
     private void PlayerHealthCheck()
     {
+        // Null check for currentEnemy
+        if (currentEnemy == null)
+        {
+            return;
+        }
+
         GameObject characterToCheck = playerControl ? player : currentEnemy;
         HealthSystem characterHealthSystem = characterToCheck.GetComponent<HealthSystem>();
 
-        if (characterHealthSystem != null && characterHealthSystem.currentHealth <= 0 && gameObject.name != "Player")
+        if (characterHealthSystem != null && characterHealthSystem.currentHealth <= 0 && gameObject.name != "Player" && !isDying)
         {
             Debug.Log("Character's health reached zero. Switching back to the player.");
-            SwitchBackToPlayerCharacter();
-            enemySpawnSystem.EnemyDestroyed();
+            StartCoroutine(PlayerDeathAnimation());
             if (characterToCheck.name == "Dark Monster(Clone)")
             {
                 StartCoroutine(FadeInMusic(1));
             }
         }
+    }
+
+    private IEnumerator PlayerDeathAnimation()
+    {
+        ThirdPersonController thirdPersonController = currentEnemy.GetComponent<ThirdPersonController>();
+        isDying = true;
+
+        // Trigger death animation
+        thirdPersonController.animator.SetTrigger("Die");
+
+        thirdPersonController.moveSpeed = 0f;
+
+        // Wait for the death animation to finish
+        yield return new WaitForSeconds(4);
+
+        // Switch back to the player
+        SwitchBackToPlayerCharacter();
+
+        thirdPersonController.animator.ResetTrigger("Die");
+
+        isDying = false;
     }
 }

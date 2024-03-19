@@ -31,6 +31,7 @@ public class ThirdPersonController : MonoBehaviour
     private bool isDelayOver = true;
     private bool wasRunning = false;
     private float previousStamina = 1.0f;
+    private bool isDying = false;
 
     private void Start()
     {
@@ -140,14 +141,37 @@ public class ThirdPersonController : MonoBehaviour
         velocity = Vector3.zero;
         healthSystem.currentHealth = healthSystem.maxHealth;
         StartCoroutine(healthSystem.UpdateHealthBarSmoothly());
+
+        animator.ResetTrigger("Die");
+        animator.SetBool("isAlive", true);
+        moveSpeed = 5f;
     }
 
     public void PlayerDied()
     {
-        if (healthSystem.currentHealth == 0 && gameObject.name == "Player")
+        if (healthSystem.currentHealth == 0 && gameObject.name == "Player" && !isDying)
         {
-            Respawn();
+            StartCoroutine(PlayerDeathAnimation());
         }
+    }
+
+    private IEnumerator PlayerDeathAnimation()
+    {
+        isDying = true;
+        animator.SetBool("isAlive", false);
+
+        // Trigger death animation
+        animator.SetTrigger("Die");
+
+        moveSpeed = 0f;
+
+        // Wait for the death animation to finish
+        yield return new WaitForSeconds(4);
+
+        // Respawn the player
+        Respawn();
+
+        isDying = false;
     }
 
     void ApplyGravity()

@@ -14,6 +14,7 @@ public class HealthSystem : MonoBehaviour
     private float stunDuration = 10f; // Duration of the stun phase in seconds
     private EnemySpawnSystem enemySpawnSystem;
     public bool isStunned = false;
+    public bool isAlive = true;
 
     private void Start()
     {
@@ -24,6 +25,8 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (!isAlive) return;
+
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
@@ -47,13 +50,33 @@ public class HealthSystem : MonoBehaviour
 
     private void Die()
     {
+        isAlive = false;
         GetComponent<LootDropSystem>().DropLoot(transform.position);
         PokemonAttack pokemonAttack = GetComponent<PokemonAttack>();
         QuestManager.instance.MonsterKilled(pokemonAttack.type);
         Debug.Log(gameObject.name + " has died!");
-        Destroy(gameObject);
+
+        // Trigger death animation
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetTrigger("Die");
+        }
+
+        // Delay destruction to allow for the death animation to play
+        StartCoroutine(DestroyAfterAnimation(4));
+
+        // No need to destroy immediately
+        // Destroy(gameObject);
         enemySpawnSystem.EnemyDestroyed();
     }
+
+    private IEnumerator DestroyAfterAnimation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
+    }
+
 
     public IEnumerator UpdateHealthBarSmoothly()
     {
