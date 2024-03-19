@@ -16,6 +16,12 @@ public class HealthSystem : MonoBehaviour
     public bool isStunned = false;
     public bool isAlive = true;
 
+    // Scale parameters for hurt animation
+    private Vector3 hurtScale; // Scale up when hurt
+    public float hurtDuration = 0.1f; // Duration of the hurt animation
+
+    public ParticleSystem bloodParticles;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -46,6 +52,9 @@ public class HealthSystem : MonoBehaviour
                 Die();
             }
         }
+
+        // Trigger hurt animation
+        StartCoroutine(HurtAnimation());
     }
 
     private void Die()
@@ -129,6 +138,29 @@ public class HealthSystem : MonoBehaviour
             animator.SetBool("isStunned", false); // Reset dizzy animation
             isStunned = false;
         }
+    }
+
+    // Coroutine for hurt animation
+    public IEnumerator HurtAnimation()
+    {
+        //Play blood effect
+        bloodParticles.gameObject.SetActive(true);
+        bloodParticles.Play();
+
+        // Store original scale
+        Vector3 originalScale = transform.localScale;
+
+        // Set scale to hurt scale
+        hurtScale = new Vector3(0.1f, 0f, 0.1f);
+        transform.localScale = hurtScale + originalScale;
+
+        // Wait for hurt duration
+        yield return new WaitForSeconds(hurtDuration);
+
+        // Reset scale to original scale
+        transform.localScale = originalScale;
+
+        bloodParticles.Stop();
     }
 
 }
