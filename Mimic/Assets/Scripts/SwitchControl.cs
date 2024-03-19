@@ -299,6 +299,7 @@ public class SwitchControl : MonoBehaviour
     private IEnumerator PlayerDeathAnimation()
     {
         ThirdPersonController thirdPersonController = currentEnemy.GetComponent<ThirdPersonController>();
+        HealthSystem healthSystem = currentEnemy.GetComponent<HealthSystem>();
         isDying = true;
 
         // Trigger death animation
@@ -308,6 +309,12 @@ public class SwitchControl : MonoBehaviour
 
         // Wait for the death animation to finish
         yield return new WaitForSeconds(4);
+
+        // Apply death particles then respawn
+        healthSystem.deathParticles.gameObject.SetActive(true);
+        healthSystem.deathParticles.Play();
+        currentEnemy.GetComponent<SkinnedMeshRenderer>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
 
         // Switch back to the player
         SwitchBackToPlayerCharacter();

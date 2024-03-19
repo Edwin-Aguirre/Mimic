@@ -21,6 +21,7 @@ public class HealthSystem : MonoBehaviour
     public float hurtDuration = 0.1f; // Duration of the hurt animation
 
     public ParticleSystem bloodParticles;
+    public ParticleSystem deathParticles;
 
     private void Start()
     {
@@ -83,6 +84,10 @@ public class HealthSystem : MonoBehaviour
     private IEnumerator DestroyAfterAnimation(float delay)
     {
         yield return new WaitForSeconds(delay);
+        deathParticles.gameObject.SetActive(true);
+        deathParticles.Play();
+        gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
 

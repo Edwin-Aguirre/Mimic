@@ -168,7 +168,14 @@ public class ThirdPersonController : MonoBehaviour
         // Wait for the death animation to finish
         yield return new WaitForSeconds(4);
 
+        // Apply death particles then respawn
+        healthSystem.deathParticles.gameObject.SetActive(true);
+        healthSystem.deathParticles.Play();
+        gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+
         // Respawn the player
+        gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
         Respawn();
 
         isDying = false;
