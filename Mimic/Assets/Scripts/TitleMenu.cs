@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class TitleMenu : MonoBehaviour
 {
@@ -26,7 +27,10 @@ public class TitleMenu : MonoBehaviour
     void Start()
     {
         Cursor.visible = true;
-        EventSystem.current.SetSelectedGameObject(playButton);
+        if(Gamepad.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(playButton);
+        }
     }
 
     // Update is called once per frame
@@ -53,7 +57,10 @@ public class TitleMenu : MonoBehaviour
         logo.SetActive(false);
         optionsCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(resolutionDropdown);
+        if(Gamepad.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(resolutionDropdown);
+        }
     }
 
     public void onExitOptionsButton()
@@ -62,6 +69,9 @@ public class TitleMenu : MonoBehaviour
         logo.SetActive(true);
         optionsCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(playButton);
+        if(Gamepad.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(playButton);
+        }
     }
 }
