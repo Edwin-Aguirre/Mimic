@@ -29,7 +29,7 @@ public class QuestTracker : MonoBehaviour
         // If the quest is not initialized, set the collider as non-trigger
         if (!quest.isCompleted)
         {
-            SetColliderAsNonTrigger();
+            //SetColliderAsNonTrigger();
         }
     }
 
@@ -46,7 +46,7 @@ public class QuestTracker : MonoBehaviour
             // If the quest is completed after incrementing the count, set the collider as non-trigger
             if (quest.isCompleted)
             {
-                SetColliderAsNonTrigger();
+                //SetColliderAsNonTrigger();
                 ShowQuestCompletedText();
                 questInitializer.questNameText.text = "<s>" + questInitializer.questToStart.name + "<s>";
                 questInitializer.questDescriptionText.text = "";

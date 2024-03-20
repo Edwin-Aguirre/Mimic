@@ -125,7 +125,7 @@ public class QuestInitializer : MonoBehaviour
         // Add any additional logic for quest initialization, such as displaying UI messages
 
         // Switch the colliders of associated QuestTracker objects to triggers
-        SwitchQuestTrackerColliders(true);
+        //SwitchQuestTrackerColliders(true);
     }
 
     private void SwitchQuestTrackerColliders(bool isTrigger)
