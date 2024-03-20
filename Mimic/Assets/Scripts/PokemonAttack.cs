@@ -240,7 +240,7 @@ public class PokemonAttack : MonoBehaviour
     private void PlayStrongTypeAdvantageEffect()
     {
         // Add visual effects for strong type advantage
-        ScreenShake.Instance.ShakeScreen(1.0f, 1.0f); // Adjust amplitude and frequency as needed
+        ScreenShake.Instance.ShakeScreen(2.5f); // Adjust amplitude and frequency as needed
     }
 
     IEnumerator FlashCoroutine()

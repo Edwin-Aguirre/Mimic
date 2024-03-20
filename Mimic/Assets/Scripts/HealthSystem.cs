@@ -148,6 +148,8 @@ public class HealthSystem : MonoBehaviour
     // Coroutine for hurt animation
     public IEnumerator HurtAnimation()
     {
+        ScreenShake.Instance.ShakeScreen(0.5f);
+
         //Play blood effect
         bloodParticles.gameObject.SetActive(true);
         bloodParticles.Play();

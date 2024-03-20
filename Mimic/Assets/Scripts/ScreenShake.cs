@@ -26,11 +26,8 @@ public class ScreenShake : MonoBehaviour
     }
 
     // Call this method to trigger a screen shake
-    public void ShakeScreen(float amplitude, float frequency)
+    public void ShakeScreen(float frequency)
     {
-        impulseSource.m_ImpulseDefinition.m_AmplitudeGain = amplitude;
-        impulseSource.m_ImpulseDefinition.m_FrequencyGain = frequency;
-
-        impulseSource.GenerateImpulse();
+        impulseSource.GenerateImpulseWithForce(frequency);
     }
 }
