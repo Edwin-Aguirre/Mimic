@@ -32,6 +32,7 @@ public class ThirdPersonController : MonoBehaviour
     private bool wasRunning = false;
     private float previousStamina = 1.0f;
     private bool isDying = false;
+    private ParticleSystem originalBloodParticles;
 
     private void Start()
     {
@@ -145,6 +146,7 @@ public class ThirdPersonController : MonoBehaviour
         animator.ResetTrigger("Die");
         animator.SetBool("isAlive", true);
         moveSpeed = 5f;
+        healthSystem.bloodParticles = originalBloodParticles;
     }
 
     public void PlayerDied()
@@ -169,14 +171,17 @@ public class ThirdPersonController : MonoBehaviour
         yield return new WaitForSeconds(4);
 
         // Apply death particles then respawn
+        originalBloodParticles = healthSystem.bloodParticles;
+        healthSystem.bloodParticles = null;
         healthSystem.deathParticles.gameObject.SetActive(true);
         healthSystem.deathParticles.Play();
         gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // Respawn the player
         gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
         Respawn();
+        healthSystem.deathParticles.gameObject.SetActive(false);
 
         isDying = false;
     }

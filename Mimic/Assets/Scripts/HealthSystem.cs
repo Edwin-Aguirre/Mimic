@@ -87,7 +87,7 @@ public class HealthSystem : MonoBehaviour
         deathParticles.gameObject.SetActive(true);
         deathParticles.Play();
         gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 

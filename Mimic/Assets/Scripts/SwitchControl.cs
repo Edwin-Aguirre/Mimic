@@ -26,6 +26,9 @@ public class SwitchControl : MonoBehaviour
 
     private bool isDying = false;
 
+    private Material originalPlayerBloodMat;
+    private ParticleSystem originalBloodParticles;
+
     private void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -176,6 +179,15 @@ public class SwitchControl : MonoBehaviour
 
     private void SwitchToEnemyCharacter(GameObject newEnemy)
     {
+        //Changes player blood particles so that it plays monster particles
+        HealthSystem playerBloodParticles = player.GetComponent<HealthSystem>();
+        HealthSystem enemyDeathParticles = newEnemy.GetComponent<HealthSystem>();
+
+        originalPlayerBloodMat = playerBloodParticles.bloodParticles.GetComponent<ParticleSystemRenderer>().material;
+
+        playerBloodParticles.bloodParticles.GetComponent<ParticleSystemRenderer>().material 
+        = enemyDeathParticles.deathParticles.GetComponent<ParticleSystemRenderer>().material;
+
         playerControl = !playerControl;
         player.SetActive(playerControl);
         newEnemy.SetActive(!playerControl);
@@ -218,6 +230,8 @@ public class SwitchControl : MonoBehaviour
         {
             return;
         }
+
+        StartCoroutine(RevertPlayerBlood());
 
         Vector3 enemyPosition = currentEnemy.transform.position;
         Quaternion enemyRotation = currentEnemy.transform.rotation;
@@ -304,17 +318,18 @@ public class SwitchControl : MonoBehaviour
 
         // Trigger death animation
         thirdPersonController.animator.SetTrigger("Die");
-
         thirdPersonController.moveSpeed = 0f;
 
         // Wait for the death animation to finish
         yield return new WaitForSeconds(4);
 
         // Apply death particles then respawn
+        originalBloodParticles = healthSystem.bloodParticles;
+        healthSystem.bloodParticles = null;
         healthSystem.deathParticles.gameObject.SetActive(true);
         healthSystem.deathParticles.Play();
         currentEnemy.GetComponent<SkinnedMeshRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // Switch back to the player
         SwitchBackToPlayerCharacter();
@@ -322,5 +337,17 @@ public class SwitchControl : MonoBehaviour
         thirdPersonController.animator.ResetTrigger("Die");
 
         isDying = false;
+
+        healthSystem.bloodParticles = originalBloodParticles;
+    }
+
+    private IEnumerator RevertPlayerBlood()
+    {
+        yield return new WaitForSeconds(0.9f);
+
+        HealthSystem playerBloodParticles = player.GetComponent<HealthSystem>();
+
+        playerBloodParticles.bloodParticles.GetComponent<ParticleSystemRenderer>().material 
+        = originalPlayerBloodMat;
     }
 }

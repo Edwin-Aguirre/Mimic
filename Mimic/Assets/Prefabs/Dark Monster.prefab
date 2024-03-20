@@ -12177,6 +12177,7 @@ MonoBehaviour:
   isAlive: 1
   hurtDuration: 0.1
   bloodParticles: {fileID: 4093648177037931717}
+  deathParticles: {fileID: 6139846813659079698}
 --- !u!114 &1717917206081689317
 MonoBehaviour:
   m_ObjectHideFlags: 0
