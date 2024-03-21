@@ -109,10 +109,10 @@ public class SwitchControl : MonoBehaviour
                         CanvasShaker enemyCanvas = newEnemy.GetComponentInChildren<CanvasShaker>();
                         enemyCanvas.PlayCanvasShakerAnimation();
                     }
-                    if (newEnemy.name == "Dark Monster(Clone)")
-                    {
-                        StartCoroutine(FadeOutMusic(1));
-                    }
+                    // if (newEnemy.name == "Dark Monster(Clone)")
+                    // {
+                    //     //StartCoroutine(FadeOutMusic(1));
+                    // }
                 }
             }
         }
@@ -241,10 +241,10 @@ public class SwitchControl : MonoBehaviour
         player.transform.rotation = enemyRotation;
         player.SetActive(true);
 
-        if (currentEnemy.name == "Dark Monster(Clone)")
-        {
-            StartCoroutine(FadeInMusic(1));
-        }
+        // if (currentEnemy.name == "Dark Monster(Clone)")
+        // {
+        //     //StartCoroutine(FadeInMusic(1));
+        // }
         
         currentEnemy.SetActive(false);
         currentEnemy.tag = "Enemy";
@@ -303,10 +303,10 @@ public class SwitchControl : MonoBehaviour
         {
             Debug.Log("Character's health reached zero. Switching back to the player.");
             StartCoroutine(PlayerDeathAnimation());
-            if (characterToCheck.name == "Dark Monster(Clone)")
-            {
-                StartCoroutine(FadeInMusic(1));
-            }
+            // if (characterToCheck.name == "Dark Monster(Clone)")
+            // {
+            //     //StartCoroutine(FadeInMusic(1));
+            // }
         }
     }
 
