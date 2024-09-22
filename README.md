@@ -1,4 +1,4 @@
-# MIMIC
+# [MIMIC](https://edwin-aguirre.itch.io/mimic)
 
 GDIM 167A-B Capstone Project
 
